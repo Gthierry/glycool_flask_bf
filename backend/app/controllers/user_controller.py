@@ -36,7 +36,7 @@ def get_user():
     return jsonify(form.errors), 400
 
 
-@app.post("/users/login/")
+@app.post("/users/login")
 def get_user_by_email():
     form = UserLoginForm.from_json(request.json)
     if form.validate():

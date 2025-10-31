@@ -16,5 +16,5 @@ class UserLoginForm(FlaskForm):
     class Meta:
         csrf = False
 
-    email = EmailField("Email", validators=[DataRequired()])
-    password = PasswordField("Password", validators=[DataRequired()])
+    email = EmailField("Email")
+    password = PasswordField("Password")
