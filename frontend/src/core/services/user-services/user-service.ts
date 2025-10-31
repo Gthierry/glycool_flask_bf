@@ -16,7 +16,7 @@ export class UserService {
   getAllUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.apiUrl);
   }
-
+  //récupération d'un utilisateur par son id
   getUserById(id: number): Observable<User> {
     try {
       const url = `${this.apiUrl}/${id}`;
@@ -25,6 +25,13 @@ export class UserService {
       console.error('Error fetching user by ID:', error);
       throw error; // Re-throw the error after logging it
     }
+  }
+
+  getUserbyEmail(email:string): Observable<User>
+  try
+  {
+      const url 
+
   }
 
   createUser(user: User): Observable<User> {

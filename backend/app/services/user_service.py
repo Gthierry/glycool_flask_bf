@@ -12,6 +12,7 @@ from app.models.user import User
 import bcrypt
 from app import db
 from app.models import user
+from app.forms.users.user_login_form import UserLoginForm
 from app.forms.users.user_email_form import UserEmailForm
 from app.utilities.authentification.jwt_utils import (
     generate_token,
@@ -39,6 +40,15 @@ class UserService(Base_service):
 
     @staticmethod
     def get_user_by_email(form: UserEmailForm):
+        if form.validate():
+            try:
+                user = User.query.filter_by(user_email=form.email.data).one()
+                return UserDto(user)
+            except:
+                return None
+
+    @staticmethod
+    def get_user_by_login(form: UserLoginForm):
         if form.validate():
             try:
                 user = User.query.filter_by(user_email=form.email.data).one()

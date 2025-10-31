@@ -6,6 +6,7 @@ from app.forms.users.user_insert_form import UserInsertForm
 from app.forms.users.user_update_form import UserUpdateForm
 from app.forms.users.user_username_form import UserUsernameForm
 from app.forms.users.user_email_form import UserEmailForm
+from app.forms.users.user_login_form import UserLoginForm
 
 from flask import render_template, request, redirect, url_for, flash
 
@@ -18,7 +19,7 @@ def get_users():
     try:
         print("getting users")
         users = UserService.get_all()
-       
+
         return jsonify([user.__dict__ for user in users])
     except:
         return jsonify({"error": "No users found"}), 404
@@ -37,12 +38,22 @@ def get_user():
 
 @app.post("/users/login/")
 def get_user_by_email():
-    form = UserEmailForm.from_json(request.json)
+    form = UserLoginForm.from_json(request.json)
     if form.validate():
-        user, token = UserService.get_user_by_email(form)
+        user, token = UserService.get_user_by_login(form)
         if user:
             return jsonify({"user": user.serialize(), "token": token})
     return jsonify(form.errors)
+
+
+@app.post("/users/email")
+def check_if_email_exist():
+    form = UserEmailForm.from_json(request.json)
+    if form.validate():
+        user = UserService.get_user_by_email(form)
+        if user:
+            return jsonify(user.serialize())
+        return jsonify(form.errors)
 
 
 @app.post("/users/create")
