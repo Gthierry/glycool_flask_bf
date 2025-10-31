@@ -22,18 +22,19 @@
             <div class="col-lg-8 w-50 m-auto">
                 <div class="card-body py-5 px-md-5">
 
-                    <form (submit)="connexion()" formControl="form" class="form-control m-auto w-50">
+                    <form (ngSubmit)="connexion()" [formGroup]="form" class="card p-4 m-auto" style="max-width: 400px;">
                         <!-- Email input -->
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <label class="form-label" formControlName="email" for="form2Example1">Email address :
-                                <input type="email" id="form2Example2" class="form-control" />
+                            <label class="form-label" for="form2Example1">Email address :
+                                <input type="email" formControlName="email" id="form2Example2" class="form-control" />
                             </label>
                         </div>
 
                         <!-- Password input -->
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <label class="form-label" formControlName="password" for="form2Example1">password :
-                                <input type="password" id="form2Example1" class="form-control" />
+                            <label class="form-label" for="form2Example1">password :
+                                <input type="password" formControlName="password" id="form2Example1"
+                                    class="form-control" />
                             </label>
                         </div>
 

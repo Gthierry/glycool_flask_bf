@@ -14,7 +14,7 @@ import { log } from 'node:console';
 
 @Component({
   selector: 'app-user-login-component',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './user-login-component.html',
   styleUrl: './user-login-component.css',
 })
@@ -28,12 +28,12 @@ export class UserLoginComponent {
   route = inject(Router);
 
   //déclaration user
-  user: User | null = null;
+  user: User | any;
 
   //initialisation du formulaire via le constructeur
   constructor() {
     this.form = this.fb.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
@@ -41,17 +41,18 @@ export class UserLoginComponent {
   // Méthode de connexion
   connexion() {
     if (this.form.valid) {
-      console.log('Form is valid, submitting login request...');
-      const email = this.form.get('email')?.value;
-      const password = this.form.get('password')?.value;
+      const email = this.form.value.email;
+      const password = this.form.value.password;
+
       this.loginService.login(email, password).subscribe({
         next: (response) => {
           console.log('Login successful:', response);
-          this.user = response;
+          this.user = response.user;
+          console.log("l'utilsateur: " + this.user);
           localStorage.setItem('user', JSON.stringify(response));
-          localStorage.setItem('token', response.access_token);
+          // localStorage.setItem('token', response.access_token);
 
-          this.route.navigate(['/user-profile']);
+          this.route.navigate(['/user-profile-component']);
         },
         error: (error) => {
           console.error('Login failed:', error);

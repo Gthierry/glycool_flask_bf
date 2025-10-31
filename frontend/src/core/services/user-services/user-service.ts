@@ -27,13 +27,6 @@ export class UserService {
     }
   }
 
-  getUserbyEmail(email:string): Observable<User>
-  try
-  {
-      const url 
-
-  }
-
   createUser(user: User): Observable<User> {
     try {
       console.log('UserService: createUser called');
