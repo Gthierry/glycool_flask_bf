@@ -1,0 +1,30 @@
+
+.bg-orange-saumon {
+  background-color: #FFA07A !important;
+}
+
+.bg-sante-vert {
+  background-color: #A8E6CF !important;
+}
+
+.bg-sante-bleu {
+  background-color: #AEDFF7 !important;
+}
+
+.bg-sante-gris {
+  background-color: #F8F9FA !important;
+}
+
+.text-sante-dark {
+  color: #333333 !important;
+}
+
+
+.codeCouleur{
+
+color: #EFC3B9
+#E58685
+#FFD8DB
+#A4D4A2
+#F27A90
+}

@@ -1,0 +1,424 @@
+Structure du dossier pour le volume OS
+Le numéro de série du volume est 920C-73C0
+C:.
++---app
+|   +---controllers
+|   |   \---__pycache__
+|   +---dtos
+|   |   \---__pycache__
+|   +---forms
+|   |   \---users
+|   +---framework
+|   |   +---decorators
+|   |   +---forms
+|   |   \---models
+|   +---models
+|   |   \---__pycache__
+|   +---services
+|   |   \---__pycache__
+|   +---views
+|   \---__pycache__
++---migrations
+|   +---versions
+|   |   \---__pycache__
+|   \---__pycache__
++---venv
+|   +---Include
+|   |   \---site
+|   |       \---python3.13
+|   |           \---greenlet
+|   +---Lib
+|   |   \---site-packages
+|   |       +---alembic
+|   |       |   +---autogenerate
+|   |       |   |   \---__pycache__
+|   |       |   +---ddl
+|   |       |   |   \---__pycache__
+|   |       |   +---operations
+|   |       |   |   \---__pycache__
+|   |       |   +---runtime
+|   |       |   |   \---__pycache__
+|   |       |   +---script
+|   |       |   |   \---__pycache__
+|   |       |   +---templates
+|   |       |   |   +---async
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---generic
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---multidb
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---pyproject
+|   |       |   |   |   \---__pycache__
+|   |       |   |   \---pyproject_async
+|   |       |   |       \---__pycache__
+|   |       |   +---testing
+|   |       |   |   +---plugin
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---suite
+|   |       |   |   |   \---__pycache__
+|   |       |   |   \---__pycache__
+|   |       |   +---util
+|   |       |   |   \---__pycache__
+|   |       |   \---__pycache__
+|   |       +---alembic-1.16.5.dist-info
+|   |       |   \---licenses
+|   |       +---blinker
+|   |       |   \---__pycache__
+|   |       +---blinker-1.9.0.dist-info
+|   |       +---click
+|   |       |   \---__pycache__
+|   |       +---click-8.2.1.dist-info
+|   |       |   \---licenses
+|   |       +---colorama
+|   |       |   +---tests
+|   |       |   |   \---__pycache__
+|   |       |   \---__pycache__
+|   |       +---colorama-0.4.6.dist-info
+|   |       |   \---licenses
+|   |       +---dotenv
+|   |       |   \---__pycache__
+|   |       +---flask
+|   |       |   +---json
+|   |       |   |   \---__pycache__
+|   |       |   +---sansio
+|   |       |   |   \---__pycache__
+|   |       |   \---__pycache__
+|   |       +---flask-3.1.2.dist-info
+|   |       |   \---licenses
+|   |       +---flask_cors
+|   |       |   \---__pycache__
+|   |       +---flask_cors-6.0.1.dist-info
+|   |       +---flask_migrate
+|   |       |   +---templates
+|   |       |   |   +---aioflask
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---aioflask-multidb
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---flask
+|   |       |   |   |   \---__pycache__
+|   |       |   |   \---flask-multidb
+|   |       |   |       \---__pycache__
+|   |       |   \---__pycache__
+|   |       +---Flask_Migrate-4.1.0.dist-info
+|   |       +---flask_sqlalchemy
+|   |       |   \---__pycache__
+|   |       +---flask_sqlalchemy-3.1.1.dist-info
+|   |       +---flask_wtf
+|   |       |   +---recaptcha
+|   |       |   |   \---__pycache__
+|   |       |   \---__pycache__
+|   |       +---flask_wtf-1.2.2.dist-info
+|   |       |   \---licenses
+|   |       +---greenlet
+|   |       |   +---platform
+|   |       |   |   \---__pycache__
+|   |       |   +---tests
+|   |       |   |   \---__pycache__
+|   |       |   \---__pycache__
+|   |       +---greenlet-3.2.4.dist-info
+|   |       |   \---licenses
+|   |       +---itsdangerous
+|   |       |   \---__pycache__
+|   |       +---itsdangerous-2.2.0.dist-info
+|   |       +---jinja2
+|   |       |   \---__pycache__
+|   |       +---jinja2-3.1.6.dist-info
+|   |       |   \---licenses
+|   |       +---mako
+|   |       |   +---ext
+|   |       |   |   \---__pycache__
+|   |       |   +---testing
+|   |       |   |   \---__pycache__
+|   |       |   \---__pycache__
+|   |       +---mako-1.3.10.dist-info
+|   |       |   \---licenses
+|   |       +---markupsafe
+|   |       |   \---__pycache__
+|   |       +---MarkupSafe-3.0.2.dist-info
+|   |       +---pip
+|   |       |   +---_internal
+|   |       |   |   +---cli
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---commands
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---distributions
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---index
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---locations
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---metadata
+|   |       |   |   |   +---importlib
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---models
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---network
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---operations
+|   |       |   |   |   +---build
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   +---install
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---req
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---resolution
+|   |       |   |   |   +---legacy
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   +---resolvelib
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---utils
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---vcs
+|   |       |   |   |   \---__pycache__
+|   |       |   |   \---__pycache__
+|   |       |   +---_vendor
+|   |       |   |   +---cachecontrol
+|   |       |   |   |   +---caches
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---certifi
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---dependency_groups
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---distlib
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---distro
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---idna
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---msgpack
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---packaging
+|   |       |   |   |   +---licenses
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---pkg_resources
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---platformdirs
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---pygments
+|   |       |   |   |   +---filters
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   +---formatters
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   +---lexers
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   +---styles
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---pyproject_hooks
+|   |       |   |   |   +---_in_process
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---requests
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---resolvelib
+|   |       |   |   |   +---resolvers
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---rich
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---tomli
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---tomli_w
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---truststore
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---urllib3
+|   |       |   |   |   +---contrib
+|   |       |   |   |   |   +---_securetransport
+|   |       |   |   |   |   |   \---__pycache__
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   +---packages
+|   |       |   |   |   |   +---backports
+|   |       |   |   |   |   |   \---__pycache__
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   +---util
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   \---__pycache__
+|   |       |   |   \---__pycache__
+|   |       |   \---__pycache__
+|   |       +---pip-25.2.dist-info
+|   |       |   \---licenses
+|   |       |       \---src
+|   |       |           \---pip
+|   |       |               \---_vendor
+|   |       |                   +---cachecontrol
+|   |       |                   +---certifi
+|   |       |                   +---dependency_groups
+|   |       |                   +---distlib
+|   |       |                   +---distro
+|   |       |                   +---idna
+|   |       |                   +---msgpack
+|   |       |                   +---packaging
+|   |       |                   +---pkg_resources
+|   |       |                   +---platformdirs
+|   |       |                   +---pygments
+|   |       |                   +---pyproject_hooks
+|   |       |                   +---requests
+|   |       |                   +---resolvelib
+|   |       |                   +---rich
+|   |       |                   +---tomli
+|   |       |                   +---tomli_w
+|   |       |                   +---truststore
+|   |       |                   \---urllib3
+|   |       +---psycopg2
+|   |       |   \---__pycache__
+|   |       +---psycopg2_binary-2.9.10.dist-info
+|   |       +---psycopg2_binary.libs
+|   |       +---python_dotenv-1.1.1.dist-info
+|   |       |   \---licenses
+|   |       +---six-1.17.0.dist-info
+|   |       +---sqlalchemy
+|   |       |   +---connectors
+|   |       |   |   \---__pycache__
+|   |       |   +---cyextension
+|   |       |   |   \---__pycache__
+|   |       |   +---dialects
+|   |       |   |   +---mssql
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---mysql
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---oracle
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---postgresql
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---sqlite
+|   |       |   |   |   \---__pycache__
+|   |       |   |   \---__pycache__
+|   |       |   +---engine
+|   |       |   |   \---__pycache__
+|   |       |   +---event
+|   |       |   |   \---__pycache__
+|   |       |   +---ext
+|   |       |   |   +---asyncio
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---declarative
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---mypy
+|   |       |   |   |   \---__pycache__
+|   |       |   |   \---__pycache__
+|   |       |   +---future
+|   |       |   |   \---__pycache__
+|   |       |   +---orm
+|   |       |   |   \---__pycache__
+|   |       |   +---pool
+|   |       |   |   \---__pycache__
+|   |       |   +---sql
+|   |       |   |   \---__pycache__
+|   |       |   +---testing
+|   |       |   |   +---fixtures
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---plugin
+|   |       |   |   |   \---__pycache__
+|   |       |   |   +---suite
+|   |       |   |   |   \---__pycache__
+|   |       |   |   \---__pycache__
+|   |       |   +---util
+|   |       |   |   \---__pycache__
+|   |       |   \---__pycache__
+|   |       +---sqlalchemy-2.0.43.dist-info
+|   |       |   \---licenses
+|   |       +---typing_extensions-4.15.0.dist-info
+|   |       |   \---licenses
+|   |       +---werkzeug
+|   |       |   +---datastructures
+|   |       |   |   \---__pycache__
+|   |       |   +---debug
+|   |       |   |   +---shared
+|   |       |   |   \---__pycache__
+|   |       |   +---middleware
+|   |       |   |   \---__pycache__
+|   |       |   +---routing
+|   |       |   |   \---__pycache__
+|   |       |   +---sansio
+|   |       |   |   \---__pycache__
+|   |       |   +---wrappers
+|   |       |   |   \---__pycache__
+|   |       |   \---__pycache__
+|   |       +---werkzeug-3.1.3.dist-info
+|   |       +---wtforms
+|   |       |   +---csrf
+|   |       |   |   \---__pycache__
+|   |       |   +---fields
+|   |       |   |   \---__pycache__
+|   |       |   +---locale
+|   |       |   |   +---ar
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---bg
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---ca
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---cs_CZ
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---cy
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---de
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---de_CH
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---el
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---en
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---es
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---et
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---fa
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---fi
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---fr
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---he
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---hu
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---it
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---ja
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---kk
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---ko
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---nb
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---nl
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---pl
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---pt
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---ro
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---ru
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---sk
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---sv
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---tr
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---uk
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   +---zh
+|   |       |   |   |   \---LC_MESSAGES
+|   |       |   |   \---zh_TW
+|   |       |   |       \---LC_MESSAGES
+|   |       |   +---widgets
+|   |       |   |   \---__pycache__
+|   |       |   \---__pycache__
+|   |       +---wtforms-3.2.1.dist-info
+|   |       |   \---licenses
+|   |       +---wtforms_json
+|   |       |   \---__pycache__
+|   |       +---wtforms_json-0.3.5.dist-info
+|   |       |   \---licenses
+|   |       \---__pycache__
+|   \---Scripts
+\---__pycache__

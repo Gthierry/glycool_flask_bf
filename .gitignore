@@ -1,0 +1,39 @@
+# ---- Python / Flask
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pytest_cache/
+.mypy_cache/
+.pytype/
+.venv/
+venv/
+env/
+instance/
+*.sqlite
+*.db
+*.log
+
+# Env & secrets
+.env
+.env.*
+*.pem
+*.key
+
+# ---- Angular / Node
+node_modules/
+dist/
+build/
+.tmp/
+.npm/
+.cache/
+.angular/
+coverage/
+*.tgz
+
+# Editors / OS
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.DS_Store
+Thumbs.db
