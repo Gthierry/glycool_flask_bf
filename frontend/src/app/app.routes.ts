@@ -5,8 +5,9 @@ import { UserLoginComponent } from '../components/pages/user-login-component/use
 import { UserProfilComponent } from '../components/pages/user-profil-component/user-profil-component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  // { path: '', component: HomeComponent },
   { path: 'registration', component: UserRegistrationComponent },
   { path: 'login', component: UserLoginComponent },
-  { path: 'user-profile-component', component: UserProfilComponent },
+  // { path: 'user-profile-component', component: UserProfilComponent },
+  { path: '', component: UserProfilComponent },
 ];
