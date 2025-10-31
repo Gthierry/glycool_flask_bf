@@ -81,8 +81,8 @@ body {
 .profile-nav ul > li > a {
   border-radius: 0;
   -webkit-border-radius: 0;
-  color: #89817f;
-  border-left: 5px solid #fff;
+  color: #198754;
+  border-left: 5px solid transparent;
 }
 
 /* .profile-nav ul > li > a:hover,
@@ -180,19 +180,23 @@ body {
 }
 
 .bio-desk h4.terques {
-  color: #4cc5cd;
+  color: #198754;
+  margin-top: 5;
 }
 
 .bio-desk h4.red {
-  color: #e26b7f;
+  color: #198754;
+  margin-top: 5;
 }
 
 .bio-desk h4.green {
-  color: #97be4b;
+  color: #198754;
+  margin-top: 5;
 }
 
 .bio-desk h4.purple {
-  color: #caa3da;
+  color: #198754;
+  margin-top: 5px;
 }
 
 .file-pos {
