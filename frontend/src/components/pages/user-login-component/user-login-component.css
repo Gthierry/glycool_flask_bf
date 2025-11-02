@@ -1,0 +1,34 @@
+body {
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #a4d4a2, white, #e58685);
+  background-size: 400% 400%;
+  animation: gradientFlow 40s ease infinite;
+}
+
+/* Animation douce pour rendre le dégradé vivant */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.rounded-t-5 {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+@media (min-width: 992px) {
+  .rounded-tr-lg-0 {
+    border-top-right-radius: 0;
+  }
+
+  .rounded-bl-lg-5 {
+    border-bottom-left-radius: 0.5rem;
+  }
+}

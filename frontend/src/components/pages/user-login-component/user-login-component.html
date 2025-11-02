@@ -1,69 +1,52 @@
 <!-- Section: Design Block -->
 <section class=" text-center text-lg-start">
-    <style>
-        .rounded-t-5 {
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
-        }
+    <!-- <div class="card mb-3 w-50 m-auto">-->
+    <div class="row g-0 d-flex align-items-center">
 
-        @media (min-width: 992px) {
-            .rounded-tr-lg-0 {
-                border-top-right-radius: 0;
-            }
+        <div class="col-lg-8 w-50 m-auto">
+            <div class="card-body py-5 px-md-5">
 
-            .rounded-bl-lg-5 {
-                border-bottom-left-radius: 0.5rem;
-            }
-        }
-    </style>
-    <div class="card mb-3">
-        <div class="row g-0 d-flex  align-items-center">
+                <form (ngSubmit)="connexion()" [formGroup]="form" class="card p-4 m-auto" style="max-width: 400px;">
+                    <!-- Email input -->
+                    <div data-mdb-input-init class="form-outline m-auto mb-4">
+                        <label class="form-label" for="form2Example1">Email address :
+                            <input type="email" formControlName="email" id="form2Example2" class="form-control" />
+                        </label>
+                    </div>
 
-            <div class="col-lg-8 w-50 m-auto">
-                <div class="card-body py-5 px-md-5">
+                    <!-- Password input -->
+                    <div data-mdb-input-init class="form-outline m-auto mb-4">
+                        <label class="form-label" for="form2Example1">password :
+                            <input type="password" formControlName="password" id="form2Example1" class="form-control" />
+                        </label>
+                    </div>
 
-                    <form (ngSubmit)="connexion()" [formGroup]="form" class="card p-4 m-auto" style="max-width: 400px;">
-                        <!-- Email input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <label class="form-label" for="form2Example1">Email address :
-                                <input type="email" formControlName="email" id="form2Example2" class="form-control" />
-                            </label>
-                        </div>
-
-                        <!-- Password input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <label class="form-label" for="form2Example1">password :
-                                <input type="password" formControlName="password" id="form2Example1"
-                                    class="form-control" />
-                            </label>
-                        </div>
-
-                        <!-- 2 column grid layout for inline styling -->
-                        <div class="row mb-4">
-                            <div class="col d-flex justify-content-center">
-                                <!-- Checkbox -->
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="form2Example31"
-                                        checked />
-                                    <label class="form-check-label" for="form2Example31"> Remember me </label>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <!-- Simple link -->
-                                <a href="#!">Forgot password?</a>
+                    <!-- 2 column grid layout for inline styling -->
+                    <div class="row mb-4">
+                        <div class="col d-flex justify-content-center">
+                            <!-- Checkbox -->
+                            <!--TODO add checkbox management-->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                                <label class="form-check-label" for="form2Example31"> Remember me </label>
                             </div>
                         </div>
+                        <!--TODO Manage forgotted password with email page-->
+                        <div class="col">
+                            <!-- Simple link -->
+                            <a href="#!">Forgot password?</a>
+                        </div>
+                    </div>
 
-                        <!-- Submit button -->
-                        <button type="submit" data-mdb-button-init data-mdb-ripple-init
-                            class="btn btn-primary btn-block mb-4">Sign in</button>
+                    <!-- Submit button -->
+                    <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-primary btn-block mb-4">Sign in</button>
 
-                    </form>
+                </form>
 
-                </div>
             </div>
         </div>
     </div>
+    <!--   </div> -->
 </section>
 <!-- Section: Design Block -->
