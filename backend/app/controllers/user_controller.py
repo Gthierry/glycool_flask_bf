@@ -62,7 +62,7 @@ def create_user():
     if form.validate():
         user = UserService.create(form)
         print("Controller Form validated  !!!- Created User: " + str(user))
-        return jsonify(user.serialize())
+        return jsonify({"user": user.serialize(), "token": token})
     print("Controller - Form errors: " + str(form.errors))
     return jsonify(form.errors)
 

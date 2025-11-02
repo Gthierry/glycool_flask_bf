@@ -1,5 +1,6 @@
 from math import log
 from flask import jsonify
+from flask_jwt_extended import create_access_token
 from app.models.user import User
 
 from app.dtos.user_dto import UserDto
@@ -94,8 +95,9 @@ class UserService(Base_service):
                 db.session.add(user)
                 print("Committing user creation")
                 db.session.commit()
+                token = generate_token(user.user_id, user.user_role)
                 print("User created: " + user.user_username)
-                return UserDto(user)
+                return UserDto(user), token
             except Exception as e:
                 print(e, "Error creating user")
                 db.session.rollback()

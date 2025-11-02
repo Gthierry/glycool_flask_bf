@@ -76,8 +76,10 @@ export class UserRegistrationComponent {
       };
       console.log('Creating user with data from component:', newUser);
       this.userService.createUser(newUser).subscribe({
-        next: () => {
+        next: (response) => {
           console.log('User created successfully:');
+          localStorage.setItem('user', JSON.stringify(response));
+          localStorage.setItem('token');
           this.route.navigate(['user-profile-component']);
         },
         error: (error) => {
