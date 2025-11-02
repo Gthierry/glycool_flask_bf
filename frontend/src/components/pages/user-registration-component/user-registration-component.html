@@ -1,7 +1,7 @@
 <div class="user-registration d-flex m-auto w-50">
-    <form class="form-control m-auto" (ngSubmit)="userCreate()" [formGroup]="form">
+    <form class="form-control w-75 m-auto" (ngSubmit)="userCreate()" [formGroup]="form">
         <h1 class="m-auto p-2 m-2">Enregistrez-vous</h1>
-        <div class="form-group p-2 m-2">
+        <div class="form-group p-2 m-2  ">
             <label for="username">Nom d'utilisateur :</label>
             <input class="m-2" id="username" formControlName="username" type="text" required />
             @if(form.get('username')?.invalid && (form.get('username')?.dirty)) {
@@ -37,7 +37,7 @@
             </div>
             }
         </div>
-        <div class="form-group p-2 m-2">
+        <!-- <div class="form-group p-2 m-2">
             <label for="firstName">Prénom :</label>
             <input class="m-2" id="firstName" formControlName="firstName" type="text" />
         </div>
@@ -54,9 +54,9 @@
             <input class="m-2" id="city" formControlName="city" type="text" />
         </div>
         <div>
-            <label for="exampleFormControlTextarea1"  class="form-label">Bio :</label>
+            <label for="exampleFormControlTextarea1" class="form-label">Bio :</label>
             <textarea class="form-control" formControlName="bio" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
+        </div> -->
         <div class="form-group p-2 m-2">
             <input id="acceptTerms" formControlName="acceptTerms" type="checkbox" />
             J'accepte les termes et conditions
