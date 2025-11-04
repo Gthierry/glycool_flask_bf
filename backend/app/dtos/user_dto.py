@@ -14,7 +14,7 @@ class UserDto(AbstractDto):
 
         self.username = User.user_username
 
-        self.password = User.user_password
+        #self.password = User.user_password
 
         self.birthdate = User.user_birthdate
 
@@ -33,8 +33,6 @@ class UserDto(AbstractDto):
         self.first_name = User.user_first_name
 
         self.last_name = User.user_last_name
-
-        # self.image_file = User.user_image_file
 
         self.email = User.user_email
 

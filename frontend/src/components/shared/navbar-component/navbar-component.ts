@@ -10,7 +10,7 @@ import { log } from 'console';
   styleUrl: './navbar-component.css',
 })
 export class NavbarComponent {
-  checkedLogin = false;
+  isLogged = false;
   // Inject Router
   route = inject(Router);
 
@@ -26,7 +26,8 @@ export class NavbarComponent {
     this.route.navigate(['login']);
   }
   logout() {
-    this.checkedLogin = false;
+    this.isLogged = false;
     this.route.navigate(['']);
   }
+  
 }

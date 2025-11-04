@@ -78,7 +78,7 @@
                 </li>
             </ul>
         </div>
-        @if(!checkedLogin) {
+        @if(!isLogged) {
         <form class="d-flex">
             <button (click)="navigateToRegister()" class="btn btn-sm btn-outline-secondary m-1"
                 type="button">S'enregistrer</button>

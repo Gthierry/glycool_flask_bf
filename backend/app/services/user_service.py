@@ -47,7 +47,7 @@ class UserService(Base_service):
                 return UserDto(user)
             except:
                 return None
-
+    
     @staticmethod
     def get_user_by_login(form: UserLoginForm):
         if form.validate():

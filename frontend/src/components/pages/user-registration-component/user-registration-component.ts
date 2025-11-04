@@ -72,7 +72,7 @@ export class UserRegistrationComponent {
       this.userService.createUser(newUser).subscribe({
         next: (response) => {
           console.log('User created successfully:');
-          localStorage.setItem('user', JSON.stringify(response));
+          localStorage.setItem('user', JSON.stringify(response.user) || '');
           localStorage.setItem('token', response.token || '');
           this.route.navigate(['profil']);
         },

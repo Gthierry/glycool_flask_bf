@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -12,6 +12,8 @@ import { AuthService } from '../../../core/services/authentification/auth-servic
 import { Router } from '@angular/router';
 import { log } from 'node:console';
 import { passwordCheck } from '../../../Utilities/password-check';
+
+
 
 @Component({
   selector: 'app-user-login-component',
@@ -30,6 +32,7 @@ export class UserLoginComponent {
 
   //déclaration user
   user: User | any;
+  isLogged= signal<boolean>(false);
 
   //initialisation du formulaire via le constructeur
   constructor() {
@@ -59,6 +62,10 @@ export class UserLoginComponent {
         error: (error: any) => {
           console.error('Login invalide', error);
         },
+        complete: () => {
+         this.isLogged.set(true);
+          console.log('Login request completed.');
+        }
       });
     }
   }

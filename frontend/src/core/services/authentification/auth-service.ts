@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import {User, UserLogin } from '../../models/user-models/user.model';
 import { Observable } from 'rxjs';
+import { sign } from 'crypto';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,8 @@ export class AuthService {
   httpClient = inject(HttpClient);
 
     user: User | any;
+  
+    
     //login user
     userLogin(user:UserLogin): Observable<any>{
       try{
