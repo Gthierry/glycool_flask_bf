@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../../models/user-models/user.model';
+import { User, UserLogin, UserRegister } from '../../models/user-models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,13 +27,15 @@ export class UserService {
     }
   }
 
-  createUser(user: User): Observable<User> {
+
+
+  createUser(user: UserRegister): Observable<UserRegister> {
     try {
       console.log('UserService: createUser called');
       const url = `${this.apiUrl}/create`;
       console.log('API URL:', url);
       console.log('Creating user with data:', user);
-      return this.httpClient.post<User>(url, user);
+      return this.httpClient.post<UserRegister>(url, user);
     } catch (error) {
       console.error('Error creating user with sercice', error);
       throw error;

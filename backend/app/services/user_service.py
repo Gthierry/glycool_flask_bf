@@ -59,13 +59,16 @@ class UserService(Base_service):
                 ):
 
                     print("User found by email: " + user.user_email)
+                    print("id user: "+ str(user.user_id) + " role user: " + user.user_role)
+                    print("Generating token...")
                     token = generate_token(user.user_id, user.user_role)
-                    print("Generated token: " + token)
-                    return UserDto(user), token
+                    #print("Generated token: " + token)
+                    return UserDto(user),token
                 else:
                     print("Invalid password: " + form.email.data)
                     return None
             except Exception as e:
+                print ("last exception from services fait gaffe !")
                 print(e)
                 return None
 
@@ -111,17 +114,17 @@ class UserService(Base_service):
         userCheck = User.query.get(form.user_id.data)
         if userCheck is not None:
 
-            userCheck.user_first_name = (form.first_name.data,)
-            userCheck.user_last_name = (form.last_name.data,)
-            userCheck.user_email = (form.email.data,)
-            userCheck.user_username = (form.username.data,)
-            userCheck.user_password = (form.password.data,)
+            userCheck.user_first_name = form.first_name.data
+            userCheck.user_last_name = form.last_name.data
+            userCheck.user_email = form.email.data
+            userCheck.user_username = form.username.data
+            userCheck.user_password = form.password.data
             userCheck.user_active = True
-            userCheck.user_role = (form.role.data,)
-            userCheck.user_city = (form.city.data,)
-            userCheck.user_avatar = (form.avatar.data,)
-            userCheck.user_bio = (form.bio.data,)
-            userCheck.user_birthdate = (form.birthdate.data,)
+            userCheck.user_role = form.role.data
+            userCheck.user_city = form.city.data
+            userCheck.user_avatar = form.avatar.data
+            userCheck.user_bio = form.bio.data
+            userCheck.user_birthdate = form.birthdate.data
         try:
             db.session.commit()
             return UserDto(userCheck)

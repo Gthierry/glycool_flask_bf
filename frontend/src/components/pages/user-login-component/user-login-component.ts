@@ -11,6 +11,7 @@ import { UserService } from '../../../core/services/user-services/user-service';
 import { AuthService } from '../../../core/services/authentification/auth-service';
 import { Router } from '@angular/router';
 import { log } from 'node:console';
+import { passwordCheck } from '../../../Utilities/password-check';
 
 @Component({
   selector: 'app-user-login-component',
@@ -41,21 +42,22 @@ export class UserLoginComponent {
   // Méthode de connexion
   connexion() {
     if (this.form.valid) {
-      const email = this.form.value.email;
-      const password = this.form.value.password;
-
-      this.loginService.login(email, password).subscribe({
+      const userCredentials: UserLogin = {
+       email: this.form.value.email,
+       password: this.form.value.password,
+       token: null
+      }
+      this.loginService.userLogin(userCredentials).subscribe({
         next: (response) => {
           console.log('Login successful:', response);
-          this.user = response.user;
-          console.log("l'utilsateur: " + this.user);
-          localStorage.setItem('user', JSON.stringify(response));
-          // localStorage.setItem('token', response.access_token);
-
-          this.route.navigate(['/user-profile-component']);
+          localStorage.setItem('user', JSON.stringify(response.user));
+          if (response.token) {
+            localStorage.setItem('token',response.token );
+          }
+          this.route.navigate(['/profil']);
         },
-        error: (error) => {
-          console.error('Login failed:', error);
+        error: (error: any) => {
+          console.error('Login invalide', error);
         },
       });
     }

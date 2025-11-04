@@ -13,7 +13,7 @@ import {
 import { first } from 'rxjs';
 import { UserService } from '../../../core/services/user-services/user-service';
 import { Router } from '@angular/router';
-import { User } from '../../../core/models/user-models/user.model';
+import { User, UserRegister } from '../../../core/models/user-models/user.model';
 
 @Component({
   selector: 'app-user-registration-component',
@@ -61,26 +61,20 @@ export class UserRegistrationComponent {
   userCreate() {
     if (this.form.valid) {
       //TODO ajout verif username en db
-      const newUser: User = {
+      const newUser: UserRegister = {
         username: this.form.value.username,
         email: this.form.value.email,
         password: this.form.value.password,
-        firstName: this.form.value.firstName,
-        lastName: this.form.value.lastName,
-        birthDate: this.form.value.birthDate ? new Date(this.form.value.birthDate) : null,
-        city: this.form.value.city,
-        avatar: this.form.value.avatar,
-        bio: this.form.value.bio,
-        role: 'user', // or another default role as required
-        isActive: true, // or false, depending on your logic
+        token:null
+     
       };
       console.log('Creating user with data from component:', newUser);
       this.userService.createUser(newUser).subscribe({
         next: (response) => {
           console.log('User created successfully:');
           localStorage.setItem('user', JSON.stringify(response));
-          localStorage.setItem('token');
-          this.route.navigate(['user-profile-component']);
+          localStorage.setItem('token', response.token || '');
+          this.route.navigate(['profil']);
         },
         error: (error) => {
           console.error('Form my component : Error creating user:', error);

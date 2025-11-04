@@ -1,4 +1,6 @@
 import token
+
+import jwt
 from app import app
 from flask import jsonify
 from app.services.user_service import UserService
@@ -9,6 +11,8 @@ from app.forms.users.user_email_form import UserEmailForm
 from app.forms.users.user_login_form import UserLoginForm
 
 from flask import render_template, request, redirect, url_for, flash
+
+from app.utilities.authentification.jwt_utils import generate_token
 
 
 # from flask import request
@@ -37,10 +41,10 @@ def get_user():
 
 
 @app.post("/users/login")
-def get_user_by_email():
+def user_login():
     form = UserLoginForm.from_json(request.json)
     if form.validate():
-        user, token = UserService.get_user_by_login(form)
+        user,token = UserService.get_user_by_login(form)
         if user:
             return jsonify({"user": user.serialize(), "token": token})
     return jsonify(form.errors)
@@ -53,14 +57,14 @@ def check_if_email_exist():
         user = UserService.get_user_by_email(form)
         if user:
             return jsonify(user.serialize())
-        return jsonify(form.errors)
+    return jsonify(form.errors)
 
 
 @app.post("/users/create")
 def create_user():
     form = UserInsertForm.from_json(request.json)
     if form.validate():
-        user = UserService.create(form)
+        user,token = UserService.create(form)
         print("Controller Form validated  !!!- Created User: " + str(user))
         return jsonify({"user": user.serialize(), "token": token})
     print("Controller - Form errors: " + str(form.errors))

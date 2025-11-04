@@ -23,7 +23,6 @@ export class NavbarComponent {
     this.route.navigate(['registration']);
   }
   navigateToLogin() {
-    console.log('navigating to login');
     this.route.navigate(['login']);
   }
   logout() {
