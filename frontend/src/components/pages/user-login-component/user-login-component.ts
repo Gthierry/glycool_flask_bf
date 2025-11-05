@@ -12,6 +12,8 @@ import { AuthService } from '../../../core/services/authentification/auth-servic
 import { Router } from '@angular/router';
 import { log } from 'node:console';
 import { passwordCheck } from '../../../Utilities/password-check';
+import { CLIENT_RENEG_WINDOW } from 'node:tls';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-user-login-component',
@@ -41,7 +43,7 @@ export class UserLoginComponent {
   }
 
   // Méthode de connexion
-  connexion() {
+  async connexion() {
     console.log('button pushed');
     if (this.form.valid) {
       console.log('valid form !');
@@ -53,9 +55,18 @@ export class UserLoginComponent {
         };
         console.log('UserLogin created');
 
-        this.loginService.userLogin(userCredentials);
+        const reponse = await this.loginService.userLogin(userCredentials);
+
+        console.log('authservice terminé');
+
+        this.isLogged = this.loginService.isLogged;
+        console.log('user Logged');
+
+        console.log('isLogged value = ' + this.isLogged());
         if (this.isLogged()) {
+          console.log('try togo to profil');
           this.route.navigate(['profil']);
+          console.log('now, on profil');
         }
       } catch (error) {
         console.error('Login error:', error);

@@ -15,19 +15,25 @@ export class AuthService {
   isLogged = signal<boolean>(false);
 
   //login user
-  userLogin(user: UserLogin) {
+  async userLogin(user: UserLogin) {
     console.log('AuthService launched...');
     try {
-      const url = `${this.apiURL}`;
-      this.httpClient.post<any>(url, user).subscribe({
-        next: (response) => {
-          localStorage.setItem('user', JSON.stringify(response.user));
-          localStorage.setItem('token', response.token);
-          this.isLogged.set(true);
-        },
-        error: (error) => {
-          console.error('Login error:', error);
-        },
+      await new Promise<void>((resolve, reject) => {
+        const url = `${this.apiURL}`;
+        this.httpClient.post<any>(url, user).subscribe({
+          next: (response) => {
+            console.log('set the localStorage');
+            localStorage.setItem('user', JSON.stringify(response.user));
+            localStorage.setItem('token', response.token);
+            this.isLogged.set(true);
+            console.log('Is logged in authService value = ' + this.isLogged);
+            resolve();
+          },
+          error: (error) => {
+            console.error('Login error:', error);
+            reject(error);
+          },
+        });
       });
     } catch (error) {
       console.error('Error during user login:', error);

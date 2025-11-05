@@ -11,7 +11,7 @@ export class UserProfilComponent {
   user: User | null = null;
 
   constructor() {
-    // this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    // console.log('User from localStorage:', this.user);
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    console.log('User from localStorage:', this.user);
   }
 }
