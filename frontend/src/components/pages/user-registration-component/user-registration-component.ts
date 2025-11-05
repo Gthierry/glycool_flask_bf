@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 //import form modules
 import {
@@ -65,8 +65,7 @@ export class UserRegistrationComponent {
         username: this.form.value.username,
         email: this.form.value.email,
         password: this.form.value.password,
-        token:null
-     
+        token: null,
       };
       console.log('Creating user with data from component:', newUser);
       this.userService.createUser(newUser).subscribe({

@@ -13,8 +13,6 @@ import { Router } from '@angular/router';
 import { log } from 'node:console';
 import { passwordCheck } from '../../../Utilities/password-check';
 
-
-
 @Component({
   selector: 'app-user-login-component',
   imports: [ReactiveFormsModule],
@@ -32,7 +30,7 @@ export class UserLoginComponent {
 
   //déclaration user
   user: User | any;
-  isLogged= signal<boolean>(false);
+  isLogged = signal<boolean>(false);
 
   //initialisation du formulaire via le constructeur
   constructor() {
@@ -44,29 +42,24 @@ export class UserLoginComponent {
 
   // Méthode de connexion
   connexion() {
+    console.log('button pushed');
     if (this.form.valid) {
-      const userCredentials: UserLogin = {
-       email: this.form.value.email,
-       password: this.form.value.password,
-       token: null
-      }
-      this.loginService.userLogin(userCredentials).subscribe({
-        next: (response) => {
-          console.log('Login successful:', response);
-          localStorage.setItem('user', JSON.stringify(response.user));
-          if (response.token) {
-            localStorage.setItem('token',response.token );
-          }
-          this.route.navigate(['/profil']);
-        },
-        error: (error: any) => {
-          console.error('Login invalide', error);
-        },
-        complete: () => {
-         this.isLogged.set(true);
-          console.log('Login request completed.');
+      console.log('valid form !');
+      try {
+        const userCredentials: UserLogin = {
+          email: this.form.value.email,
+          password: this.form.value.password,
+          token: null,
+        };
+        console.log('UserLogin created');
+
+        this.loginService.userLogin(userCredentials);
+        if (this.isLogged()) {
+          this.route.navigate(['profil']);
         }
-      });
+      } catch (error) {
+        console.error('Login error:', error);
+      }
     }
   }
 }

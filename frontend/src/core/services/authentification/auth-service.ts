@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import {User, UserLogin } from '../../models/user-models/user.model';
+import { User, UserLogin } from '../../models/user-models/user.model';
 import { Observable } from 'rxjs';
 import { sign } from 'crypto';
 
@@ -8,25 +8,36 @@ import { sign } from 'crypto';
   providedIn: 'root',
 })
 export class AuthService {
-  apiURL = 'http://localhost:5000/users/login';
+  apiURL: string = 'http://localhost:5000/users/login';
   httpClient = inject(HttpClient);
 
-    user: User | any;
-  
-    
-    //login user
-    userLogin(user:UserLogin): Observable<any>{
-      try{
-        const url = `${this.apiURL}`;
-        
-        return this.httpClient.post<any>(url, user);
-          
-      } catch (error) {
-        console.error('Error during user login:', error);
-        throw error;
-      }
+  user: User | any;
+  isLogged = signal<boolean>(false);
+
+  //login user
+  userLogin(user: UserLogin) {
+    console.log('AuthService launched...');
+    try {
+      const url = `${this.apiURL}`;
+      this.httpClient.post<any>(url, user).subscribe({
+        next: (response) => {
+          localStorage.setItem('user', JSON.stringify(response.user));
+          localStorage.setItem('token', response.token);
+          this.isLogged.set(true);
+        },
+        error: (error) => {
+          console.error('Login error:', error);
+        },
+      });
+    } catch (error) {
+      console.error('Error during user login:', error);
+      throw error;
     }
   }
- 
-  
 
+  logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    this.isLogged.set(true);
+  }
+}
