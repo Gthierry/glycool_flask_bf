@@ -45,10 +45,13 @@
                 </footer>
             </div>
             <div class="panel">
+
+                <!-- ✅ Correct - pas d'accolades dans les conditions @if -->
+                @if (user && user.bio && user.bio.trim() !== '') {
                 <div class="bio-graph-heading">
-                    Je suis ouverte à toutes propositions.
-                    Je parle de recettes de cuisines bien sûr.
+                    {{user.bio}}
                 </div>
+                }
                 <div class="panel-body bio-graph-info">
                     <br>
                     <div class="row">
