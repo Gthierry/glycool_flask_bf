@@ -31,6 +31,7 @@ export class NavbarComponent {
     this.route.navigate(['registration']);
   }
   logout() {
+    this.authentification.logout();
     this.authentification.isLogged.set(false);
     this.isLogged = this.authentification.isLogged;
     this.route.navigate(['']);
