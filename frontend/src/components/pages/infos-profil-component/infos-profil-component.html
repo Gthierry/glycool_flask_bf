@@ -1,0 +1,131 @@
+<div class="container py-5">
+    <h2 class="mb-4">Paramètres utilisateur</h2>
+    <form>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h4>Informations personnelles</h4>
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Nom d'utilisateur</label>
+                    <input type="text" class="form-control" id="fullName" value="Ptititi">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Adresse email</label>
+                    <input type="email" class="form-control" id="email" value="thierry@live">
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nom de famille</label>
+                    <input type="text" class="form-control" id="name" value="ton nom ...">
+                </div>
+                 <div class="mb-3">
+                    <label for="firstname" class="form-label">Prénom</label>
+                    <input type="text" class="form-control" id="firstname" value="Ta un prénom non ?!">
+                </div>
+                   <div class="mb-3">
+                    <label for="date" class="form-label">Date de naissance</label>
+                    <input type="date" class="form-control" id="birthdate" value="">
+                </div>
+                  <div class="mb-3">
+                    <label for="city" class="form-label">Lieu de résidence</label>
+                    <input type="text" class="form-control" id="city" value="Où les éléphants sont roses">
+                </div>
+            </div>
+            <div class="col-md-6">
+              
+                <div class="mb-3">
+                      <label for="city" class="form-label">Biographie</label>
+                    <textarea class="form-control" type="text" id="bio"></textarea>
+                </div>
+                  <h4>Photo de profil</h4>
+                <div class="mb-3">
+                    <img src="/api/placeholder/150/150" alt="Profile Picture" class="img-thumbnail mb-2">
+                    <input class="form-control" type="file" id="profilePicture">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- <div class="row mb-4">
+            <div class="col-md-6">
+                <h4>Email Preferences</h4>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="newsletterCheck" checked>
+                    <label class="form-check-label" for="newsletterCheck">Receive newsletter</label>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="promotionsCheck">
+                    <label class="form-check-label" for="promotionsCheck">Receive promotional emails</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h4>Account Settings</h4>
+                <div class="mb-3">
+                    <label for="language" class="form-label">Preferred Language</label>
+                    <select class="form-select" id="language">
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                            <option value="fr">Français</option>
+                            <option value="de">Deutsch</option>
+                        </select>
+                </div>
+                <div class="mb-3">
+                    <label for="timezone" class="form-label">Time Zone</label>
+                    <select class="form-select" id="timezone">
+                            <option value="UTC-8">Pacific Time (PT)</option>
+                            <option value="UTC-5">Eastern Time (ET)</option>
+                            <option value="UTC+0">Coordinated Universal Time (UTC)</option>
+                            <option value="UTC+1">Central European Time (CET)</option>
+                        </select>
+                </div>
+            </div>
+        </div>
+
+        <hr> -->
+
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h4>Changement de mot de passe</h4>
+                <div class="mb-3">
+                    <label for="currentPassword" class="form-label">Mot de passe actuel</label>
+                    <input type="password" class="form-control" id="currentPassword">
+                </div>
+                <div class="mb-3">
+                    <label for="newPassword" class="form-label">Nouveau mot de passe</label>
+                    <input type="password" class="form-control" id="newPassword">
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirmer mot de passe</label>
+                    <input type="password" class="form-control" id="confirmPassword">
+                </div>
+            </div>
+            <div class="col-md-6">
+                    <h4>paramètres de confidentialité </h4>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="profileVisibilityCheck" checked>
+                    <label class="form-check-label" for="profileVisibilityCheck">N'afficher que mon nom d'utilisateur</label>
+                </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="profileVisibilityCheck" checked>
+                    <label class="form-check-label" for="profileVisibilityCheck">Afficher mes infos de bases</label>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="activityTrackingCheck" checked>
+                    <label class="form-check-label" for="activityTrackingCheck">Autoriser le suivi de vos activités</label>
+                </div>
+                 <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="activityTrackingCheck" checked>
+                    <label class="form-check-label" for="activityTrackingCheck">Autoriser la reception des messages</label>
+                </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="activityTrackingCheck" checked>
+                    <label class="form-check-label" for="activityTrackingCheck">Autoriser les notifications du forum</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-secondary me-md-2">Annuler</button>
+            <button type="submit" class="btn btn-success">Sauvegarder</button>
+        </div>
+    </form>
+</div>

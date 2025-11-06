@@ -71,9 +71,12 @@ export class UserRegistrationComponent {
       this.userService.createUser(newUser).subscribe({
         next: (response) => {
           console.log('User created successfully:');
+          if(response)
+          {
           localStorage.setItem('user', JSON.stringify(response.user) || '');
           localStorage.setItem('token', response.token || '');
-          this.route.navigate(['profil']);
+          this.route.navigate(['infos-profil']);
+        }
         },
         error: (error) => {
           console.error('Form my component : Error creating user:', error);
