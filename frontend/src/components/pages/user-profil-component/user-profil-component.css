@@ -1,9 +1,10 @@
 body {
   height: 100vh;
   margin: 0;
-  background: linear-gradient(135deg, #a4d4a2, white, #e58685);
+ /* background: linear-gradient(135deg, #a4d4a2, white, #e58685);*/
+ background-color: white;
   background-size: 400% 400%;
-  animation: gradientFlow 40s ease infinite;
+  /*animation: gradientFlow 40s ease infinite;*/
   font-family: 'Open Sans', sans-serif;
   padding: 0px !important;
   margin: 0px !important;
@@ -13,7 +14,7 @@ body {
   -moz-font-smoothing: antialiased;
 }
 
-/* Animation douce pour rendre le dégradé vivant */
+/* Animation douce pour rendre le dégradé vivant
 @keyframes gradientFlow {
   0% {
     background-position: 0% 50%;
@@ -24,7 +25,7 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
+} */
 
 .profile-nav,
 .profile-info {

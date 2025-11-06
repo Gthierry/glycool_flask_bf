@@ -2,16 +2,18 @@ import { Component, inject, signal } from '@angular/core';
 import { User } from '../../../core/models/user-models/user.model';
 import { TokenService } from '../../../core/services/token-service/token-service';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+
 
 
 @Component({
   selector: 'user-profil-component',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './user-profil-component.html',
   styleUrl: './user-profil-component.css',
 })
 export class UserProfilComponent {
-  user: User | null = null;
+  user: User | null =null
   route = inject(Router)
   
 

@@ -1,13 +1,13 @@
-body {
+/* body {
   height: 100vh;
   margin: 0;
   background: linear-gradient(135deg, #a4d4a2, white, #e58685);
   background-size: 400% 400%;
   animation: gradientFlow 40s ease infinite;
-}
+} */
 
 /* Animation douce pour rendre le dégradé vivant */
-@keyframes gradientFlow {
+/* @keyframes gradientFlow {
   0% {
     background-position: 0% 50%;
   }
@@ -17,4 +17,4 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
+} */

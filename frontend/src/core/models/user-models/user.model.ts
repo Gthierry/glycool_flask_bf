@@ -5,9 +5,9 @@ export interface User {
   role: string | 'user';
   isActive: boolean;
   password: string;
-  firstName: string | null;
-  lastName?: string | null;
-  birthDate?: Date | null;
+  first_name: string | null;
+  last_name?: string | null;
+  birthdate?: Date | null;
   city?: string | null;
   avatar?: string | null;
   bio?: string | null;

@@ -8,8 +8,10 @@
                         <img src="profil-images/20180506_162941.jpg" alt="">
                     </a>
                     <!--TODO mettre les variables de nom-->
-                    <h1>Wonder_Women</h1>
-                    <p>ID: #1250</p>
+                    <h5 class="">
+                        {{user?.username}}
+                    </h5>
+                
                 </div>
 
                 <ul class="nav nav-pills nav-stacked">
@@ -23,8 +25,8 @@
         <div class="profile-info col-md-9">
             <div class="panel">
                 <form>
-                    <textarea placeholder="Whats in your mind today?" rows="2"
-                        class="form-control input-lg p-text-area"></textarea>
+                    <textarea placeholder="Quelle est votre humeur ajourd'hui ?" rows="2"
+                        class="form-control  input-lg p-text-area"></textarea>
                 </form>
                 <footer class="panel-footer">
                     <button class="btn btn-success pull-right">Poster</button>
@@ -46,33 +48,52 @@
             </div>
             <div class="panel">
 
-             
+                <!--Si humeur de l'utilisateur ,affiche-->
                 @if (user && user.bio && user.bio.trim() !== '') {
                 <div class="bio-graph-heading">
                     {{user.bio}}
                 </div>
                 }
+
                 <div class="panel-body bio-graph-info">
                     <br>
                     <div class="row">
+
+                        <!--Si prenom, affiche-->
                         <div class="bio-row">
-                            <p><span>Prénom </span>: Stéphanie</p>
-                        </div>
+                        @if(user && user.first_name?.trim() !== ''){
+                            <p><span >Prénom </span>: {{user.first_name}}</p>
+                        }
+                    </div>
+
+                        <!--si nom, affiche-->
                         <div class="bio-row">
-                            <p><span>Nom de famille </span>: Goedertier</p>
-                        </div>
+                        @if(user && user.last_name?.trim()!==''){
+                            <p><span class="w-25">Nom de famille </span>:   {{user.last_name}}</p>
+                        }
+                    </div>
+
+                        <!--si ville, affiche-->
                         <div class="bio-row">
-                            <p><span>Pays </span>: Belgique</p>
-                        </div>
+                         @if(user && user.city){
+                            <p><span>Location </span>: {{user.city}}</p>
+                        }
+                    </div>
+
+                        <!--si date de naissance, affiche-->
                         <div class="bio-row">
-                            <p><span>Anniversaire</span>: 17 november 1977</p>
-                        </div>
-                        <div class="bio-row">
+                        @if(user && user.birthdate !== null){
+                            <p><span class="w-auto">Date de naissance</span>:   {{user.birthdate | date:'dd/MM/yyyy'}}</p>
+                        }
+                    </div>
+                        <!-- <div class="bio-row">
                             <p><span>Ville </span>: Sombreffe</p>
-                        </div>
+                        </div> -->
 
                         <div class="bio-row">
-                            <p><span>Email </span>: stephanie@fiscofac.be</p>
+                        @if(user && user.email){
+                            <p><span>Email </span>: {{user.email}}</p>
+                        }
                         </div>
 
                     </div>
