@@ -30,6 +30,10 @@ export class TokenService {
   }
 
   getToken() {
+    try{
     return localStorage.getItem('token');
+    } catch {
+      return null;
+    }
   }
 }

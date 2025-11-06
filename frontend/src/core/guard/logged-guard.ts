@@ -1,14 +1,15 @@
 import { inject } from '@angular/core';
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { TokenService } from '../services/token-service/token-service';
 
-export const loggedGuard: CanActivateFn = (route, state) => {
+export const loggedGuard: CanActivateFn = (route, state): boolean | UrlTree => {
+  const tokenService = inject(TokenService);
+  const router = inject(Router);
 
-  const tokenService = inject(TokenService)
-
-  if(tokenService.getToken())
-  {
-    return true
+  if (tokenService.getToken() === null || tokenService.isTokenExpired()) {
+    return router.createUrlTree(['/login']);
   }
-  return false;
+  
+  return true;
+  
 };
