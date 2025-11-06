@@ -4,11 +4,12 @@ import { UserRegistrationComponent } from '../components/pages/user-registration
 import { UserLoginComponent } from '../components/pages/user-login-component/user-login-component';
 import { UserProfilComponent } from '../components/pages/user-profil-component/user-profil-component';
 import { ForumComponent } from '../components/pages/forum-component/forum-component';
+import { loggedGuard } from '../core/guard/logged-guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'registration', component: UserRegistrationComponent },
   { path: 'login', component: UserLoginComponent },
-  { path: 'profil', component: UserProfilComponent },
+  { path: 'profil', component: UserProfilComponent, canActivate:[loggedGuard] },
   { path: 'forum', component: ForumComponent },
 ];
