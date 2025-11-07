@@ -34,7 +34,7 @@
 
                 <div class="mb-5 mt-4 h-25">
                     <label for="city" class="form-label mt-3">Biographie:</label>
-                    <textarea class="form-control  h-100" type="text" id="bio"></textarea>
+                    <textarea class="form-control  h-100" type="text" id="bio" value="{{user?.bio}}"></textarea>
                 </div>
 
                 <div class="mb-3 mt-5    ">
@@ -43,6 +43,10 @@
                     <img src="/api/placeholder/150/150" alt="Profile Picture" class="img-thumbnail mb-2">
                     <input class="form-control " type="file" id="profilePicture">
                 </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-secondary me-md-2">Retour</button>
+                <button type="submit" class="btn btn-success">Sauvegarder</button>
             </div>
         </div>
 

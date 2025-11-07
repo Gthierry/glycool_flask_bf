@@ -1,5 +1,5 @@
 export interface User {
-  //id?: number | null;
+  id: number | null;
   username: string;
   email: string;
   role: string | 'user';
@@ -11,16 +11,16 @@ export interface User {
   city?: string | null;
   avatar?: string | null;
   bio?: string | null;
+  humor?: string | null;
 }
 export interface UserLogin {
   email: string;
   password: string;
-  token:string | null
+  token: string | null;
 }
 export interface UserRegister {
   username: string;
   email: string;
   password: string;
-  token:string | null
-
+  token: string | null;
 }
