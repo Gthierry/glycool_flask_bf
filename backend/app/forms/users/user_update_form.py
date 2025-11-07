@@ -12,17 +12,16 @@ class UserUpdateForm(FlaskForm):
     class Meta:
         csrf = False
 
-    user_id = IntegerField("id", validators=[DataRequired()])
+    user_id = IntegerField("Id", validators=[DataRequired()])
     first_name = StringField("First Name", validators=[Optional()])
     last_name = StringField("Last Name", validators=[Optional()])
+    password = PasswordField("Password", validators=[Optional()])
     email = EmailField("Email", validators=[DataRequired()])
     username = StringField("Username", validators=[DataRequired()])
-    password = PasswordField("Password", validators=[DataRequired()])
     birthdate = DateField("Birthdate", format="%Y-%m-%d", validators=[Optional()])
     city = StringField("City", validators=[Optional()])
     avatar = StringField("Avatar", validators=[Optional()])
     bio = TextAreaField("Bio", validators=[Optional()])
-    humor = TextAreaField("Humor", validators=[Optional()])
     active = BooleanField("Active", validators=[Optional()])
     role = SelectMultipleField(
         "Role",

@@ -115,25 +115,29 @@ class UserService(Base_service):
 
     @staticmethod
     def update(form: UserUpdateForm):
+        if form.validate() is False:
+            return None
 
-        # TODO hash password
         userCheck = User.query.get(form.user_id.data)
         if userCheck is not None:
-            userCheck.user_id = form.user_id.data
+
             userCheck.user_first_name = form.first_name.data
             userCheck.user_last_name = form.last_name.data
             userCheck.user_email = form.email.data
             userCheck.user_username = form.username.data
-            userCheck.user_password = form.password.data
             userCheck.user_active = True
             userCheck.user_role = form.role.data
             userCheck.user_city = form.city.data
             userCheck.user_avatar = form.avatar.data
             userCheck.user_bio = form.bio.data
-            userCheck.user_humor = form.humor.data
             userCheck.user_birthdate = form.birthdate.data
         try:
-            db.session.commit()
+
+            db.session.add(userCheck)
+            try:
+                db.session.commit()
+            except Exception as e:
+                print(e)
             return UserDto(userCheck)
         except:
             print("error update user")

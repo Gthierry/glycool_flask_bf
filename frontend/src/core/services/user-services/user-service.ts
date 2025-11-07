@@ -1,18 +1,12 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User, UserLogin, UserRegister } from '../../models/user-models/user.model';
+import { User, UserLogin, UserRegister, UserUpdate } from '../../models/user-models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  
-  
-
-  
-  
-  
   //define the api url
   private apiUrl = 'http://localhost:5000/users';
   // Inject HttpClient
@@ -33,8 +27,6 @@ export class UserService {
     }
   }
 
-
-
   createUser(user: UserRegister): Observable<any> {
     try {
       console.log('UserService: createUser called');
@@ -48,10 +40,12 @@ export class UserService {
     }
   }
 
-  updateUser(id: number, user: User): Observable<User> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.httpClient.put<User>(url, user);
+  updateUser(user: UserUpdate): Observable<User> {
+    const url = `${this.apiUrl}/update`;
+    console.log('service update called for user ID: ' + user.user_id);
+    return this.httpClient.put<any>(url, user);
   }
+
   deleteUser(id: number): Observable<void> {
     const url = `${this.apiUrl}/${id}`;
     return this.httpClient.delete<void>(url);

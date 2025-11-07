@@ -44,7 +44,7 @@ def get_user():
 def user_login():
     form = UserLoginForm.from_json(request.json)
     if form.validate():
-        user,token = UserService.get_user_by_login(form)
+        user, token = UserService.get_user_by_login(form)
         if user:
             return jsonify({"user": user.serialize(), "token": token})
     return jsonify(form.errors)
@@ -64,7 +64,7 @@ def check_if_email_exist():
 def create_user():
     form = UserInsertForm.from_json(request.json)
     if form.validate():
-        user,token = UserService.create(form)
+        user, token = UserService.create(form)
         print("Controller Form validated  !!!- Created User: " + str(user))
         return jsonify({"user": user.serialize(), "token": token})
     print("Controller - Form errors: " + str(form.errors))
@@ -73,7 +73,7 @@ def create_user():
 
 @app.put("/users/update")
 def update_user():
-
+    print("In the controller - update user.............................")
     form = UserUpdateForm.from_json(request.json)
 
     if form.validate():
@@ -85,7 +85,7 @@ def update_user():
 
         return jsonify(user.serialize())
     else:
-        return jsonify(form.errors, "From controller - form not valid")
-
-
-#
+        return jsonify(
+            form.errors,
+            "From controller - form not valid - user not updated........................msg from controller",
+        )

@@ -1,6 +1,6 @@
 <div class="container py-5">
     <h2 class="mb-4">Paramètres utilisateur</h2>
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="saveProfile()">
         <div class="row mb-4">
             <div class="col-md-6">
                 <h4>Informations personnelles</h4>
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="button" class="btn btn-secondary me-md-2" onclick="returnButtonsClick()">Retour</button>
+                <button type="button" class="btn btn-secondary me-md-2" (click)="returnButtonsClick()">Retour</button>
                 <button type="submit" class="btn btn-success">Sauvegarder</button>
             </div>
 
@@ -108,7 +108,7 @@
 
         <hr> -->
 
-    <form>
+    <!--  <form>
         <div class="row mb-4">
             <div class="col-md-6">
                 <h4>Changement de mot de passe:</h4>
@@ -158,5 +158,5 @@
             <button type="button" class="btn btn-secondary me-md-2">Annuler</button>
             <button type="submit" class="btn btn-success">Sauvegarder</button>
         </div>
-    </form>
+    </form>-->
 </div>

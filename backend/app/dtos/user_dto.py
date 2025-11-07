@@ -10,7 +10,7 @@ from app.dtos.abstract_dto import AbstractDto
 class UserDto(AbstractDto):
 
     def __init__(self, User: User):
-        self.id = User.user_id
+        self.user_id = User.user_id
 
         self.username = User.user_username
 

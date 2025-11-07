@@ -24,3 +24,17 @@ export interface UserRegister {
   password: string;
   token: string | null;
 }
+
+export interface UserUpdate {
+  user_id: number | null;
+  username: string;
+  email: string;
+  role: string | 'user';
+  isActive: boolean;
+  first_name: string | null;
+  last_name?: string | null;
+  birthdate?: Date | null;
+  city?: string | null;
+  avatar?: string | null;
+  bio?: string | null;
+}
