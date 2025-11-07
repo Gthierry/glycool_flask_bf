@@ -38,8 +38,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="date" class="form-label">Date de naissance:</label>
+                    @if(user?.birthdate) {
                     <input type="date" class="form-control" id="birthdate" formControlName="birthdate"
                         value=" {{user?.birthdate | date:'dd/MM/yyyy'}}">
+                    } @else {
+                    <input type="date" class="form-control" id="birthdate" formControlName="birthdate" value="">
+                    }
                 </div>
                 <div class="mb-3">
                     <label for="city" class="form-label">Lieu de résidence:</label>
@@ -57,15 +61,14 @@
                 <div class="mb-3 mt-5    ">
                     <h4>Photo de profil</h4>
 
-                    <img src="/api/placeholder/150/150" alt="Profile Picture" class="img-thumbnail mb-2">
-                    <input class="form-control " type="file" id="profilePicture">
+                    <img src="" alt="Profile Picture" class="img-thumbnail mb-2">
+                    <input class="form-control" type="file" id="profilePicture">
                 </div>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button type="button" class="btn btn-secondary me-md-2" (click)="returnButtonsClick()">Retour</button>
                 <button type="submit" class="btn btn-success">Sauvegarder</button>
             </div>
-
         </div>
     </form>
 

@@ -1,6 +1,8 @@
 # models.py
 # Import the db instance
 from dataclasses import dataclass
+
+from sqlalchemy import Identity
 from app import db
 
 
@@ -9,7 +11,7 @@ from app import db
 class User(db.Model):
     # Define table name
     __tablename__ = "users"
-    user_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, Identity(), primary_key=True)
     user_username = db.Column(db.String(50), unique=True, nullable=False)
     user_password = db.Column(db.String(255), nullable=False)
     user_first_name = db.Column(db.String(50), nullable=True)
@@ -17,7 +19,7 @@ class User(db.Model):
     user_email = db.Column(db.String(120), unique=True, nullable=False)
     user_birthdate = db.Column(db.DateTime, nullable=True)
     user_city = db.Column(db.String(100), nullable=True)
-    user_avatar = db.Column(db.String(30), nullable=False, default="default.jpg")
+    user_avatar = db.Column(db.String(30), nullable=True, default="default.jpg")
     user_role = db.Column(db.String(20), nullable=False, default="user")
     user_bio = db.Column(db.Text, nullable=True)
     user_humor = db.Column(db.Text, nullable=True)

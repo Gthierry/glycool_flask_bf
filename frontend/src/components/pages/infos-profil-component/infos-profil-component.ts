@@ -25,7 +25,7 @@ export class InfosProfilComponent {
     const userData = localStorage.getItem('user');
     if (userData) {
       this.user = JSON.parse(userData);
-      console.log('from const: ' + this.user?.id);
+      console.log('from const: ' + this.user?.user_id);
     }
     //creation du formulaire avec les valeurs initiales de l'utilisateur connecté
     this.form = this.formBuilder.group({
@@ -49,18 +49,19 @@ export class InfosProfilComponent {
   tokenService = inject(TokenService);
   route = inject(Router);
   saveProfile() {
-    console.log('User ID to update: ' + this.user?.id);
+    console.log('User ID to update: ' + this.user?.user_id);
     //vérification de la validité du token
     if (!this.tokenService.isTokenExpired() && this.tokenService.getToken()) {
       //verification de la validité du formulaire et d'une id utilisateur
-      if (this.form.valid && this.user?.id) {
+      if (this.form.valid && this.user?.user_id) {
         //creation de l'objet utilisateur mis à jour avec les nouvelles valeurs du formulaire
         const updatedUser = {
-          user_id: this.user.id,
+          user_id: this.user.user_id,
           first_name: this.form.value.first_name,
           last_name: this.form.value.last_name,
           email: this.form.value.email,
           username: this.form.value.username,
+          avatar: this.form.value.avatar,
           bio: this.form.value.bio,
           city: this.form.value.city,
           birthdate: this.form.value.birthdate,

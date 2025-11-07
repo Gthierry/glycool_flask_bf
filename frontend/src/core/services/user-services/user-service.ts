@@ -42,7 +42,7 @@ export class UserService {
 
   updateUser(user: UserUpdate): Observable<User> {
     const url = `${this.apiUrl}/update`;
-    console.log('service update called for user ID: ' + user.user_id);
+    console.log('service update called for user ID: ' + user);
     return this.httpClient.put<any>(url, user);
   }
 
