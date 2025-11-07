@@ -12,6 +12,7 @@ class UserUpdateForm(FlaskForm):
     class Meta:
         csrf = False
 
+    user_id = IntegerField("id", validators=[DataRequired()])
     first_name = StringField("First Name", validators=[Optional()])
     last_name = StringField("Last Name", validators=[Optional()])
     email = EmailField("Email", validators=[DataRequired()])

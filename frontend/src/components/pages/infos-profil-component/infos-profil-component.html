@@ -1,40 +1,57 @@
 <div class="container py-5">
     <h2 class="mb-4">Paramètres utilisateur</h2>
-    <form>
+    <form [formGroup]="form">
         <div class="row mb-4">
             <div class="col-md-6">
                 <h4>Informations personnelles</h4>
                 <div class="mb-3">
                     <label for="fullName" class="form-label">Nom d'utilisateur:</label>
-                    <input type="text" class="form-control" id="fullName" value="{{user?.username || ''}}">
+                    <input type="text" class="form-control" id="fullName" formControlName="username"
+                        value="{{user?.username || ''}}">
+
+                    @if(form.get('username')?.invalid && (form.get('username')?.dirty)) {
+                    <div class="alert alert-danger">
+                        Le nom d'utilisateur est requis.
+                    </div>
+                    }
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Adresse email:</label>
-                    <input type="email" class="form-control " id="email" value="{{user?.email || ''}}">
+                    <input type="email" class="form-control " id="email" formControlName="email"
+                        value="{{user?.email || ''}}">
+
+                    @if(form.get('email')?.invalid && (form.get('email')?.dirty)) {
+                    <div class="alert alert-danger">
+                        Une adresse email valide est requise.
+                    </div>
+                    }
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Nom de famille:</label>
-                    <input type="text" class="form-control" id="name" value="{{user?.last_name || ''}}">
+                    <input type="text" class="form-control" id="name" formControlName="last_name"
+                        value="{{user?.last_name || ''}}">
                 </div>
                 <div class="mb-3">
                     <label for="firstname" class="form-label">Prénom:</label>
-                    <input type="text" class="form-control" id="firstname" value="{{user?.first_name}}">
+                    <input type="text" class="form-control" id="firstname" formControlName="first_name"
+                        value="{{user?.first_name || ''}}">
                 </div>
                 <div class="mb-3">
                     <label for="date" class="form-label">Date de naissance:</label>
-                    <input type="date" class="form-control" id="birthdate"
+                    <input type="date" class="form-control" id="birthdate" formControlName="birthdate"
                         value=" {{user?.birthdate | date:'dd/MM/yyyy'}}">
                 </div>
                 <div class="mb-3">
                     <label for="city" class="form-label">Lieu de résidence:</label>
-                    <input type="text" class="form-control" id="city" value="{{user?.city}}">
+                    <input type="text" class="form-control" id="city" value="{{user?.city}}" formControlName="city">
                 </div>
             </div>
             <div class="col-md-6">
 
                 <div class="mb-5 mt-4 h-25">
                     <label for="city" class="form-label mt-3">Biographie:</label>
-                    <textarea class="form-control  h-100" type="text" id="bio" value="{{user?.bio}}"></textarea>
+                    <textarea class="form-control  h-100" type="text" id="bio"
+                        formControlName="bio">{{user?.bio}}</textarea>
                 </div>
 
                 <div class="mb-3 mt-5    ">
@@ -45,14 +62,16 @@
                 </div>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="button" class="btn btn-secondary me-md-2">Retour</button>
+                <button type="button" class="btn btn-secondary me-md-2" onclick="returnButtonsClick()">Retour</button>
                 <button type="submit" class="btn btn-success">Sauvegarder</button>
             </div>
+
         </div>
+    </form>
 
-        <hr>
+    <hr>
 
-        <!-- <div class="row mb-4">
+    <!-- <div class="row mb-4">
             <div class="col-md-6">
                 <h4>Email Preferences</h4>
                 <div class="mb-3 form-check">
@@ -89,6 +108,7 @@
 
         <hr> -->
 
+    <form>
         <div class="row mb-4">
             <div class="col-md-6">
                 <h4>Changement de mot de passe:</h4>

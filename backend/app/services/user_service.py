@@ -119,7 +119,7 @@ class UserService(Base_service):
         # TODO hash password
         userCheck = User.query.get(form.user_id.data)
         if userCheck is not None:
-
+            userCheck.user_id = form.user_id.data
             userCheck.user_first_name = form.first_name.data
             userCheck.user_last_name = form.last_name.data
             userCheck.user_email = form.email.data
