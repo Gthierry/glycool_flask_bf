@@ -30,6 +30,7 @@ class UserInsertForm(FlaskForm):
     city = StringField("City", validators=[Optional()])
     avatar = StringField("Avatar", validators=[Optional()])
     bio = TextAreaField("Bio", validators=[Optional()])
+    humor = TextAreaField("Humor", validators=[Optional()])
     active = BooleanField("Active", validators=[Optional()])
     roles = SelectMultipleField(
         "Role",

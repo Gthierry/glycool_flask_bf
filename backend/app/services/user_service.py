@@ -47,7 +47,7 @@ class UserService(Base_service):
                 return UserDto(user)
             except:
                 return None
-    
+
     @staticmethod
     def get_user_by_login(form: UserLoginForm):
         if form.validate():
@@ -59,16 +59,21 @@ class UserService(Base_service):
                 ):
 
                     print("User found by email: " + user.user_email)
-                    print("id user: "+ str(user.user_id) + " role user: " + user.user_role)
+                    print(
+                        "id user: "
+                        + str(user.user_id)
+                        + " role user: "
+                        + user.user_role
+                    )
                     print("Generating token...")
                     token = generate_token(user.user_id, user.user_role)
-                    #print("Generated token: " + token)
-                    return UserDto(user),token
+                    # print("Generated token: " + token)
+                    return UserDto(user), token
                 else:
                     print("Invalid password: " + form.email.data)
                     return None
             except Exception as e:
-                print ("last exception from services fait gaffe !")
+                print("last exception from services fait gaffe !")
                 print(e)
                 return None
 
@@ -90,6 +95,7 @@ class UserService(Base_service):
                 user_city=form.city.data,
                 user_avatar=form.avatar.data,
                 user_bio=form.bio.data,
+                user_humor=form.humor.data,
                 user_role="user",
                 user_active=True,
             )
@@ -124,6 +130,7 @@ class UserService(Base_service):
             userCheck.user_city = form.city.data
             userCheck.user_avatar = form.avatar.data
             userCheck.user_bio = form.bio.data
+            userCheck.user_humor = form.humor.data
             userCheck.user_birthdate = form.birthdate.data
         try:
             db.session.commit()

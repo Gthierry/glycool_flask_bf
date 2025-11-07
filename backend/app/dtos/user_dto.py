@@ -14,7 +14,7 @@ class UserDto(AbstractDto):
 
         self.username = User.user_username
 
-        #self.password = User.user_password
+        # self.password = User.user_password
 
         self.birthdate = User.user_birthdate
 
@@ -23,6 +23,8 @@ class UserDto(AbstractDto):
         self.avatar = User.user_avatar
 
         self.bio = User.user_bio
+
+        self.humor = User.user_humor
 
         self.active = User.user_active
 
