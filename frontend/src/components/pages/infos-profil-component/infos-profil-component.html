@@ -5,40 +5,43 @@
             <div class="col-md-6">
                 <h4>Informations personnelles</h4>
                 <div class="mb-3">
-                    <label for="fullName" class="form-label">Nom d'utilisateur</label>
-                    <input type="text" class="form-control" id="fullName" value="Ptititi">
+                    <label for="fullName" class="form-label">Nom d'utilisateur:</label>
+                    <input type="text" class="form-control" id="fullName" value="{{user?.username || ''}}">
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Adresse email</label>
-                    <input type="email" class="form-control" id="email" value="thierry@live">
+                    <label for="email" class="form-label">Adresse email:</label>
+                    <input type="email" class="form-control " id="email" value="{{user?.email || ''}}">
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">Nom de famille</label>
-                    <input type="text" class="form-control" id="name" value="ton nom ...">
+                    <label for="name" class="form-label">Nom de famille:</label>
+                    <input type="text" class="form-control" id="name" value="{{user?.last_name || ''}}">
                 </div>
-                 <div class="mb-3">
-                    <label for="firstname" class="form-label">Prénom</label>
-                    <input type="text" class="form-control" id="firstname" value="Ta un prénom non ?!">
+                <div class="mb-3">
+                    <label for="firstname" class="form-label">Prénom:</label>
+                    <input type="text" class="form-control" id="firstname" value="{{user?.first_name}}">
                 </div>
-                   <div class="mb-3">
-                    <label for="date" class="form-label">Date de naissance</label>
-                    <input type="date" class="form-control" id="birthdate" value="">
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date de naissance:</label>
+                    <input type="date" class="form-control" id="birthdate"
+                        value=" {{user?.birthdate | date:'dd/MM/yyyy'}}">
                 </div>
-                  <div class="mb-3">
-                    <label for="city" class="form-label">Lieu de résidence</label>
-                    <input type="text" class="form-control" id="city" value="Où les éléphants sont roses">
+                <div class="mb-3">
+                    <label for="city" class="form-label">Lieu de résidence:</label>
+                    <input type="text" class="form-control" id="city" value="{{user?.city}}">
                 </div>
             </div>
             <div class="col-md-6">
-              
-                <div class="mb-3">
-                      <label for="city" class="form-label">Biographie</label>
-                    <textarea class="form-control" type="text" id="bio"></textarea>
+
+                <div class="mb-5 mt-4 h-25">
+                    <label for="city" class="form-label mt-3">Biographie:</label>
+                    <textarea class="form-control  h-100" type="text" id="bio"></textarea>
                 </div>
-                  <h4>Photo de profil</h4>
-                <div class="mb-3">
+
+                <div class="mb-3 mt-5    ">
+                    <h4>Photo de profil</h4>
+
                     <img src="/api/placeholder/150/150" alt="Profile Picture" class="img-thumbnail mb-2">
-                    <input class="form-control" type="file" id="profilePicture">
+                    <input class="form-control " type="file" id="profilePicture">
                 </div>
             </div>
         </div>
@@ -84,41 +87,45 @@
 
         <div class="row mb-4">
             <div class="col-md-6">
-                <h4>Changement de mot de passe</h4>
+                <h4>Changement de mot de passe:</h4>
                 <div class="mb-3">
-                    <label for="currentPassword" class="form-label">Mot de passe actuel</label>
-                    <input type="password" class="form-control" id="currentPassword">
+                    <label for="currentPassword" class="form-label">Mot de passe actuel:</label>
+                    <input type="password" class="form-control " id="currentPassword">
                 </div>
                 <div class="mb-3">
-                    <label for="newPassword" class="form-label">Nouveau mot de passe</label>
-                    <input type="password" class="form-control" id="newPassword">
+                    <label for="newPassword" class="form-label">Nouveau mot de passe:</label>
+                    <input type="password" class="form-control " id="newPassword">
                 </div>
                 <div class="mb-3">
-                    <label for="confirmPassword" class="form-label">Confirmer mot de passe</label>
-                    <input type="password" class="form-control" id="confirmPassword">
+                    <label for="confirmPassword" class="form-label">Confirmer mot de passe:</label>
+                    <input type="password" class="form-control " id="confirmPassword">
                 </div>
             </div>
             <div class="col-md-6">
-                    <h4>paramètres de confidentialité </h4>
+                <h4>paramètres de confidentialité </h4>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="profileVisibilityCheck" checked>
-                    <label class="form-check-label" for="profileVisibilityCheck">N'afficher que mon nom d'utilisateur</label>
+                    <label class="form-check-label" for="profileVisibilityCheck">N'afficher que mon nom
+                        d'utilisateur</label>
                 </div>
-                  <div class="mb-3 form-check">
+                <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="profileVisibilityCheck" checked>
                     <label class="form-check-label" for="profileVisibilityCheck">Afficher mes infos de bases</label>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="activityTrackingCheck" checked>
-                    <label class="form-check-label" for="activityTrackingCheck">Autoriser le suivi de vos activités</label>
+                    <label class="form-check-label" for="activityTrackingCheck">Autoriser le suivi de vos
+                        activités</label>
                 </div>
-                 <div class="mb-3 form-check">
+                <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="activityTrackingCheck" checked>
-                    <label class="form-check-label" for="activityTrackingCheck">Autoriser la reception des messages</label>
+                    <label class="form-check-label" for="activityTrackingCheck">Autoriser la reception des
+                        messages</label>
                 </div>
-                  <div class="mb-3 form-check">
+                <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="activityTrackingCheck" checked>
-                    <label class="form-check-label" for="activityTrackingCheck">Autoriser les notifications du forum</label>
+                    <label class="form-check-label" for="activityTrackingCheck">Autoriser les notifications du
+                        forum</label>
                 </div>
             </div>
         </div>

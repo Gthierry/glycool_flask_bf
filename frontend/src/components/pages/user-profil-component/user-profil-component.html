@@ -11,14 +11,17 @@
                     <h5 class="">
                         {{user?.username}}
                     </h5>
-                
+
                 </div>
 
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="#"> <i class="fa fa-user"></i> Profil</a></li>
                     <li><a href="#"> <i class="fa fa-calendar"></i> Activités récentes <span
                                 class="label label-warning pull-right r-activity"></span></a></li>
-                    <li><a href="#"> <i class="fa fa-edit"></i> Editer profile</a></li>
+                    <li><a [routerLink]="[]" (click)="navigateToInfosProfile()"> <i
+                                class="fa fa-edit link-opacity-25"></i> Editer
+                            profile</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -61,39 +64,39 @@
 
                         <!--Si prenom, affiche-->
                         <div class="bio-row">
-                        @if(user && user.first_name?.trim() !== ''){
-                            <p><span >Prénom </span>: {{user.first_name}}</p>
-                        }
-                    </div>
+                            @if(user && user.first_name?.trim() !== ''){
+                            <p><span>Prénom </span>: {{user.first_name}}</p>
+                            }
+                        </div>
 
                         <!--si nom, affiche-->
                         <div class="bio-row">
-                        @if(user && user.last_name?.trim()!==''){
-                            <p><span class="w-25">Nom de famille </span>:   {{user.last_name}}</p>
-                        }
-                    </div>
+                            @if(user && user.last_name?.trim()!==''){
+                            <p><span class="w-25">Nom de famille </span>: {{user.last_name}}</p>
+                            }
+                        </div>
 
                         <!--si ville, affiche-->
                         <div class="bio-row">
-                         @if(user && user.city){
+                            @if(user && user.city){
                             <p><span>Location </span>: {{user.city}}</p>
-                        }
-                    </div>
+                            }
+                        </div>
 
                         <!--si date de naissance, affiche-->
                         <div class="bio-row">
-                        @if(user && user.birthdate !== null){
-                            <p><span class="w-auto">Date de naissance</span>:   {{user.birthdate | date:'dd/MM/yyyy'}}</p>
-                        }
-                    </div>
+                            @if(user && user.birthdate !== null){
+                            <p><span class="w-auto">Date de naissance</span>: {{user.birthdate | date:'dd/MM/yyyy'}}</p>
+                            }
+                        </div>
                         <!-- <div class="bio-row">
                             <p><span>Ville </span>: Sombreffe</p>
                         </div> -->
 
                         <div class="bio-row">
-                        @if(user && user.email){
+                            @if(user && user.email){
                             <p><span>Email </span>: {{user.email}}</p>
-                        }
+                            }
                         </div>
 
                     </div>
