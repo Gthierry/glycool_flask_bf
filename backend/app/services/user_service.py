@@ -1,3 +1,4 @@
+from email.policy import default
 from math import log
 from flask import jsonify
 from flask_jwt_extended import create_access_token
@@ -26,6 +27,12 @@ class UserService(Base_service):
     def get_all():
         return [UserDto(u) for u in User.query.all()]
 
+    @staticmethod
+    def get_by_id(user_id: int):
+        user = User.query.get(user_id)
+        if user:
+            return UserDto(user)
+        return None 
     @staticmethod
     def get_user(form: UserUsernameForm):
         if form.validate():
@@ -96,7 +103,7 @@ class UserService(Base_service):
                 user_avatar=form.avatar.data,
                 user_bio=form.bio.data,
                 user_humor=form.humor.data,
-                user_role=form.role.data[0],
+                user_role=form.role.data[0] if form.role.data[0] else "user",
                 user_active=True,
             )
             try:
@@ -127,7 +134,7 @@ class UserService(Base_service):
             userCheck.user_username = form.username.data
             userCheck.user_active = True
             userCheck.user_avatar = form.avatar.data
-            userCheck.user_role = form.role.data[0],
+            userCheck.user_role = form.role.data[0]
 
             userCheck.user_avatar = form.avatar.data
             userCheck.user_bio = form.bio.data

@@ -40,5 +40,5 @@ class UserInsertForm(FlaskForm):
             ("guest", "Guest"),
             ("moderator", "Moderator"),
         ],
-       
+       default= "user"
     )

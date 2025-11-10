@@ -31,4 +31,5 @@ class UserUpdateForm(FlaskForm):
             ("guest", "Guest"),
             ("moderator", "Moderator"),
         ],
+        default= "user"
     )

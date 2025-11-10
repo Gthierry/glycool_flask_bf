@@ -39,6 +39,12 @@ def get_user():
         return jsonify(user.serialize())
     return jsonify(form.errors), 400
 
+@app.get("/users/getuser/<int:user_id>")
+def get_user_by_id(user_id):
+    user = UserService.get_by_id(user_id)
+    if user:
+        return jsonify(user.serialize())
+    return jsonify({"error": "User not found"}), 404
 
 @app.post("/users/login")
 def user_login():
