@@ -32,7 +32,7 @@ class UserInsertForm(FlaskForm):
     bio = TextAreaField("Bio", validators=[Optional()])
     humor = TextAreaField("Humor", validators=[Optional()])
     active = BooleanField("Active", validators=[Optional()])
-    roles = SelectMultipleField(
+    role = SelectMultipleField(
         "Role",
         choices=[
             ("admin", "Admin"),

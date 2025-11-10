@@ -96,7 +96,7 @@ class UserService(Base_service):
                 user_avatar=form.avatar.data,
                 user_bio=form.bio.data,
                 user_humor=form.humor.data,
-                user_role="user",
+                user_role=form.role.data,
                 user_active=True,
             )
             try:
@@ -127,8 +127,8 @@ class UserService(Base_service):
             userCheck.user_username = form.username.data
             userCheck.user_active = True
             userCheck.user_avatar = form.avatar.data
-            userCheck.user_role = form.role.data
-            userCheck.user_city = form.city.data
+            userCheck.user_role = form.role.data.replace
+
             userCheck.user_avatar = form.avatar.data
             userCheck.user_bio = form.bio.data
             userCheck.user_birthdate = form.birthdate.data
