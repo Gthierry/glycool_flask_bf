@@ -29,22 +29,24 @@ def get_users():
         return jsonify({"error": "No users found"}), 404
 
 
-@app.post("/users/getuser/")
+@app.post("/users/getuser")
 def get_user():
     form = UserUsernameForm.from_json(request.json)
-    print("Controller - Username: " + str(form.username.data))
     if form.validate():
+        print("form validate :" + str(form.username.data))
         user = UserService.get_user(form)
-        print("Controller - User: " + str(user))
-        return jsonify(user.serialize())
+        if user:
+            return jsonify(user.serialize())
     return jsonify(form.errors), 400
 
-@app.get("/users/getuser/<int:user_id>")
+
+@app.get("/users/getuserbyid/<int:user_id>")
 def get_user_by_id(user_id):
     user = UserService.get_by_id(user_id)
     if user:
         return jsonify(user.serialize())
     return jsonify({"error": "User not found"}), 404
+
 
 @app.post("/users/login")
 def user_login():

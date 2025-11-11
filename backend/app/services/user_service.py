@@ -1,5 +1,7 @@
 from email.policy import default
 from math import log
+from sqlite3 import IntegrityError
+from sys import exception
 from flask import jsonify
 from flask_jwt_extended import create_access_token
 from app.models.user import User
@@ -20,6 +22,7 @@ from app.utilities.authentification.jwt_utils import (
     generate_token,
     jwt_required,
 )
+from app.forms.users import user_username_form
 
 
 class UserService(Base_service):
@@ -32,19 +35,17 @@ class UserService(Base_service):
         user = User.query.get(user_id)
         if user:
             return UserDto(user)
-        return None 
+        return None
+
     @staticmethod
     def get_user(form: UserUsernameForm):
-        if form.validate():
-            try:
-                print("Searching for user: " + form.username.data)
-                user = User.query.filter_by(user_username=form.username.data).one()
-                print("User found: " + user.user_username)
-                return UserDto(user)
-
-            except Exception as e:
-                print("Error retrieving user: " + str(e))
-                return None
+        try:
+            print("Getting user by username: " + form.username.data + " in service")
+            user = User.query.filter_by(user_username=form.username.data).first()
+            return UserDto(user)
+        except Exception as e:
+            print("Error retrieving user: " + str(e))
+            return None
 
     @staticmethod
     def get_user_by_email(form: UserEmailForm):
@@ -103,7 +104,8 @@ class UserService(Base_service):
                 user_avatar=form.avatar.data,
                 user_bio=form.bio.data,
                 user_humor=form.humor.data,
-                user_role=form.role.data[0] if form.role.data[0] else "user",
+                # verify if role is provided else default to "user"
+                user_role=form.role.data[0] if form.role.data else "user",
                 user_active=True,
             )
             try:
@@ -134,21 +136,19 @@ class UserService(Base_service):
             userCheck.user_username = form.username.data
             userCheck.user_active = True
             userCheck.user_avatar = form.avatar.data
-            userCheck.user_role = form.role.data[0]
-
+            userCheck.user_role = (
+                form.role.data[0] if form.role.data else userCheck.user_role
+            )
             userCheck.user_avatar = form.avatar.data
             userCheck.user_bio = form.bio.data
             userCheck.user_birthdate = form.birthdate.data
         try:
 
             db.session.add(userCheck)
-            try:
-                db.session.commit()
-            except Exception as e:
-                print(e)
+            db.session.commit()
             return UserDto(userCheck)
-        except:
-            print("error update user")
+
+        except IntegrityError as e:
             db.session.rollback()
             print("rollback update user")
             return None
