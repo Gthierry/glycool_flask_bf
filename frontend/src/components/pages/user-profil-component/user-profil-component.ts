@@ -1,13 +1,13 @@
 import { Component, inject, signal } from '@angular/core';
 import { User } from '../../../core/models/user-models/user.model';
 import { TokenService } from '../../../core/services/token-service/token-service';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'user-profil-component',
-  imports: [DatePipe, RouterLink],
+  imports: [DatePipe, RouterLink, RouterOutlet],
   templateUrl: './user-profil-component.html',
   styleUrl: './user-profil-component.css',
 })

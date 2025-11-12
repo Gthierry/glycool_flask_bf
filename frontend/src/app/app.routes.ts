@@ -27,13 +27,8 @@ export const routes: Routes = [
   { path: 'login', component: UserLoginComponent },
   { path: 'avoid-food', component: AvoidFoodComponent },
   { path: 'whats-diabet-restaurant', component: WhatsDiabetRestaurantComponent },
-
-  {
-    path: 'profil',
-    component: UserProfilComponent,
-    canActivate: [loggedGuard],
-    children: [{ path: 'message-inbox', component: MessageInbox }],
-  },
+  { path: 'profil', component: UserProfilComponent, canActivate: [loggedGuard] },
+  { path: 'message-inbox', component: MessageInbox },
   { path: 'forum', component: ForumComponent },
   { path: 'infos-profil', component: InfosProfilComponent, canActivate: [loggedGuard] },
 ];

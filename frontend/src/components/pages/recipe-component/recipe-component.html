@@ -1,0 +1,127 @@
+<header>
+    <div class="container nav" role="navigation" aria-label="Navigation principale">
+        <div class="brand"><span class="logo">G</span><span>Glycool</span></div>
+        <div class="actions">
+            <a class="btn" href="#imprimer" onclick="window.print();return false;">🖨️ Imprimer</a>
+            <a class="btn primary" href="#recettes">↩ Toutes les recettes</a>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <article class="recipe" itemscope itemtype="https://schema.org/Recipe">
+        <div>
+            <p class="badges">
+                <span class="badge">IG bas</span>
+                <span class="badge">Riche en fibres</span>
+                <span class="badge">Diabète-friendly</span>
+            </p>
+            <h1 class="title" itemprop="name">TITRE RECETTE</h1>
+            <p class="subtitle" itemprop="description">SOUS_TITRE_RECETTE</p>
+
+            <div class="meta" aria-label="Données clés">
+                <div class="kpi"><span class="label">Préparation</span><span class="value" id="kPrep">PREP_MINUT
+                        min</span></div>
+                <div class="kpi"><span class="label">Cuisson</span><span class="value" id="kCook">CUISSON_MINUT
+                        min</span></div>
+                <div class="kpi"><span class="label">Total</span><span class="value" id="kTotal">TOTAL_MINUT
+                        min</span></div>
+                <div class="kpi"><span class="label">Calories</span><span class="value" id="kCal">KCAL
+                        kcal</span></div>
+            </div>
+
+            <section aria-labelledby="ing-title">
+                <h2 id="ing-title">Ingrédients</h2>
+                <div class="servings">
+                    <strong>Portions :</strong>
+                    <div class="stepper" aria-label="Changer le nombre de portions">
+                        <button type="button" id="minus" aria-label="Moins">−</button>
+                        <output id="servings" for="minus plus">PORTIONS</output>
+                        <button type="button" id="plus" aria-label="Plus">+</button>
+                    </div>
+                </div>
+                <ul class="ingredients" id="ingredients">
+                    <!-- Exemple d’ingrédient (dupliquez-li pour vos items) -->
+                    <!-- data-base = quantité pour 1 portion -->
+                    <li><span class="qty" data-base="40" data-unit="g">40 g</span><span>flocons d’avoine</span></li>
+                    <li><span class="qty" data-base="80" data-unit="ml">80 ml</span><span>lait (végétal de
+                            préférence)</span></li>
+                    <li><span class="qty" data-base="10" data-unit="g">10 g</span><span>graines de chia</span></li>
+                    <li><span class="qty" data-base="70" data-unit="g">70 g</span><span>yaourt grec 2%</span></li>
+                    <li><span class="qty" data-base="60" data-unit="g">60 g</span><span>fruits rouges</span></li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="steps-title">
+                <h2 id="steps-title">Étapes</h2>
+                <ol class="steps" id="etapes">
+                    <li>Mélanger les flocons, le lait et les graines de chia.</li>
+                    <li>Laisser gonfler 10 min, puis incorporer le yaourt.</li>
+                    <li>Réserver au frais au moins 2 h (idéalement toute la nuit).</li>
+                    <li>Ajouter les fruits rouges juste avant de servir.</li>
+                </ol>
+            </section>
+
+            <section class="tips" aria-labelledby="tips-title">
+                <h2 id="tips-title">Conseils IG bas</h2>
+                <div class="tip">Ajoutez des noix ou graines pour augmenter fibres et satiété.</div>
+                <div class="tip">Privilégiez un yaourt sans sucres ajoutés.</div>
+            </section>
+        </div>
+
+        <aside>
+            <img src="IMAGE" alt="Photo de la recette : TITRE_RECETTE" />
+            <div class="panel">
+                <h3>Informations nutritionnelles (par portion)</h3>
+                <div class="nutrition">
+                    <div class="nt"><span>Kcal</span><strong id="nKcal">KCAL</strong></div>
+                    <div class="nt"><span>Glucides</span><strong id="nCarb">GLUCIDES g</strong></div>
+                    <div class="nt"><span>Protéines</span><strong id="nProt">PROTEINESg</strong></div>
+                    <div class="nt"><span>Lipides</span><strong id="nFat">LIPIDES g</strong></div>
+                    <div class="nt"><span>Fibres</span><strong id="nFib">FIBRES g</strong></div>
+                    <div class="nt"><span>Sel</span><strong id="nSalt">SEL g</strong></div>
+                </div>
+            </div>
+            <div class="panel">
+                <h3>Allergènes</h3>
+                <p class="muted">ALLERGENES</p>
+            </div>
+            <div class="panel">
+                <h3>Tags</h3>
+                <p class="badges"><span class="badge">TAG_1</span><span class="badge">TAG_2</span><span
+                        class="badge">TAG_3</span></p>
+            </div>
+        </aside>
+    </article>
+
+    <footer>
+        <p>Rédigé par <strong>AUTEUR</strong> • Mis à jour le <time datetime="DATE_ISO">DATE_AFF</time>
+        </p>
+    </footer>
+</main>
+
+<script>
+    // === Mise à l'échelle des ingrédients par portions ===
+    const servingsOut = document.getElementById('servings');
+    const list = document.getElementById('ingredients');
+    const minus = document.getElementById('minus');
+    const plus = document.getElementById('plus');
+
+    function updateQuantities(mult) {
+        list.querySelectorAll('.qty').forEach(q => {
+            const base = parseFloat(q.dataset.base || '0');
+            const unit = q.dataset.unit || '';
+            const val = Math.round(base * mult * 10) / 10; // 1 décimale
+            q.textContent = val + ' ' + unit;
+        });
+    }
+
+    function getServings() { return parseInt(servingsOut.textContent, 10) || 1; }
+    function setServings(n) { servingsOut.textContent = String(n); updateQuantities(n); }
+
+    minus?.addEventListener('click', () => { const n = Math.max(1, getServings() - 1); setServings(n); });
+    plus?.addEventListener('click', () => { const n = getServings() + 1; setServings(n); });
+
+    // Initialiser d'après la valeur affichée
+    updateQuantities(getServings());
+</script>

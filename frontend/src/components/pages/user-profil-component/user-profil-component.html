@@ -16,8 +16,9 @@
                             <a href="#" class="list-group-item list-group-item-action border-success-subtle">
                                 <i class="bi bi-people me-2"></i>Contacts
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action border-success-subtle">
-                                <i class="bi bi-envelope me-2"></i>Messages
+                            <a routerLink="/profil/message-inbox"
+                                class="list-group-item list-group-item-action border-success-subtle">
+                                <i class="bi bi-envelope me-2" routerLink="/message-inbox"></i>Messages
                             </a>
                             <a href="#" class="list-group-item list-group-item-action border-success-subtle">
                                 <i class="bi bi-chat-dots me-2"></i>Forum
@@ -37,119 +38,13 @@
                 </div>
             </div>
 
-            <!-- Main Profile Content -->
-            <div class="col-lg-8">
-                <!-- Status Update -->
-                <div class="card border-success-subtle shadow-sm mb-4">
-                    <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                                <textarea placeholder="Quelle est votre humeur aujourd'hui ?" rows="3"
-                                    class="form-control border-success-subtle"></textarea>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <button class="btn btn-success">Publier</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Profile Information -->
-                <div class="card border-success-subtle shadow-sm">
-                    <div class="card-header bg-success-subtle">
-                        <h5 class="text-success-emphasis mb-0">Informations du profil</h5>
-                    </div>
-                    <div class="card-body">
-                        <!-- User Humor/Status -->
-                        @if (user && user.humor && user.humor.trim() !== '') {
-                        <div class="alert alert-success-subtle border-success-subtle mb-4">
-                            <i class="bi bi-chat-quote me-2"></i>
-                            <em>"{{user.humor}}"</em>
-                        </div>
-                        }
-
-                        <!-- Personal Information -->
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="border-success-subtle border rounded p-3">
-                                    <strong class="text-success">Prénom :</strong>
-                                    <p class="mb-0 mt-1">
-                                        @if(user && user.first_name?.trim() !== ''){
-                                        {{user.first_name}}
-                                        } @else {
-                                        <span class="text-muted">Non renseigné</span>
-                                        }
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="border-success-subtle border rounded p-3">
-                                    <strong class="text-success">Nom de famille :</strong>
-                                    <p class="mb-0 mt-1">
-                                        @if(user && user.last_name?.trim()!==''){
-                                        {{user.last_name}}
-                                        } @else {
-                                        <span class="text-muted">Non renseigné</span>
-                                        }
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="border-success-subtle border rounded p-3">
-                                    <strong class="text-success">Ville :</strong>
-                                    <p class="mb-0 mt-1">
-                                        @if(user && user.city){
-                                        {{user.city}}
-                                        } @else {
-                                        <span class="text-muted">Non renseignée</span>
-                                        }
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="border-success-subtle border rounded p-3">
-                                    <strong class="text-success">Date de naissance :</strong>
-                                    <p class="mb-0 mt-1">
-                                        @if(user && user.birthdate !== null){
-                                        {{user.birthdate | date:'dd/MM/yyyy'}}
-                                        } @else {
-                                        <span class="text-muted">Non renseignée</span>
-                                        }
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="border-success-subtle border rounded p-3">
-                                    <strong class="text-success">Email :</strong>
-                                    <p class="mb-0 mt-1">
-                                        @if(user && user.email){
-                                        {{user.email}}
-                                        } @else {
-                                        <span class="text-muted">Non renseigné</span>
-                                        }
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- About Me Section -->
-                        <div class="mt-4">
-                            <h5 class="text-success-emphasis mb-3">À propos de moi</h5>
-                            <div class="border-success-subtle border rounded p-3 bg-light">
-                                @if(user && user.bio?.trim() !== ''){
-                                <p class="mb-0">{{user.bio}}</p>
-                                } @else {
-                                <p class="mb-0 text-muted fst-italic">Aucune biographie renseignée.</p>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-</div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <!-- Router Outlet for Child Components -->
+                <router-outlet></router-outlet>
+
+            </div>
