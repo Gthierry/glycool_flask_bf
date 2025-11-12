@@ -6,13 +6,19 @@ import { UserProfilComponent } from '../components/pages/user-profil-component/u
 import { ForumComponent } from '../components/pages/forum-component/forum-component';
 import { loggedGuard } from '../core/guard/logged-guard';
 import { InfosProfilComponent } from '../components/pages/infos-profil-component/infos-profil-component';
+import { MessageInbox } from '../components/pages/message-inbox/message-inbox';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'registration', component: UserRegistrationComponent },
   { path: 'login', component: UserLoginComponent },
-  { path: 'profil', component: UserProfilComponent, canActivate:[loggedGuard] },
-  { path: 'forum', component: ForumComponent },
-  { path: 'infos-profil', component: InfosProfilComponent },
+  {
+    path: 'profil',
+    component: UserProfilComponent,
+    canActivate: [loggedGuard],
+    children: [{ path: 'message-inbox', component: MessageInbox }],
+  },
 
+  { path: 'forum', component: ForumComponent },
+  { path: 'infos-profil', component: InfosProfilComponent, canActivate: [loggedGuard] },
 ];
