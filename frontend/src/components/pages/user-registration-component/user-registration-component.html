@@ -1,72 +1,81 @@
-<div class="user-registration d-flex m-auto w-50">
-    <form class="form-control w-75 m-auto" (ngSubmit)="userCreate()" [formGroup]="form">
-        <h1 class="m-auto p-2 m-2">Enregistrez-vous</h1>
-        <div class="form-group p-2 m-2  ">
-            <label for="username">Nom d'utilisateur :</label>
-            <input class="m-2" id="username" formControlName="username" type="text" required />
-            @if(form.get('username')?.invalid && (form.get('username')?.dirty)) {
-            <div class="alert alert-danger">
-                Le nom d'utilisateur est requis.
-            </div>
-            }
-        </div>
-        <div class="form-group p-2 m-2">
-            <label for="email">Email :</label>
-            <input class="m-2" id="email" formControlName="email" type="email" required />
-            @if(form.get('email')?.invalid && (form.get('email')?.dirty )) {
-            <div class="alert alert-danger">
-                L'email est requis.
-            </div>
-            }
-        </div>
-        <div class="form-group p-2 m-2">
-            <label for="password">Mot de passe :</label>
-            <input class="m-2" id="password" formControlName="password" type="password" required />
-            @if(form.get('password')?.invalid && (form.get('password')?.dirty )) {
-            <div class="alert alert-danger">
-                Le mot de passe est requis.
-            </div>
-            }
-        </div>
-        <div class="form-group p-2 m-2">
-            <label for="confirmPassword">Confirmez le mot de passe :</label>
-            <input class="m-2" id="confirmPassword" formControlName="confirmPassword" type="password" required />
-            @if(form.errors?.['passwordMismatch'] && (form.get('confirmPassword')?.dirty )) {
-            <div class="alert alert-danger">
-                Les mots de passe ne correspondent pas.
-            </div>
-            }
-        </div>
-        <!-- <div class="form-group p-2 m-2">
-            <label for="firstName">Prénom :</label>
-            <input class="m-2" id="firstName" formControlName="firstName" type="text" />
-        </div>
-        <div class="form-group p-2 m-2">
-            <label for="lastName">Nom :</label>
-            <input class="m-2" id="lastName" formControlName="lastName" type="text" />
-        </div>
-        <div class="form-group p-2 m-2">
-            <label for="birthDate">Date de naissance :</label>
-            <input class="m-2" id="birthDate" formControlName="birthDate" type="date" />
-        </div>
-        <div class="form-group p-2 m-2">
-            <label for="city">Ville :</label>
-            <input class="m-2" id="city" formControlName="city" type="text" />
-        </div>
-        <div>
-            <label for="exampleFormControlTextarea1" class="form-label">Bio :</label>
-            <textarea class="form-control" formControlName="bio" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div> -->
-        <div class="form-group p-2 m-2">
-            <input id="acceptTerms" formControlName="acceptTerms" type="checkbox" />
-            J'accepte les termes et conditions
-        </div>
-        @if( form.get('acceptTerms')?.invalid && (form.get('acceptTerms')?.dirty )) {
-        <div class="alert alert-danger">
-            Vous devez accepter les termes et conditions.
-        </div>
-        }
-        <button type="submit" class="btn btn-success" [disabled]="form.invalid">S'inscrire</button>
+<div class="registration-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="card border-success-subtle shadow-sm">
+                    <div class="card-header bg-success-subtle text-center">
+                        <h1 class="h3 text-success-emphasis mb-0">Enregistrez-vous</h1>
+                    </div>
+                    <div class="card-body p-4">
+                        <form (ngSubmit)="userCreate()" [formGroup]="form">
+                            <div class="mb-3">
+                                <label for="username" class="form-label fw-semibold">Nom d'utilisateur :</label>
+                                <input class="form-control border-success-subtle" id="username"
+                                    formControlName="username" type="text" required />
+                                @if(form.get('username')?.invalid && (form.get('username')?.dirty)) {
+                                <div class="alert alert-danger mt-2">
+                                    Le nom d'utilisateur est requis.
+                                </div>
+                                }
+                            </div>
 
-    </form>
+                            <div class="mb-3">
+                                <label for="email" class="form-label fw-semibold">Email :</label>
+                                <input class="form-control border-success-subtle" id="email" formControlName="email"
+                                    type="email" required />
+                                @if(form.get('email')?.invalid && (form.get('email')?.dirty )) {
+                                <div class="alert alert-danger mt-2">
+                                    L'email est requis.
+                                </div>
+                                }
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label fw-semibold">Mot de passe :</label>
+                                <input class="form-control border-success-subtle" id="password"
+                                    formControlName="password" type="password" required />
+                                @if(form.get('password')?.invalid && (form.get('password')?.dirty )) {
+                                <div class="alert alert-danger mt-2">
+                                    Le mot de passe est requis.
+                                </div>
+                                }
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label fw-semibold">Confirmez le mot de passe
+                                    :</label>
+                                <input class="form-control border-success-subtle" id="confirmPassword"
+                                    formControlName="confirmPassword" type="password" required />
+                                @if(form.errors?.['passwordMismatch'] && (form.get('confirmPassword')?.dirty )) {
+                                <div class="alert alert-danger mt-2">
+                                    Les mots de passe ne correspondent pas.
+                                </div>
+                                }
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input border-success" id="acceptTerms"
+                                        formControlName="acceptTerms" type="checkbox" />
+                                    <label class="form-check-label" for="acceptTerms">
+                                        J'accepte les termes et conditions
+                                    </label>
+                                </div>
+                                @if( form.get('acceptTerms')?.invalid && (form.get('acceptTerms')?.dirty )) {
+                                <div class="alert alert-danger mt-2">
+                                    Vous devez accepter les termes et conditions.
+                                </div>
+                                }
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success btn-lg"
+                                    [disabled]="form.invalid">S'inscrire</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

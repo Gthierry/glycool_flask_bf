@@ -1,3 +1,51 @@
+/* Global layout styles for proper footer positioning */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  flex: 1;
+}
+
+router-outlet {
+  flex: 1;
+}
+
+main {
+  flex: 1;
+}
+
+/* Ensure forms and components have consistent spacing */
+.registration-section,
+.login-section {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+}
+
+/* Custom form enhancements */
+.form-control:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+.form-check-input:checked {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+/* Previous gradient animation styles (commented out) */
 /* body {
   height: 100vh;
   margin: 0;
