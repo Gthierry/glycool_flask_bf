@@ -1,1 +1,394 @@
-<p>avoid-food-component works!</p>
+<div class="avoid-food-section py-5">
+    <div class="container">
+        <!-- Header Section -->
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-danger mb-3">
+                <i class="bi bi-exclamation-triangle me-3"></i>Aliments à éviter
+            </h1>
+            <p class="lead text-muted mx-auto" style="max-width: 70ch;">
+                Liste claire et détaillée des aliments à éviter ou à limiter strictement pour mieux gérer votre diabète
+            </p>
+            <div class="mx-auto" style="max-width: 80px; height: 4px; background: linear-gradient(90deg, #dc3545, #fd7e14); border-radius: 2px;"></div>
+        </div>
+
+        <!-- Alerte de mise en garde -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10">
+                <div class="alert alert-danger border-danger">
+                    <h4 class="alert-heading text-danger">
+                        <i class="bi bi-shield-exclamation me-2"></i>Pourquoi les éviter ?
+                    </h4>
+                    <p class="mb-2">
+                        Ces aliments provoquent des <strong>pics de glycémie</strong>, favorisent la résistance à l'insuline, 
+                        et augmentent les risques de complications liées au diabète.
+                    </p>
+                    <hr>
+                    <p class="mb-0">
+                        <strong>Risques :</strong> Prise de poids, maladies cardiovasculaires, complications diabétiques.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1. Sucres et Produits Sucrés -->
+        <div class="mb-5">
+            <h2 class="text-danger mb-4 text-center">
+                <i class="bi bi-emoji-frown me-2"></i>1. Sucres et Produits Sucrés - IG très élevé
+            </h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-11">
+                    <div class="card border-danger shadow-sm">
+                        <div class="card-header bg-danger text-white">
+                            <h3 class="h5 mb-0 text-center">
+                                <i class="bi bi-x-octagon me-2"></i>À éviter absolument (IG 60-90)
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">
+                                                <i class="bi bi-x-circle me-2"></i>Aliment
+                                            </th>
+                                            <th scope="col" class="text-center">
+                                                <i class="bi bi-graph-up me-2"></i>IG Moyen
+                                            </th>
+                                            <th scope="col" class="text-center">
+                                                <i class="bi bi-exclamation-triangle me-2"></i>Danger
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Sodas (Coca-Cola, Fanta)</strong></td>
+                                            <td class="text-center"><span class="badge bg-danger">60-70</span></td>
+                                            <td class="text-center"><i class="bi bi-exclamation-triangle-fill text-danger"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Jus de fruits industriels</strong></td>
+                                            <td class="text-center"><span class="badge bg-danger">55-70</span></td>
+                                            <td class="text-center"><i class="bi bi-exclamation-triangle-fill text-danger"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Bonbons, caramels</strong></td>
+                                            <td class="text-center"><span class="badge bg-danger">70-90</span></td>
+                                            <td class="text-center"><i class="bi bi-exclamation-triangle-fill text-danger"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Pâtisseries, viennoiseries</strong></td>
+                                            <td class="text-center"><span class="badge bg-danger">70-90</span></td>
+                                            <td class="text-center"><i class="bi bi-exclamation-triangle-fill text-danger"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Biscuits industriels</strong></td>
+                                            <td class="text-center"><span class="badge bg-danger">70-85</span></td>
+                                            <td class="text-center"><i class="bi bi-exclamation-triangle-fill text-danger"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Céréales sucrées</strong></td>
+                                            <td class="text-center"><span class="badge bg-danger">70-90</span></td>
+                                            <td class="text-center"><i class="bi bi-exclamation-triangle-fill text-danger"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Confiture, miel</strong></td>
+                                            <td class="text-center"><span class="badge bg-danger">55-80</span></td>
+                                            <td class="text-center"><i class="bi bi-exclamation-triangle-fill text-danger"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Pâte à tartiner (Nutella)</strong></td>
+                                            <td class="text-center"><span class="badge bg-danger">55</span></td>
+                                            <td class="text-center"><i class="bi bi-exclamation-triangle-fill text-danger"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Glaces, sorbets industriels</strong></td>
+                                            <td class="text-center"><span class="badge bg-danger">60-80</span></td>
+                                            <td class="text-center"><i class="bi bi-exclamation-triangle-fill text-danger"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="alert alert-danger-subtle border-0 mt-3">
+                                <small><strong>Pourquoi ?</strong> Ces aliments contiennent des sucres rapides qui font monter brutalement la glycémie.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grille des catégories dangereuses -->
+        <div class="row g-4 mb-5">
+            <!-- 2. Féculents Raffinés -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-warning-subtle shadow-sm">
+                    <div class="card-header bg-warning-subtle">
+                        <h3 class="text-warning-emphasis h5 mb-0">
+                            <i class="bi bi-grain me-2"></i>2. Féculents Raffinés (IG élevé)
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Pain blanc, baguette</strong></td>
+                                        <td><span class="badge bg-danger">70-95</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Pâtes blanches trop cuites</strong></td>
+                                        <td><span class="badge bg-danger">60-75</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Riz blanc</strong></td>
+                                        <td><span class="badge bg-danger">70-85</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Pommes de terre (frites, purée)</strong></td>
+                                        <td><span class="badge bg-danger">80-95</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Couscous blanc</strong></td>
+                                        <td><span class="badge bg-danger">70-80</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="alert alert-warning-subtle border-0 mt-3">
+                            <small><strong>Pourquoi ?</strong> Ces féculents sont rapidement digérés, provoquant des pics de glycémie.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Aliments Ultra-Transformés -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-danger-subtle shadow-sm">
+                    <div class="card-header bg-danger-subtle">
+                        <h3 class="text-danger-emphasis h5 mb-0">
+                            <i class="bi bi-box me-2"></i>3. Aliments Ultra-Transformés
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="bi bi-x-circle text-danger me-2"></i>Plats préparés industriels
+                                <small class="text-muted d-block ms-4">IG 60-80</small>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-x-circle text-danger me-2"></i>Charcuteries grasses
+                                <small class="text-muted d-block ms-4">Riches en graisses saturées</small>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-x-circle text-danger me-2"></i>Nuggets, panures
+                                <small class="text-muted d-block ms-4">IG 60-80</small>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-x-circle text-danger me-2"></i>Barres de céréales sucrées
+                                <small class="text-muted d-block ms-4">IG 70-85</small>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-x-circle text-danger me-2"></i>Fast-food
+                                <small class="text-muted d-block ms-4">IG 70-90</small>
+                            </li>
+                        </ul>
+                        <div class="alert alert-danger-subtle border-0 mt-3">
+                            <small><strong>Pourquoi ?</strong> Ils combinent sucres cachés, graisses saturées et additifs.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Graisses Nocives -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-dark shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <h3 class="h5 mb-0">
+                            <i class="bi bi-droplet-half me-2"></i>4. Graisses Nocives
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="bi bi-x-circle text-danger me-2"></i><strong>Fritures</strong>
+                                <small class="text-muted d-block ms-4">IG 70-90 + acides gras trans</small>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-x-circle text-danger me-2"></i><strong>Margarine hydrogénée</strong>
+                                <small class="text-muted d-block ms-4">Très néfaste pour le cœur</small>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-x-circle text-danger me-2"></i><strong>Viennoiseries industrielles</strong>
+                                <small class="text-muted d-block ms-4">IG 70-90 + graisses saturées</small>
+                            </li>
+                        </ul>
+                        <div class="alert alert-dark border-0 mt-3">
+                            <small><strong>Pourquoi ?</strong> Ces graisses favorisent l'inflammation et la résistance à l'insuline.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Boissons à Éviter -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-info-subtle shadow-sm">
+                    <div class="card-header bg-info-subtle">
+                        <h3 class="text-info-emphasis h5 mb-0">
+                            <i class="bi bi-cup me-2"></i>5. Boissons à Éviter
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Alcools sucrés (cocktails)</strong></td>
+                                        <td><span class="badge bg-danger">60-80</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Boissons énergisantes</strong></td>
+                                        <td><span class="badge bg-danger">70-90</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sirops, limonades</strong></td>
+                                        <td><span class="badge bg-danger">60-80</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="alert alert-info-subtle border-0 mt-3">
+                            <small><strong>Pourquoi ?</strong> Les boissons sucrées sont rapidement absorbées, provoquant des pics de glycémie.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dernières catégories -->
+        <div class="row g-4 mb-5">
+            <!-- 6. Fruits à Limiter -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-warning shadow-sm">
+                    <div class="card-header bg-warning text-dark">
+                        <h3 class="h5 mb-0">
+                            <i class="bi bi-apple me-2"></i>6. Fruits à Limiter
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Fruits secs (dattes, raisins secs)</strong></td>
+                                        <td><span class="badge bg-warning text-dark">60-70</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Pastèque</strong></td>
+                                        <td><span class="badge bg-danger">75</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Melon</strong></td>
+                                        <td><span class="badge bg-warning text-dark">65</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Jus de fruits (même maison)</strong></td>
+                                        <td><span class="badge bg-warning text-dark">55-70</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="alert alert-warning border-0 mt-3">
+                            <small><strong>Pourquoi ?</strong> Ces fruits sont concentrés en sucre ou ont un IG élevé.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Produits "Light" Piégeux -->
+            <div class="col-lg-6">
+                <div class="card h-100 border-secondary shadow-sm">
+                    <div class="card-header bg-secondary text-white">
+                        <h3 class="h5 mb-0">
+                            <i class="bi bi-question-circle me-2"></i>7. Produits "Light" Piégeux
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="bi bi-exclamation-triangle text-warning me-2"></i><strong>Yaourts aromatisés "0%"</strong>
+                                <small class="text-muted d-block ms-4">Souvent sucrés artificiellement</small>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-exclamation-triangle text-warning me-2"></i><strong>Biscuits "diététiques"</strong>
+                                <small class="text-muted d-block ms-4">IG 60-80 + édulcorants</small>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-exclamation-triangle text-warning me-2"></i><strong>Produits "sans sucre"</strong>
+                                <small class="text-muted d-block ms-4">Riches en édulcorants ou graisses</small>
+                            </li>
+                        </ul>
+                        <div class="alert alert-secondary border-0 mt-3">
+                            <small><strong>Pourquoi ?</strong> Ils peuvent stimuler l'appétit et contenir des additifs controversés.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Astuce et alternatives -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10">
+                <div class="alert alert-success-subtle border-success-subtle">
+                    <h4 class="alert-heading text-success-emphasis">
+                        <i class="bi bi-lightbulb me-2"></i>Astuce - Alternatives saines
+                    </h4>
+                    <p class="mb-2">
+                        En cas d'envie, privilégiez les alternatives maison pour satisfaire vos papilles sans nuire à votre santé.
+                    </p>
+                    <hr>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <small><strong>Au lieu de confiture :</strong><br>Compote sans sucre ajouté</small>
+                        </div>
+                        <div class="col-md-4">
+                            <small><strong>Au lieu de chocolat au lait :</strong><br>Chocolat noir 85% minimum</small>
+                        </div>
+                        <div class="col-md-4">
+                            <small><strong>Au lieu de chips :</strong><br>Oléagineux non salés</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Résumé final -->
+        <div class="text-center">
+            <div class="card border-danger shadow-sm">
+                <div class="card-header bg-danger-subtle">
+                    <h3 class="text-danger-emphasis mb-0">
+                        <i class="bi bi-shield-check me-2"></i>En résumé
+                    </h3>
+                </div>
+                <div class="card-body p-4">
+                    <p class="lead mb-4 text-muted">
+                        Évitez ces aliments pour <strong>stabiliser votre glycémie</strong>, protéger votre cœur 
+                        et éviter les complications du diabète.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="#healthy-food" class="btn btn-success btn-lg">
+                            <i class="bi bi-heart-pulse me-2"></i>Aliments à privilégier
+                        </a>
+                        <a href="#alimentation" class="btn btn-outline-success btn-lg">
+                            <i class="bi bi-egg-fried me-2"></i>Conseils nutrition
+                        </a>
+                    </div>
+                    <p class="text-muted mt-3 small">
+                        <i class="bi bi-info-circle me-1"></i>
+                        Une alimentation saine est la clé d'un diabète bien géré !
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

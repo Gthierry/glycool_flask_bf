@@ -12,6 +12,8 @@ import { EncouragementsComponent } from '../components/pages/encouragements-comp
 import { IGComponent } from '../components/pages/ig-component/ig-component';
 import { AlimentationComponent } from '../components/pages/alimentation-component/alimentation-component';
 import { HealthyFoodComponent } from '../components/pages/healthy-food-component/healthy-food-component';
+import { AvoidFoodComponent } from '../components/pages/avoid-food-component/avoid-food-component';
+import { WhatsDiabetRestaurantComponent } from '../components/pages/whats-diabet-restaurant-component/whats-diabet-restaurant-component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +25,8 @@ export const routes: Routes = [
   { path: 'healthy-food', component: HealthyFoodComponent },
   { path: 'register', component: UserRegistrationComponent },
   { path: 'login', component: UserLoginComponent },
+  { path: 'avoid-food', component: AvoidFoodComponent },
+  { path: 'whats-diabet-restaurant', component: WhatsDiabetRestaurantComponent },
 
   {
     path: 'profil',

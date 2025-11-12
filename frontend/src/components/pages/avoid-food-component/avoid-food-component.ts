@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-avoid-food-component',
+  selector: 'avoid-food',
   imports: [],
   templateUrl: './avoid-food-component.html',
-  styleUrl: './avoid-food-component.css'
+  styleUrl: './avoid-food-component.css',
 })
-export class AvoidFoodComponent {
-
-}
+export class AvoidFoodComponent {}
