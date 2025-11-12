@@ -14,14 +14,23 @@
 
                 </div>
 
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#"> <i class="fa fa-user"></i> Profil</a></li>
-                    <li><a href="#"> <i class="fa fa-calendar"></i> Activités récentes <span
-                                class="label label-warning pull-right r-activity"></span></a></li>
+                <ul class="nav nav-pills nav-stacked list-group">
+                    <!-- <li class="active"><a href="#"> <i class="fa fa-user"></i>Profil</a></li> -->
+
+                    <!--TODO activités récentes-->
+                    <!-- <li><a href="#"> <i class="fa fa-calendar"></i> Activités récentes <span
+                                class="label label-warning pull-right r-activity"></span></a></li> -->
+                    <li><a href="#"> <i class="fa fa-globe mt-4"></i>Contacts</a></li>
+                    <li><a href="#"> <i class="fa fa-envelope"></i>Messages </a></li>
+                    <li><a href="#"> <i class="fa fa-cog"></i>Forum</a></li>
+                    <li><a href="#"> <i class="fa fa-cutlery"></i> Vos recettes</a></li>
+                    <li><a href="#"> <i class="fa fa-book"></i> Vos articles</a></li>
                     <li><a [routerLink]="[]" (click)="navigateToInfosProfile()"> <i
-                                class="fa fa-edit link-opacity-25"></i> Editer
+                                class="fa fa-edit link-opacity-25"></i>Editer
                             profile</a>
                     </li>
+
+
                 </ul>
             </div>
         </div>
@@ -67,6 +76,9 @@
                             @if(user && user.first_name?.trim() !== ''){
                             <p><span>Prénom </span>: {{user.first_name}}</p>
                             }
+                            @else{
+                            <p><span>Prénom </span>: --- </p>
+                            }
                         </div>
 
                         <!--si nom, affiche-->
@@ -74,12 +86,18 @@
                             @if(user && user.last_name?.trim()!==''){
                             <p><span class="w-25">Nom de famille </span>: {{user.last_name}}</p>
                             }
+                            @else{
+                            <p><span class="w-25">Nom de famille </span>: --- </p>
+                            }
                         </div>
 
                         <!--si ville, affiche-->
                         <div class="bio-row">
                             @if(user && user.city){
-                            <p><span>Location </span>: {{user.city}}</p>
+                            <p><span>Ville </span>: {{user.city}}</p>
+                            }
+                            @else{
+                            <p><span>Ville </span>: --- </p>
                             }
                         </div>
 
@@ -87,6 +105,9 @@
                         <div class="bio-row">
                             @if(user && user.birthdate !== null){
                             <p><span class="w-auto">Date de naissance</span>: {{user.birthdate | date:'dd/MM/yyyy'}}</p>
+                            }
+                            @else{
+                            <p><span class="w-auto">Date de naissance</span>: --- </p>
                             }
                         </div>
                         <!-- <div class="bio-row">
@@ -100,72 +121,20 @@
                         </div>
 
                     </div>
+                    <div>
+                        <h4 class="text-center mb-5 mt-3">A propos de moi</h4>
+                        @if(user && user.bio?.trim() !== ''){
+                        <p>{{user.bio}}</p>
+                        }
+                        @else{
+                        <p>---</p>
+                        }
+                    </div>
                 </div>
             </div>
             <div>
-                <div class="row">
-                    <div class="col-md-6 mt-4">
-                        <div class="panel">
-                            <div class="panel-body">
-                                <div class="bio-chart">
 
-                                </div>
-                                <div class="bio-desk">
-                                    <h4 class="green">Messages</h4>
-                                    <a>Nouveau message</a><br>
-                                    <a>Messages reçus</a><br>
-                                    <a>Messages envoyés</a>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mt-4">
-                        <div class="panel">
-                            <div class="panel-body">
-                                <div class="bio-chart">
-
-                                </div>
-                                <div class="bio-desk">
-                                    <h4 class="terques">Forum </h4>
-                                    <a>Nouveau post</a><br>
-                                    <a>En réponse à vos posts</a><br>
-                                    <a>Accéder au forum</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mt-4">
-                        <div class="panel">
-                            <div class="panel-body">
-                                <div class="bio-chart">
-
-                                </div>
-                                <div class="bio-desk">
-                                    <h4 class="green">Recettes</h4>
-                                    <a>Créer une recette</a><br>
-                                    <a>Vos recettes</a><br>
-                                    <a>Accéder aux dernières recttes</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mt-4">
-                        <div class="panel">
-                            <div class="panel-body">
-                                <div class="bio-chart">
-
-                                </div>
-                                <div class="bio-desk">
-                                    <h4 class="purple">Vos articles</h4>
-                                    <a>Nouvel article</a><br>
-                                    <a>Articles publiés</a>
-                                    <a>Consulter les derniers articles</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

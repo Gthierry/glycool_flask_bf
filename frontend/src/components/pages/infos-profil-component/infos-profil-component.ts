@@ -48,6 +48,7 @@ export class InfosProfilComponent {
   userService = inject(UserService);
   tokenService = inject(TokenService);
   route = inject(Router);
+  //fonction pour sauvegarder les modifications du profil
   saveProfile() {
     console.log('User ID to update: ' + this.user?.user_id);
     //vérification de la validité du token
