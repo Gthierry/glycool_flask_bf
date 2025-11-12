@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndexComponent } from './index-component';
+import { WhatSDiabetComponent } from './what-s-diabet-component';
 
-describe('IndexComponent', () => {
-  let component: IndexComponent;
-  let fixture: ComponentFixture<IndexComponent>;
+describe('WhatSDiabetComponent', () => {
+  let component: WhatSDiabetComponent;
+  let fixture: ComponentFixture<WhatSDiabetComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IndexComponent]
+      imports: [WhatSDiabetComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(IndexComponent);
+    fixture = TestBed.createComponent(WhatSDiabetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

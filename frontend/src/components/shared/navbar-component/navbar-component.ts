@@ -1,13 +1,15 @@
 import { Component, inject, Input, signal } from '@angular/core';
 
 import bootstrap from '../../../main.server';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/authentification/auth-service';
+import { WhatSDiabetComponent } from '../../pages/home-component/home-components-children/what-s-diabet-component/what-s-diabet-component/what-s-diabet-component';
 
 @Component({
   selector: 'app-navbar-component',
   templateUrl: './navbar-component.html',
   styleUrl: './navbar-component.css',
+  imports: [RouterLink],
 })
 export class NavbarComponent {
   // Inject Router
