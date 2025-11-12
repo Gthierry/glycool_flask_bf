@@ -1,19 +1,23 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { User } from '../../../core/models/user-models/user.model';
 import { TokenService } from '../../../core/services/token-service/token-service';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { Messages } from './user-profil-children/messages/messages';
 
 @Component({
   selector: 'user-profil-component',
-  imports: [DatePipe, RouterLink, RouterOutlet],
+  imports: [RouterLink, Messages],
   templateUrl: './user-profil-component.html',
-  styleUrl: './user-profil-component.css',
+  styleUrls: ['./user-profil-component.css'],
 })
 export class UserProfilComponent {
   user: User | null = null;
   route = inject(Router);
+  activatedRoute = inject(ActivatedRoute);
+  showDefaultContent = signal(true);
 
   constructor(tokenService: TokenService) {
     if (tokenService.getToken()) {
