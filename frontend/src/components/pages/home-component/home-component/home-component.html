@@ -1,240 +1,65 @@
-<!doctype html>
-<html lang="fr">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Glycool — Vivre avec le diabète : infos, recettes & forum</title>
-    <meta name="description"
-        content="Un site francophone sur le diabète : articles fiables, recettes à IG bas, outils pratiques et forum bienveillant pour s'entraider." />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .hero-section {
-            padding: 4rem 0 3rem;
-            background: linear-gradient(135deg, rgba(25, 135, 84, 0.1), rgba(32, 201, 151, 0.05));
-        }
-    </style>
-</head>
-
-<body>
-
-
-    <main id="contenu">
-        <!-- HERO -->
-        <section class="hero-section text-center" aria-label="Introduction">
-            <div class="container">
-                <h1 class="display-4 fw-bold mb-3">Vivre avec le diabète, ensemble.</h1>
-                <p class="lead text-muted mb-4 mx-auto" style="max-width: 60ch;">
-                    Des informations fiables, des recettes à index glycémique <strong>bas</strong>, des outils pratiques
-                    et un forum bienveillant. Tout ce qu'il faut pour comprendre, cuisiner, bouger et s'entraider au
-                    quotidien.
-                </p>
-                <div class="d-flex gap-3 justify-content-center flex-wrap">
-                    <a class="btn btn-success btn-lg" href="#recettes">Découvrir les recettes</a>
-                    <a class="btn btn-outline-success btn-lg" href="#forum">Rejoindre le forum</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- INFOS -->
-        <section id="infos" class="py-5" aria-labelledby="infos-title">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <h2 id="infos-title" class="h2 text-success">Comprendre le diabète</h2>
-                </div>
-                <div class="row justify-content-center g-4">
-                    <div class="col-lg-4 col-md-6">
-                        <article class="card h-100 border-success-subtle">
-                            <div class="card-body">
-                                <span class="badge bg-success-subtle text-success-emphasis mb-3">Base</span>
-                                <h3 class="card-title h5">Types de diabète (1, 2, gestationnel)</h3>
-                                <p class="card-text text-muted">Les mécanismes, les symptômes à surveiller et les
-                                    premières démarches à entreprendre après un
-                                    diagnostic.</p>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <article class="card h-100 border-success-subtle">
-                            <div class="card-body">
-                                <span class="badge bg-success-subtle text-success-emphasis mb-3">Traitement</span>
-                                <h3 class="card-title h5">Insuline, ADO & suivi glycémique</h3>
-                                <p class="card-text text-muted">Comprendre l'insulinothérapie, les antidiabétiques
-                                    oraux, l'auto-surveillance et le rôle du
-                                    médecin traitant.</p>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <article class="card h-100 border-success-subtle">
-                            <div class="card-body">
-                                <span class="badge bg-success-subtle text-success-emphasis mb-3">Mode de vie</span>
-                                <h3 class="card-title h5">Alimentation & activité physique</h3>
-                                <p class="card-text text-muted">Composer des assiettes équilibrées, gérer les glucides
-                                    et bouger sans risque d'hypo.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RECETTES -->
-        <section id="recettes" class="container" aria-labelledby="recettes-title">
-            <div class="section-head">
-                <h2 id="recettes-title">Recettes à IG bas</h2>
-                <a class="link" href="#">Voir toutes les recettes →</a>
-            </div>
-            <div class="grid">
-                <article class="card col-6">
-                    <span class="tag">Petit-déj</span>
-                    <h3>Overnight oats chia & yaourt</h3>
-                    <p>Crémeux, rassasiant, prêt à l’avance. ~340 kcal • 34g glucides • IG bas</p>
-                    <div class="meta">⭐ 4.8/5 • 120 avis</div>
-                </article>
-                <article class="card col-6">
-                    <span class="tag">Plat</span>
-                    <h3>Saumon rôti, quinoa & brocoli</h3>
-                    <p>Protéines + fibres pour une glycémie stable. ~520 kcal • 39g glucides • IG bas</p>
-                    <div class="meta">⭐ 4.9/5 • 98 avis</div>
-                </article>
-                <article class="card col-6">
-                    <span class="tag">Snack</span>
-                    <h3>Houmous aux pois chiches & crudités</h3>
-                    <p>Riche en fibres, simple et économique. ~210 kcal • 18g glucides • IG bas</p>
-                    <div class="meta">⭐ 4.6/5 • 76 avis</div>
-                </article>
-                <article class="card col-6">
-                    <span class="tag">Dessert</span>
-                    <h3>Compote pomme–poire sans sucre ajouté</h3>
-                    <p>Doux et fruité, zéro sucre ajouté. ~140 kcal • 26g glucides • IG modéré</p>
-                    <div class="meta">⭐ 4.5/5 • 54 avis</div>
-                </article>
-            </div>
-        </section>
-
-        <!-- FORUM -->
-        <section id="forum" class="container" aria-labelledby="forum-title">
-            <div class="section-head">
-                <h2 id="forum-title">Forum : s’entraider au quotidien</h2>
-                <a class="link" href="#">Voir tous les sujets →</a>
-            </div>
-            <div class="topics">
-                <div class="topic">
-                    <div class="avatar" aria-hidden="true">A</div>
-                    <div>
-                        <h4>Hypo pendant le sport : vos astuces ?</h4>
-                        <p>Comment prévenez-vous les hypos sur des sorties de 45–60 minutes ?</p>
-                    </div>
-                    <span class="badge">35 réponses</span>
-                </div>
-                <div class="topic">
-                    <div class="avatar" aria-hidden="true">S</div>
-                    <div>
-                        <h4>Batch cooking IG bas : idées de menus</h4>
-                        <p>Partageons nos recettes pour la semaine (courses + organisation).</p>
-                    </div>
-                    <span class="badge">18 réponses</span>
-                </div>
-                <div class="topic">
-                    <div class="avatar" aria-hidden="true">M</div>
-                    <div>
-                        <h4>Capteurs CGM : préférences et remboursement</h4>
-                        <p>Libre, Dexcom, Medtronic… retour d’expérience et compatibilités.</p>
-                    </div>
-                    <span class="badge">27 réponses</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- OUTILS -->
-        <section id="outils" class="container" aria-labelledby="outils-title">
-            <div class="section-head">
-                <h2 id="outils-title">Outils pratiques</h2>
-                <a class="link" href="#">Tous les outils →</a>
-            </div>
-            <div class="grid">
-                <article class="card col-4 tool">
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                    </svg>
-                    <h3>Journal glycémique</h3>
-                    <p>Saisir vos valeurs, noter les repas, exporter pour votre médecin.</p>
-                    <div class="meta">CSV • PDF • Courbes</div>
-                </article>
-                <article class="card col-4 tool">
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
-                        <path d="M12 7v5l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                    <h3>Planificateur de repas</h3>
-                    <p>Menus à IG bas, listes de courses et substitution d’ingrédients.</p>
-                    <div class="meta">Semaine • Objectifs perso</div>
-                </article>
-                <article class="card col-4 tool">
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                    <h3>Calculateur d’IG & glucides</h3>
-                    <p>Estimez l’impact d’un repas et adaptez vos portions.</p>
-                    <div class="meta">Base aliments • Favoris</div>
-                </article>
-            </div>
-        </section>
-
-        <!-- NEWSLETTER -->
-        <section id="newsletter" class="container" aria-labelledby="nl-title">
-            <div class="section-head">
-                <h2 id="nl-title">Restez informé·e</h2>
-                <span class="muted">Un email par mois, pas de spam.</span>
-            </div>
-            <form class="nl" action="#" method="post" aria-label="Inscription newsletter">
-                <label class="sr-only" for="email">Adresse email</label>
-                <input id="email" name="email" type="email" placeholder="votre.email@example.com" required>
-                <button type="submit">S’inscrire</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container footer-grid" role="contentinfo">
-            <div class="footer-brand">
-                <div class="brand"><span class="logo">G</span><span>Glycool</span></div>
-                <p style="margin:.5rem 0 0">Partage d’expériences, rigueur des infos, et bienveillance pour toutes et
-                    tous.</p>
-            </div>
-            <div class="footer-col">
-                <strong>Contenus</strong>
-                <div><a href="#infos">Guides</a></div>
-                <div><a href="#recettes">Recettes</a></div>
-                <div><a href="#forum">Forum</a></div>
-            </div>
-            <div class="footer-col">
-                <strong>À propos</strong>
-                <div><a href="#">Charte & sources</a></div>
-                <div><a href="#">Contact</a></div>
-                <div><a href="#">Mentions légales</a></div>
-            </div>
-            <div class="footer-col">
-                <strong>Ressources</strong>
-                <div><a href="#">Urgences & numéros utiles</a></div>
-                <div><a href="#">Associations</a></div>
-                <div><a href="#">Téléchargements</a></div>
+<main id="contenu">
+    <!-- HERO -->
+    <section class="hero-section text-center" aria-label="Introduction">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Vivre avec le diabète, ensemble.</h1>
+            <p class="lead text-muted mb-4 mx-auto" style="max-width: 60ch;">
+                Des informations fiables, des recettes à index glycémique <strong>bas</strong>, des outils pratiques
+                et un forum bienveillant. Tout ce qu'il faut pour comprendre, cuisiner, bouger et s'entraider au
+                quotidien.
+            </p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a class="btn btn-success btn-lg" href="#recettes">Découvrir les recettes</a>
+                <a class="btn btn-outline-success btn-lg" href="#forum">Rejoindre le forum</a>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Toggle menu mobile
-        const burger = document.getElementById('burger');
-        const menu = document.getElementById('menu');
-        burger?.addEventListener('click', () => {
-            const isOpen = menu.classList.toggle('open');
-            burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        });
-    </script>
-</body>
+    <!-- INFOS -->
+    <section id="infos" class="py-5" aria-labelledby="infos-title">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 id="infos-title" class="h2 text-success">Comprendre le diabète</h2>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-lg-4 col-md-6">
+                    <article class="card h-100 border-success-subtle">
+                        <div class="card-body">
+                            <span class="badge bg-success-subtle text-success-emphasis mb-3">Base</span>
+                            <h3 class="card-title h5">Types de diabète (1, 2, gestationnel)</h3>
+                            <p class="card-text text-muted">Les mécanismes, les symptômes à surveiller et les
+                                premières démarches à entreprendre après un
+                                diagnostic.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="card h-100 border-success-subtle">
+                        <div class="card-body">
+                            <span class="badge bg-success-subtle text-success-emphasis mb-3">Traitement</span>
+                            <h3 class="card-title h5">Insuline, ADO & suivi glycémique</h3>
+                            <p class="card-text text-muted">Comprendre l'insulinothérapie, les antidiabétiques
+                                oraux, l'auto-surveillance et le rôle du
+                                médecin traitant.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <article class="card h-100 border-success-subtle">
+                        <div class="card-body">
+                            <span class="badge bg-success-subtle text-success-emphasis mb-3">Mode de vie</span>
+                            <h3 class="card-title h5">Alimentation & activité physique</h3>
+                            <p class="card-text text-muted">Composer des assiettes équilibrées, gérer les glucides
+                                et bouger sans risque d'hypo.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</html>
+
+
+
+
+</main>
