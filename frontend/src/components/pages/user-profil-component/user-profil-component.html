@@ -1,140 +1,154 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container bootstrap snippets bootdey">
-    <div class="row">
-        <div class="profile-nav col-md-3">
-            <div class="panel">
-                <div class="user-heading round">
-                    <a href="#">
-                        <img src="profil-images/20180506_162941.jpg" alt="">
-                    </a>
-                    <!--TODO mettre les variables de nom-->
-                    <h5 class="">
-                        {{user?.username}}
-                    </h5>
-
-                </div>
-
-                <ul class="nav nav-pills nav-stacked list-group">
-                    <!-- <li class="active"><a href="#"> <i class="fa fa-user"></i>Profil</a></li> -->
-
-                    <!--TODO activités récentes-->
-                    <!-- <li><a href="#"> <i class="fa fa-calendar"></i> Activités récentes <span
-                                class="label label-warning pull-right r-activity"></span></a></li> -->
-                    <li><a href="#"> <i class="fa fa-globe mt-4"></i>Contacts</a></li>
-                    <li><a href="#"> <i class="fa fa-envelope"></i>Messages </a></li>
-                    <li><a href="#"> <i class="fa fa-cog"></i>Forum</a></li>
-                    <li><a href="#"> <i class="fa fa-cutlery"></i> Vos recettes</a></li>
-                    <li><a href="#"> <i class="fa fa-book"></i> Vos articles</a></li>
-                    <li><a [routerLink]="[]" (click)="navigateToInfosProfile()"> <i
-                                class="fa fa-edit link-opacity-25"></i>Editer
-                            profile</a>
-                    </li>
-
-
-                </ul>
-            </div>
-        </div>
-        <div class="profile-info col-md-9">
-            <div class="panel">
-                <form>
-                    <textarea placeholder="Quelle est votre humeur ajourd'hui ?" rows="2"
-                        class="form-control  input-lg p-text-area"></textarea>
-                </form>
-                <footer class="panel-footer">
-                    <button class="btn btn-success pull-right">Poster</button>
-                    <ul class="nav nav-pills">
-                        <li>
-                            <a href="#"><i class=""></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class=""></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class=" "></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class=""></i></a>
-                        </li>
-                    </ul>
-                </footer>
-            </div>
-            <div class="panel">
-
-                <!--Si humeur de l'utilisateur ,affiche-->
-                @if (user && user.humor && user.humor.trim() !== '') {
-                <div class="bio-graph-heading">
-                    {{user.humor}}
-                </div>
-                }
-
-                <div class="panel-body bio-graph-info">
-                    <br>
-                    <div class="row">
-
-                        <!--Si prenom, affiche-->
-                        <div class="bio-row">
-                            @if(user && user.first_name?.trim() !== ''){
-                            <p><span>Prénom </span>: {{user.first_name}}</p>
-                            }
-                            @else{
-                            <p><span>Prénom </span>: --- </p>
-                            }
+<div class="profile-section py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Sidebar Profile -->
+            <div class="col-lg-4">
+                <div class="card border-success-subtle shadow-sm h-100">
+                    <div class="card-header bg-success-subtle text-center">
+                        <div class="position-relative d-inline-block mb-3">
+                            <img src="profil-images/20180506_162941.jpg" alt="Photo de profil" class="rounded-circle"
+                                width="120" height="120" style="object-fit: cover;">
                         </div>
-
-                        <!--si nom, affiche-->
-                        <div class="bio-row">
-                            @if(user && user.last_name?.trim()!==''){
-                            <p><span class="w-25">Nom de famille </span>: {{user.last_name}}</p>
-                            }
-                            @else{
-                            <p><span class="w-25">Nom de famille </span>: --- </p>
-                            }
-                        </div>
-
-                        <!--si ville, affiche-->
-                        <div class="bio-row">
-                            @if(user && user.city){
-                            <p><span>Ville </span>: {{user.city}}</p>
-                            }
-                            @else{
-                            <p><span>Ville </span>: --- </p>
-                            }
-                        </div>
-
-                        <!--si date de naissance, affiche-->
-                        <div class="bio-row">
-                            @if(user && user.birthdate !== null){
-                            <p><span class="w-auto">Date de naissance</span>: {{user.birthdate | date:'dd/MM/yyyy'}}</p>
-                            }
-                            @else{
-                            <p><span class="w-auto">Date de naissance</span>: --- </p>
-                            }
-                        </div>
-                        <!-- <div class="bio-row">
-                            <p><span>Ville </span>: Sombreffe</p>
-                        </div> -->
-
-                        <div class="bio-row">
-                            @if(user && user.email){
-                            <p><span>Email </span>: {{user.email}}</p>
-                            }
-                        </div>
-
+                        <h4 class="text-success-emphasis mb-0">{{user?.username || 'Utilisateur'}}</h4>
                     </div>
-                    <div>
-                        <h4 class="text-center mb-5 mt-3">A propos de moi</h4>
-                        @if(user && user.bio?.trim() !== ''){
-                        <p>{{user.bio}}</p>
-                        }
-                        @else{
-                        <p>---</p>
-                        }
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action border-success-subtle">
+                                <i class="bi bi-people me-2"></i>Contacts
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-success-subtle">
+                                <i class="bi bi-envelope me-2"></i>Messages
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-success-subtle">
+                                <i class="bi bi-chat-dots me-2"></i>Forum
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-success-subtle">
+                                <i class="bi bi-book me-2"></i>Vos recettes
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-success-subtle">
+                                <i class="bi bi-newspaper me-2"></i>Vos articles
+                            </a>
+                            <a [routerLink]="[]" (click)="navigateToInfosProfile()"
+                                class="list-group-item list-group-item-action border-success-subtle text-success">
+                                <i class="bi bi-pencil-square me-2"></i>Éditer le profil
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div>
 
+            <!-- Main Profile Content -->
+            <div class="col-lg-8">
+                <!-- Status Update -->
+                <div class="card border-success-subtle shadow-sm mb-4">
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <textarea placeholder="Quelle est votre humeur aujourd'hui ?" rows="3"
+                                    class="form-control border-success-subtle"></textarea>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-success">Publier</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
+                <!-- Profile Information -->
+                <div class="card border-success-subtle shadow-sm">
+                    <div class="card-header bg-success-subtle">
+                        <h5 class="text-success-emphasis mb-0">Informations du profil</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- User Humor/Status -->
+                        @if (user && user.humor && user.humor.trim() !== '') {
+                        <div class="alert alert-success-subtle border-success-subtle mb-4">
+                            <i class="bi bi-chat-quote me-2"></i>
+                            <em>"{{user.humor}}"</em>
+                        </div>
+                        }
+
+                        <!-- Personal Information -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="border-success-subtle border rounded p-3">
+                                    <strong class="text-success">Prénom :</strong>
+                                    <p class="mb-0 mt-1">
+                                        @if(user && user.first_name?.trim() !== ''){
+                                        {{user.first_name}}
+                                        } @else {
+                                        <span class="text-muted">Non renseigné</span>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="border-success-subtle border rounded p-3">
+                                    <strong class="text-success">Nom de famille :</strong>
+                                    <p class="mb-0 mt-1">
+                                        @if(user && user.last_name?.trim()!==''){
+                                        {{user.last_name}}
+                                        } @else {
+                                        <span class="text-muted">Non renseigné</span>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="border-success-subtle border rounded p-3">
+                                    <strong class="text-success">Ville :</strong>
+                                    <p class="mb-0 mt-1">
+                                        @if(user && user.city){
+                                        {{user.city}}
+                                        } @else {
+                                        <span class="text-muted">Non renseignée</span>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="border-success-subtle border rounded p-3">
+                                    <strong class="text-success">Date de naissance :</strong>
+                                    <p class="mb-0 mt-1">
+                                        @if(user && user.birthdate !== null){
+                                        {{user.birthdate | date:'dd/MM/yyyy'}}
+                                        } @else {
+                                        <span class="text-muted">Non renseignée</span>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="border-success-subtle border rounded p-3">
+                                    <strong class="text-success">Email :</strong>
+                                    <p class="mb-0 mt-1">
+                                        @if(user && user.email){
+                                        {{user.email}}
+                                        } @else {
+                                        <span class="text-muted">Non renseigné</span>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- About Me Section -->
+                        <div class="mt-4">
+                            <h5 class="text-success-emphasis mb-3">À propos de moi</h5>
+                            <div class="border-success-subtle border rounded p-3 bg-light">
+                                @if(user && user.bio?.trim() !== ''){
+                                <p class="mb-0">{{user.bio}}</p>
+                                } @else {
+                                <p class="mb-0 text-muted fst-italic">Aucune biographie renseignée.</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
