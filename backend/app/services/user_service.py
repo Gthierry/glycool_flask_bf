@@ -27,10 +27,12 @@ from app.forms.users import user_username_form
 
 class UserService(Base_service):
     @staticmethod
+    @jwt_required
     def get_all():
         return [UserDto(u) for u in User.query.all()]
 
     @staticmethod
+    @jwt_required
     def get_by_id(user_id: int):
         user = User.query.get(user_id)
         if user:
@@ -38,6 +40,7 @@ class UserService(Base_service):
         return None
 
     @staticmethod
+    @jwt_required
     def get_user(form: UserUsernameForm):
         try:
             print("Getting user by username: " + form.username.data + " in service")
@@ -48,6 +51,7 @@ class UserService(Base_service):
             return None
 
     @staticmethod
+    @jwt_required
     def get_user_by_email(form: UserEmailForm):
         if form.validate():
             try:
@@ -123,6 +127,7 @@ class UserService(Base_service):
                 return None
 
     @staticmethod
+    @jwt_required
     def update(form: UserUpdateForm):
         if form.validate() is False:
             return None
@@ -153,8 +158,8 @@ class UserService(Base_service):
             print("rollback update user")
             return None
 
-    # # TODO delete user
     @staticmethod
+    @jwt_required
     def delete(Form: UserDeleteForm):
         user = User.query.get(Form.userId.data)
         if user is not None and user.user_username == Form.username.data:
