@@ -13,12 +13,15 @@
                     </div>
                     <div class="card-body p-0">
                         <div class="list-group list-group-flush">
+                              <a href="#" class="list-group-item list-group-item-action border-success-subtle">
+                                <i class="bi bi-people me-2" routerlink="informations"></i>Profil
+                            </a>
                             <a href="#" class="list-group-item list-group-item-action border-success-subtle">
                                 <i class="bi bi-people me-2"></i>Contacts
                             </a>
                             <a routerLink="/profil/message-inbox"
                                 class="list-group-item list-group-item-action border-success-subtle">
-                                <i class="bi bi-envelope me-2"></i>Messages
+                                <i class="bi bi-envelope me-2" routerLink="messages"></i>Messages
                             </a>
                             <a href="#" class="list-group-item list-group-item-action border-success-subtle">
                                 <i class="bi bi-chat-dots me-2"></i>Forum
@@ -41,7 +44,8 @@
             <!-- Main Content Area -->
             <div class="col-lg-8">
                 <!-- Router Outlet for Child Components (Messages, etc.) -->
-                <messages></messages>
+                <informations [user]="userSignal() || undefined"></informations>
+               <!-- <messages></messages>-->
 
             </div>
         </div>

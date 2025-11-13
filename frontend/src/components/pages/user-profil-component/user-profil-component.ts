@@ -6,14 +6,16 @@ import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Messages } from './user-profil-children/messages/messages';
+import { Informations } from "./user-profil-children/informations/informations";
 
 @Component({
   selector: 'user-profil-component',
-  imports: [RouterLink, Messages],
+  imports: [RouterLink, Informations],
   templateUrl: './user-profil-component.html',
   styleUrls: ['./user-profil-component.css'],
 })
 export class UserProfilComponent {
+  userSignal = signal<User | null>(null)
   user: User | null = null;
   route = inject(Router);
   activatedRoute = inject(ActivatedRoute);
@@ -22,6 +24,7 @@ export class UserProfilComponent {
   constructor(tokenService: TokenService) {
     if (tokenService.getToken()) {
       this.user = JSON.parse(localStorage.getItem('user') || '{}');
+      this.userSignal.set(this.user);
       console.log('User from localStorage:', this.user);
     } else {
       this.route.navigate(['register']);
