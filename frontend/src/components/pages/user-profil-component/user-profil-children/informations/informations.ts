@@ -9,16 +9,12 @@ import { AuthService } from '../../../../../core/services/authentification/auth-
   styleUrl: './informations.css',
 })
 export class Informations {
+  //injection of the parent to retrieve the siganl from the parent
+  userSignal = inject(UserProfilComponent).userSignal;
+  user: User | null = null;
 
- //injection of the parent to retrieve the siganl from the parent
- userSignal = inject(AuthService)
- user = this.userSignal.userSignal()
-
-
- // Method to update user info
-  updateUserInfo(updatedUser: User) {
-    this.userSignal.userSignal.set(updatedUser);
+  constructor() {
+    //retrieve user data from the signal
+    this.user = this.userSignal.userSignal();
   }
-
-
 }

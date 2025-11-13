@@ -34,9 +34,10 @@ export const routes: Routes = [
     component: UserProfilComponent,
     canActivate: [loggedGuard],
     children: [
-      { path: 'messages', component: Messages },
+      { path: '', redirectTo: 'informations', pathMatch: 'full' },
       { path: 'informations', component: Informations, pathMatch: 'full' },
       { path: 'infos-profil', component: InfosProfilComponent },
+      { path: 'messages', component: Messages },
     ],
   },
 

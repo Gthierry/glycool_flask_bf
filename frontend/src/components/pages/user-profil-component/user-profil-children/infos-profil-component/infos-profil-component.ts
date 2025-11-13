@@ -18,19 +18,17 @@ export class InfosProfilComponent {
   //user utiliser pour afficher les infos de l'utilisateur connecté
   user: User | undefined;
   //recupération du user directement du parent via signal
-  parent = inject(AuthService)
-  userSignal = this.parent.userSignal
-  
+  userSignal = inject(UserProfilComponent).userSignal;
 
   //formulaire de modification des infos du profil
   formBuilder = inject(FormBuilder);
   form: FormGroup;
 
   constructor() {
-    //recupération des données de l'utilisateur connecté depuis le local storage
-    const userData = this.userSignal;
+    //recupération des données de l'utilisateur connecté depuis le signal du parent
+    const userData = this.userSignal.userSignal();
     if (userData) {
-      this.user = userData
+      this.user = userData;
       console.log('from const: ' + this.user?.user_id);
     }
     //creation du formulaire avec les valeurs initiales de l'utilisateur connecté
@@ -49,10 +47,11 @@ export class InfosProfilComponent {
     window.history.back();
   }
 
-
   //injection du service utilisateur
   userService = inject(UserService);
+  //injection du service token
   tokenService = inject(TokenService);
+  //injection du routeur
   route = inject(Router);
   //fonction pour sauvegarder les modifications du profil
   saveProfile() {
@@ -68,21 +67,20 @@ export class InfosProfilComponent {
           last_name: this.form.value.last_name,
           email: this.form.value.email,
           username: this.form.value.username,
-          avatar: this.form.value.avatar ? this.form.value.avatar : "default.png",
+          avatar: this.form.value.avatar ? this.form.value.avatar : 'default.png',
           bio: this.form.value.bio,
           city: this.form.value.city,
           birthdate: this.form.value.birthdate,
           role: this.user.role,
           isActive: this.user.isActive,
         };
-        console.log(
-          'just before the subscribe...........................................................',
-        );
+
         //appel du service utilisateur pour mettre à jour les informations dans le backend
         const userUpdated = this.userService.updateUser(updatedUser).subscribe({
           next: (reponse) => {
             this.user = reponse;
-            this.userSignal.update(() => this.user ?? null);
+            //mise à jour du signal utilisateur avec les nouvelles données
+            this.userSignal.userSignal.update(() => this.user!);
             // Redirection vers la page de profil
             this.route.navigate(['/profil/informations']);
           },

@@ -6,7 +6,7 @@ import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Messages } from './user-profil-children/messages/messages';
-import { Informations } from "./user-profil-children/informations/informations";
+import { Informations } from './user-profil-children/informations/informations';
 import { AuthService } from '../../../core/services/authentification/auth-service';
 
 @Component({
@@ -15,35 +15,32 @@ import { AuthService } from '../../../core/services/authentification/auth-servic
   templateUrl: './user-profil-component.html',
   styleUrls: ['./user-profil-component.css'],
 })
-export class UserProfilComponent implements OnInit {
-  //signal to hold user data and reactively update the template
-  userSignal = inject(AuthService)
-  
+export class UserProfilComponent {
+  //signal injection for user data
+  userSignal = inject(AuthService);
+  //local user data
   user: User | null = null;
-  //route injection 
+  //route injection
   route = inject(Router);
   activatedRoute = inject(ActivatedRoute);
   tokenService = inject(TokenService);
 
   constructor() {
-
     if (this.tokenService.getToken()) {
-      this.user = this.userSignal.userSignal()
+      this.user = this.userSignal.userSignal();
       //put the user in the signal to share it with children
-      
+
       console.log('User from localStorage:', this.user);
     } else {
       this.route.navigate(['register']);
     }
   }
 
-
-
   navigateToInfosProfile() {
     this.route.navigate(['infos-profil']);
   }
 
- updateUserSignal(user:User){
-    this.userSignal.userSignal.update(() => user)
+  updateUserSignal(user: User) {
+    this.userSignal.userSignal.update(() => user);
   }
 }
