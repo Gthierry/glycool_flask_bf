@@ -11,7 +11,7 @@ export class AuthService {
   apiURL: string = 'http://localhost:5000/users/login';
   httpClient = inject(HttpClient);
 
-  user: User | any;
+  userSignal = signal<User | null>(null);
   isLogged = signal<boolean>(false);
 
   //login user
@@ -23,7 +23,7 @@ export class AuthService {
         this.httpClient.post<any>(url, user).subscribe({
           next: (response) => {
             console.log('set the localStorage');
-            this.user = response.user;
+            this.userSignal.set(response.user)
             //localStorage.setItem('user', JSON.stringify(response.user));
             localStorage.setItem('token', response.token);
             this.isLogged.set(true);

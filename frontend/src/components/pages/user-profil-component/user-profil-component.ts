@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Messages } from './user-profil-children/messages/messages';
 import { Informations } from "./user-profil-children/informations/informations";
+import { AuthService } from '../../../core/services/authentification/auth-service';
 
 @Component({
   selector: 'user-profil-component',
@@ -16,19 +17,20 @@ import { Informations } from "./user-profil-children/informations/informations";
 })
 export class UserProfilComponent {
   //signal to hold user data and reactively update the template
-  userSignal = signal<User | null>(null)
-  //
+  userSignal = inject(AuthService)
+  
   user: User | null = null;
   //route injection 
   route = inject(Router);
   activatedRoute = inject(ActivatedRoute);
-  showDefaultContent = signal(true);
+  tokenService = inject(TokenService);
 
-  constructor(tokenService: TokenService) {
-    if (tokenService.getToken()) {
-      this.user = JSON.parse(localStorage.getItem('user') || '{}');
+  constructor() {
+
+    if (this.tokenService.getToken()) {
+      this.user = this.userSignal.userSignal()
       //put the user in the signal to share it with children
-      this.userSignal.set(this.user);
+      
       console.log('User from localStorage:', this.user);
     } else {
       this.route.navigate(['register']);
@@ -39,7 +41,5 @@ export class UserProfilComponent {
     this.route.navigate(['infos-profil']);
   }
 
-  updateUserSignal(user:User){
-    this.userSignal.set(user)
-  }
+ 
 }
