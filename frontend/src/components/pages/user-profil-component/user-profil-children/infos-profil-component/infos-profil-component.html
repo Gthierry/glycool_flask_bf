@@ -1,0 +1,132 @@
+<div class="container-fluid py-4">
+    <!-- Header Card -->
+    <div class="card border-success-subtle shadow-sm mb-4">
+        <div class="card-header bg-success-subtle">
+            <h5 class="text-success-emphasis mb-0">
+                <i class="bi bi-gear me-2"></i>Paramètres du profil
+            </h5>
+        </div>
+    </div>
+
+    <!-- Main Form Card -->
+    <div class="card border-success-subtle shadow-sm">
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="saveProfile()">
+                <div class="row g-4">
+                    <!-- Left Column - Personal Information -->
+                    <div class="col-lg-6">
+                        <div class="border-success-subtle border rounded p-3 mb-3">
+                            <h6 class="text-success-emphasis mb-3">
+                                <i class="bi bi-person me-2"></i>Informations personnelles
+                            </h6>
+                            
+                            <div class="mb-3">
+                                <label for="username" class="form-label text-success-emphasis">Nom d'utilisateur</label>
+                                <input type="text" class="form-control border-success-subtle" id="username" 
+                                       formControlName="username" value="{{user?.username || ''}}">
+                                @if(form.get('username')?.invalid && (form.get('username')?.dirty)) {
+                                    <div class="alert alert-danger mt-2">
+                                        Le nom d'utilisateur est requis.
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label text-success-emphasis">Adresse email</label>
+                                <input type="email" class="form-control border-success-subtle" id="email" 
+                                       formControlName="email" value="{{user?.email || ''}}">
+                                @if(form.get('email')?.invalid && (form.get('email')?.dirty)) {
+                                    <div class="alert alert-danger mt-2">
+                                        Une adresse email valide est requise.
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="first_name" class="form-label text-success-emphasis">Prénom</label>
+                                        <input type="text" class="form-control border-success-subtle" id="first_name" 
+                                               formControlName="first_name" value="{{user?.first_name || ''}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="last_name" class="form-label text-success-emphasis">Nom de famille</label>
+                                        <input type="text" class="form-control border-success-subtle" id="last_name" 
+                                               formControlName="last_name" value="{{user?.last_name || ''}}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="birthdate" class="form-label text-success-emphasis">Date de naissance</label>
+                                        @if(user?.birthdate) {
+                                            <input type="date" class="form-control border-success-subtle" id="birthdate" 
+                                                   formControlName="birthdate" value="{{user?.birthdate | date:'yyyy-MM-dd'}}">
+                                        } @else {
+                                            <input type="date" class="form-control border-success-subtle" id="birthdate" 
+                                                   formControlName="birthdate" value="">
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="city" class="form-label text-success-emphasis">Lieu de résidence</label>
+                                        <input type="text" class="form-control border-success-subtle" id="city" 
+                                               formControlName="city" value="{{user?.city || ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Bio and Avatar -->
+                    <div class="col-lg-6">
+                        <!-- Biography Section -->
+                        <div class="border-success-subtle border rounded p-3 mb-3">
+                            <h6 class="text-success-emphasis mb-3">
+                                <i class="bi bi-journal-text me-2"></i>À propos de moi
+                            </h6>
+                            <div class="mb-3">
+                                <label for="bio" class="form-label text-success-emphasis">Biographie</label>
+                                <textarea class="form-control border-success-subtle" id="bio" formControlName="bio" 
+                                          rows="5" placeholder="Parlez-nous de vous...">{{user?.bio || ''}}</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Avatar Section -->
+                        <div class="border-success-subtle border rounded p-3">
+                            <h6 class="text-success-emphasis mb-3">
+                                <i class="bi bi-person-circle me-2"></i>Photo de profil
+                            </h6>
+                            <div class="text-center mb-3">
+                                <img src="{{user?.avatar || 'assets/images/default-avatar.png'}}" 
+                                     alt="Photo de profil" class="img-thumbnail border-success-subtle" 
+                                     style="width: 120px; height: 120px; object-fit: cover;">
+                            </div>
+                            <input class="form-control border-success-subtle" type="file" id="profilePicture" 
+                                   accept="image/*">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-end gap-2">
+                            <button type="button" class="btn btn-outline-secondary" (click)="returnButtonsClick()">
+                                <i class="bi bi-arrow-left me-1"></i>Retour
+                            </button>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-check-lg me-1"></i>Sauvegarder
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

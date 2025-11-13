@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { User } from '../../../core/models/user-models/user.model';
+import { User } from '../../../../../core/models/user-models/user.model';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { first } from 'rxjs';
-import { UserService } from '../../../core/services/user-services/user-service';
-import { TokenService } from '../../../core/services/token-service/token-service';
+import { UserService } from '../../../../../core/services/user-services/user-service';
+import { TokenService } from '../../../../../core/services/token-service/token-service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'infos-profil',

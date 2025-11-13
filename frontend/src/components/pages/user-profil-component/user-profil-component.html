@@ -13,13 +13,13 @@
                     </div>
                     <div class="card-body p-0">
                         <div class="list-group list-group-flush">
-                              <a href="#" class="list-group-item list-group-item-action border-success-subtle">
-                                <i class="bi bi-people me-2" routerlink="informations"></i>Profil
+                              <a routerLink="/profil/informations" routerLinkActive="active" class="list-group-item list-group-item-action border-success-subtle">
+                                <i class="bi bi-people me-2" ></i>Profil
                             </a>
                             <a href="#" class="list-group-item list-group-item-action border-success-subtle">
                                 <i class="bi bi-people me-2"></i>Contacts
                             </a>
-                            <a routerLink="/profil/message-inbox"
+                            <a routerLink="/profil/messages" routerLinkActive="active"
                                 class="list-group-item list-group-item-action border-success-subtle">
                                 <i class="bi bi-envelope me-2" routerLink="messages"></i>Messages
                             </a>
@@ -32,7 +32,7 @@
                             <a href="#" class="list-group-item list-group-item-action border-success-subtle">
                                 <i class="bi bi-newspaper me-2"></i>Vos articles
                             </a>
-                            <a [routerLink]="[]" (click)="navigateToInfosProfile()"
+                            <a routerLink="/profil/infos-profil" routerLinkActive="active"
                                 class="list-group-item list-group-item-action border-success-subtle text-success">
                                 <i class="bi bi-pencil-square me-2"></i>Éditer le profil
                             </a>
@@ -44,7 +44,8 @@
             <!-- Main Content Area -->
             <div class="col-lg-8">
                 <!-- Router Outlet for Child Components (Messages, etc.) -->
-                <informations [user]="userSignal() || undefined"></informations>
+                <!-- <informations [user]="userSignal() || undefined"></informations> -->
+                <router-outlet></router-outlet>
                <!-- <messages></messages>-->
 
             </div>

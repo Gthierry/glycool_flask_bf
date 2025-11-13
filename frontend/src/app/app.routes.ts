@@ -5,7 +5,7 @@ import { UserLoginComponent } from '../components/pages/user-login-component/use
 import { UserProfilComponent } from '../components/pages/user-profil-component/user-profil-component';
 import { ForumComponent } from '../components/pages/forum-component/forum-component';
 import { loggedGuard } from '../core/guard/logged-guard';
-import { InfosProfilComponent } from '../components/pages/infos-profil-component/infos-profil-component';
+import { InfosProfilComponent } from '../components/pages/user-profil-component/user-profil-children/infos-profil-component/infos-profil-component';
 import { WhatSDiabetComponent } from '../components/pages/what-s-diabet-component/what-s-diabet-component';
 import { EncouragementsComponent } from '../components/pages/encouragements-component/encouragements-component';
 import { IGComponent } from '../components/pages/ig-component/ig-component';
@@ -36,9 +36,9 @@ export const routes: Routes = [
     children: [
       { path: 'messages', component: Messages },
       { path: 'informations', component: Informations, pathMatch: 'full' },
+      { path: 'infos-profil', component: InfosProfilComponent },
     ],
   },
 
   { path: 'forum', component: ForumComponent },
-  { path: 'infos-profil', component: InfosProfilComponent, canActivate: [loggedGuard] },
 ];

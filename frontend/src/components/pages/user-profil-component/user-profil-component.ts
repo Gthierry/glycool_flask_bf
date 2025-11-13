@@ -10,7 +10,7 @@ import { Informations } from "./user-profil-children/informations/informations";
 
 @Component({
   selector: 'user-profil-component',
-  imports: [RouterLink, Informations],
+  imports: [RouterLink, RouterOutlet],
   templateUrl: './user-profil-component.html',
   styleUrls: ['./user-profil-component.css'],
 })
