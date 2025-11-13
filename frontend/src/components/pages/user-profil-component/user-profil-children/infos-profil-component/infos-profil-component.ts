@@ -7,6 +7,7 @@ import { UserService } from '../../../../../core/services/user-services/user-ser
 import { TokenService } from '../../../../../core/services/token-service/token-service';
 import { Router } from '@angular/router';
 import { UserProfilComponent } from '../../user-profil-component';
+import { AuthService } from '../../../../../core/services/authentification/auth-service';
 @Component({
   selector: 'infos-profil',
   imports: [DatePipe, ReactiveFormsModule],
@@ -17,8 +18,8 @@ export class InfosProfilComponent {
   //user utiliser pour afficher les infos de l'utilisateur connecté
   user: User | undefined;
   //recupération du user directement du parent via signal
-  parent = inject(UserProfilComponent)
-  userSignal = this.parent.user
+  parent = inject(AuthService)
+  userSignal = this.parent.userSignal
   
 
   //formulaire de modification des infos du profil
@@ -81,6 +82,7 @@ export class InfosProfilComponent {
         const userUpdated = this.userService.updateUser(updatedUser).subscribe({
           next: (reponse) => {
             this.user = reponse;
+            this.userSignal.update(() => this.user ?? null);
             // Redirection vers la page de profil
             this.route.navigate(['/profil/informations']);
           },

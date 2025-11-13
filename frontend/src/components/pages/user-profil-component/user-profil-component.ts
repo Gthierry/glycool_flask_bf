@@ -15,7 +15,7 @@ import { AuthService } from '../../../core/services/authentification/auth-servic
   templateUrl: './user-profil-component.html',
   styleUrls: ['./user-profil-component.css'],
 })
-export class UserProfilComponent {
+export class UserProfilComponent implements OnInit {
   //signal to hold user data and reactively update the template
   userSignal = inject(AuthService)
   
@@ -37,9 +37,13 @@ export class UserProfilComponent {
     }
   }
 
+
+
   navigateToInfosProfile() {
     this.route.navigate(['infos-profil']);
   }
 
- 
+ updateUserSignal(user:User){
+    this.userSignal.userSignal.update(() => user)
+  }
 }
