@@ -26,7 +26,7 @@ export class InfosProfilComponent {
 
   constructor() {
     //recupération des données de l'utilisateur connecté depuis le signal du parent
-    const userData = this.userSignal.userSignal();
+    const userData = this.userSignal();
     if (userData) {
       this.user = userData;
       console.log('from const: ' + this.user?.user_id);

@@ -23,24 +23,22 @@ export class UserProfilComponent {
   //route injection
   route = inject(Router);
   activatedRoute = inject(ActivatedRoute);
+  //token service injection
   tokenService = inject(TokenService);
 
   constructor() {
+    //check if token is valid
     if (this.tokenService.getToken()) {
-      this.user = this.userSignal.userSignal();
-      //put the user in the signal to share it with children
-
+      //get user data from signal
+      this.user = this.userSignal();
       console.log('User from localStorage:', this.user);
     } else {
+      console.log('No valid token found, redirecting to register.');
       this.route.navigate(['register']);
     }
   }
 
   navigateToInfosProfile() {
     this.route.navigate(['infos-profil']);
-  }
-
-  updateUserSignal(user: User) {
-    this.userSignal.userSignal.update(() => user);
   }
 }
