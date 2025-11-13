@@ -1,5 +1,6 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, inject, Input, input } from '@angular/core';
 import { User } from '../../../../../core/models/user-models/user.model';
+import { UserProfilComponent } from '../../user-profil-component';
 @Component({
   selector: 'informations',
   imports: [],
@@ -8,9 +9,9 @@ import { User } from '../../../../../core/models/user-models/user.model';
 })
 export class Informations {
 
-  //input siganl user to retrieve informations from userSignal declared in the user-profil
-  // user = input<User>()
-  @Input() user : User | undefined 
+ //injection of the parent to retrieve the siganl from the parent
+ parent = inject(UserProfilComponent)
+ user = this.parent.user
 
 
 

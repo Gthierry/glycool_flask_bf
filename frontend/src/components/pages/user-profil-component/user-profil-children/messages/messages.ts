@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { User } from '../../../../../core/models/user-models/user.model';
 
 @Component({
   selector: 'messages',
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './messages.html',
   styleUrl: './messages.css',
 })
-export class Messages {}
+export class Messages {
+  
+  @Input() userSignal : User | undefined 
+}

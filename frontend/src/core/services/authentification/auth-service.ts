@@ -23,7 +23,7 @@ export class AuthService {
         this.httpClient.post<any>(url, user).subscribe({
           next: (response) => {
             console.log('set the localStorage');
-            localStorage.setItem('user', JSON.stringify(response.user));
+            //localStorage.setItem('user', JSON.stringify(response.user));
             localStorage.setItem('token', response.token);
             this.isLogged.set(true);
             console.log('Is logged in authService value = ' + this.isLogged);

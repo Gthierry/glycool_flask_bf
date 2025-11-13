@@ -15,8 +15,11 @@ import { Informations } from "./user-profil-children/informations/informations";
   styleUrls: ['./user-profil-component.css'],
 })
 export class UserProfilComponent {
+  //signal to hold user data and reactively update the template
   userSignal = signal<User | null>(null)
+  //
   user: User | null = null;
+  //route injection 
   route = inject(Router);
   activatedRoute = inject(ActivatedRoute);
   showDefaultContent = signal(true);
@@ -24,6 +27,7 @@ export class UserProfilComponent {
   constructor(tokenService: TokenService) {
     if (tokenService.getToken()) {
       this.user = JSON.parse(localStorage.getItem('user') || '{}');
+      //put the user in the signal to share it with children
       this.userSignal.set(this.user);
       console.log('User from localStorage:', this.user);
     } else {
@@ -33,5 +37,9 @@ export class UserProfilComponent {
 
   navigateToInfosProfile() {
     this.route.navigate(['infos-profil']);
+  }
+
+  updateUserSignal(user:User){
+    this.userSignal.set(user)
   }
 }

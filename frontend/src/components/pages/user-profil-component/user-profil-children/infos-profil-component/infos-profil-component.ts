@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { User } from '../../../../../core/models/user-models/user.model';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -6,6 +6,7 @@ import { first } from 'rxjs';
 import { UserService } from '../../../../../core/services/user-services/user-service';
 import { TokenService } from '../../../../../core/services/token-service/token-service';
 import { Router } from '@angular/router';
+import { UserProfilComponent } from '../../user-profil-component';
 @Component({
   selector: 'infos-profil',
   imports: [DatePipe, ReactiveFormsModule],
@@ -15,6 +16,10 @@ import { Router } from '@angular/router';
 export class InfosProfilComponent {
   //user utiliser pour afficher les infos de l'utilisateur connecté
   user: User | undefined;
+  //recupération du user directement du parent via signal
+  parent = inject(UserProfilComponent)
+  userSignal = this.parent.user
+  
 
   //formulaire de modification des infos du profil
   formBuilder = inject(FormBuilder);
@@ -39,10 +44,10 @@ export class InfosProfilComponent {
     });
   }
 
-  //fonction pour revenir à la page précédente
-  returnButtonsClick() {
+  returnButtonClick() {
     window.history.back();
   }
+
 
   //injection du service utilisateur
   userService = inject(UserService);
@@ -62,7 +67,7 @@ export class InfosProfilComponent {
           last_name: this.form.value.last_name,
           email: this.form.value.email,
           username: this.form.value.username,
-          avatar: this.form.value.avatar,
+          avatar: this.form.value.avatar ? this.form.value.avatar : "default.png",
           bio: this.form.value.bio,
           city: this.form.value.city,
           birthdate: this.form.value.birthdate,
@@ -76,6 +81,7 @@ export class InfosProfilComponent {
         const userUpdated = this.userService.updateUser(updatedUser).subscribe({
           next: (reponse) => {
             this.user = reponse;
+          
             //mise à jour des informations utilisateur dans le local storage
             localStorage.setItem('user', JSON.stringify(this.user) || '');
             console.log(
@@ -83,7 +89,7 @@ export class InfosProfilComponent {
               reponse,
             );
             // Redirection vers la page de profil
-            this.route.navigate(['/profil']);
+            this.route.navigate(['/profil/informations']);
           },
           error: (error) => {
             console.error('Error updating user:', error);
