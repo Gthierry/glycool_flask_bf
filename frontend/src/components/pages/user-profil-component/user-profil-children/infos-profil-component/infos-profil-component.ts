@@ -27,9 +27,9 @@ export class InfosProfilComponent {
 
   constructor() {
     //recupération des données de l'utilisateur connecté depuis le local storage
-    const userData = localStorage.getItem('user');
+    const userData = this.userSignal;
     if (userData) {
-      this.user = JSON.parse(userData);
+      this.user = userData
       console.log('from const: ' + this.user?.user_id);
     }
     //creation du formulaire avec les valeurs initiales de l'utilisateur connecté
@@ -81,13 +81,6 @@ export class InfosProfilComponent {
         const userUpdated = this.userService.updateUser(updatedUser).subscribe({
           next: (reponse) => {
             this.user = reponse;
-          
-            //mise à jour des informations utilisateur dans le local storage
-            localStorage.setItem('user', JSON.stringify(this.user) || '');
-            console.log(
-              'User updated successfully:................................................',
-              reponse,
-            );
             // Redirection vers la page de profil
             this.route.navigate(['/profil/informations']);
           },

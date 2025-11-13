@@ -70,6 +70,25 @@ def jwt_required(f):
 
     return decorated
 
+def jwt_required_simple(f):
+    """Décorateur qui vérifie juste l'authentification sans passer de paramètres"""
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = None
+        if "Authorization" in request.headers:
+            parts = request.headers["Authorization"].split(" ")
+            if len(parts) == 2 and parts[0] == "Bearer":
+                token = parts[1]
+
+        if not token:
+            return jsonify({"error": "Token is missing!"}), 401
+
+        decoded = decode_token(token)
+        if not decoded:
+            return jsonify({"error": "Token is invalid or expired!"}), 401
+
+        return f(*args, **kwargs)
+    return decorated
 
 # ✅ Fonction séparée - même niveau d'indentation que jwt_required
 def admin_required(f):

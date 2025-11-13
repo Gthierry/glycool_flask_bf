@@ -21,6 +21,7 @@ from app.forms.users.user_email_form import UserEmailForm
 from app.utilities.authentification.jwt_utils import (
     generate_token,
     jwt_required,
+    jwt_required_simple,
 )
 from app.forms.users import user_username_form
 
@@ -40,7 +41,7 @@ class UserService(Base_service):
         return None
 
     @staticmethod
-    @jwt_required
+    @jwt_required_simple
     def get_user(form: UserUsernameForm):
         try:
             print("Getting user by username: " + form.username.data + " in service")
@@ -51,7 +52,7 @@ class UserService(Base_service):
             return None
 
     @staticmethod
-    @jwt_required
+    @jwt_required_simple
     def get_user_by_email(form: UserEmailForm):
         if form.validate():
             try:
@@ -127,7 +128,7 @@ class UserService(Base_service):
                 return None
 
     @staticmethod
-    @jwt_required
+    @jwt_required_simple
     def update(form: UserUpdateForm):
         if form.validate() is False:
             return None
@@ -159,7 +160,7 @@ class UserService(Base_service):
             return None
 
     @staticmethod
-    @jwt_required
+    @jwt_required_simple
     def delete(Form: UserDeleteForm):
         user = User.query.get(Form.userId.data)
         if user is not None and user.user_username == Form.username.data:
