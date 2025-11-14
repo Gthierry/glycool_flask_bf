@@ -1,106 +1,131 @@
-<!-- messages.html -->
+<!-- messages.html - Version simple -->
 <div class="container-fluid py-4">
-    <!-- Header avec titre et bouton -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="d-flex align-items-center">
-                    <h1 class="h3 text-success-emphasis mb-0">
-                        <i class="bi bi-envelope me-2"></i>Messages
-                    </h1>
+    <!-- Status Update Section -->
+    <div class="card border-success-subtle shadow-sm mb-4">
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <textarea placeholder="Écrivez un nouveau message..." rows="3"
+                        class="form-control border-success-subtle"></textarea>
                 </div>
-                <button type="button" class="btn btn-success">
-                    <i class="bi bi-plus-lg me-2"></i>Nouveau message
-                </button>
-            </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success">
+                        <i class="bi bi-send me-2"></i>Envoyer
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <div class="row g-4">
-        <!-- Sidebar Navigation -->
-        <div class="col-lg-3">
-            <div class="card border-success-subtle shadow-sm">
-                <div class="card-header bg-success-subtle">
-                    <h6 class="text-success-emphasis mb-0">
-                        <i class="bi bi-folder me-2"></i>Dossiers
-                    </h6>
-                </div>
-                <!-- ... rest of sidebar content ... -->
-
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action active">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span><i class="bi bi-inbox me-2"></i>Boîte de réception</span>
-                                <span class="badge bg-success rounded-pill">32</span>
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <i class="bi bi-star me-2"></i>Favoris
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <i class="bi bi-exclamation-circle me-2"></i>Important
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <i class="bi bi-send me-2"></i>Messages envoyés
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span><i class="bi bi-file-earmark me-2"></i>Brouillons</span>
-                                <span class="badge bg-warning rounded-pill">3</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <!-- Messages Section -->
+    <div class="card border-success-subtle shadow-sm">
+        <div class="card-header bg-success-subtle">
+            <h5 class="text-success-emphasis mb-0">
+                <i class="bi bi-envelope me-2"></i>Messages reçus
+            </h5>
         </div>
-
-        <!-- Messages Area -->
-        <div class="col-lg-9">
-            <!-- Toolbar -->
-            <div class="card border-success-subtle shadow-sm mb-4">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <div class="btn-group" role="group">
-                                <input type="checkbox" class="btn-check" id="selectAll" autocomplete="off">
-                                <label class="btn btn-outline-success" for="selectAll">
-                                    <i class="bi bi-check-all"></i>
-                                </label>
-
-                                <button type="button" class="btn btn-outline-success dropdown-toggle"
-                                    data-bs-toggle="dropdown">
-                                    Actions
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-check-circle me-2"></i>Marquer
-                                            comme lu</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-star me-2"></i>Ajouter aux
-                                            favoris</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item text-danger" href="#"><i
-                                                class="bi bi-trash me-2"></i>Supprimer</a></li>
-                                </ul>
+        <div class="card-body">
+            <!-- Messages List -->
+            <div class="row g-3">
+                <!-- Message 1 -->
+                <div class="col-12">
+                    <div class="border-success-subtle border rounded p-3">
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="avatar bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                style="width: 45px; height: 45px;">
+                                AP
                             </div>
-
-                            <button type="button" class="btn btn-outline-success ms-2" data-bs-toggle="tooltip"
-                                title="Actualiser">
-                                <i class="bi bi-arrow-clockwise"></i>
-                            </button>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <strong class="text-success">Andres Posada</strong>
+                                    <small class="text-muted">Il y a 2h</small>
+                                </div>
+                                <h6 class="mb-1">Excellent travail sur la dernière version</h6>
+                                <p class="mb-0 text-muted">Plus de contenu ici concernant les nouvelles fonctionnalités
+                                    et les améliorations apportées à l'application...</p>
+                            </div>
                         </div>
-
-                        <div class="col-md-6 text-end">
-                            <span class="text-muted me-3">
-                                <strong>1-50</strong> sur <strong>160</strong>
-                            </span>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-chevron-left"></i>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="badge bg-primary">Nouveau</span>
+                                <i class="bi bi-paperclip text-muted ms-2"></i>
+                                <small class="text-muted">1 pièce jointe</small>
+                            </div>
+                            <div>
+                                <button class="btn btn-outline-success btn-sm me-2">
+                                    <i class="bi bi-reply"></i>
                                 </button>
-                                <button type="button" class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-chevron-right"></i>
+                                <button class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-star"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message 2 -->
+                <div class="col-12">
+                    <div class="border-success-subtle border rounded p-3">
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="avatar bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                style="width: 45px; height: 45px;">
+                                JA
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <strong class="text-success">Juan Acosta</strong>
+                                    <small class="text-muted">Il y a 3h</small>
+                                </div>
+                                <h6 class="mb-1">Recette de quinoa aux légumes</h6>
+                                <p class="mb-0 text-muted">J'ai testé ta recette et c'est délicieux ! L'index glycémique
+                                    est parfait pour nous diabétiques. Merci pour le partage !</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="badge bg-success">Communauté</span>
+                            </div>
+                            <div>
+                                <button class="btn btn-outline-success btn-sm me-2">
+                                    <i class="bi bi-reply"></i>
+                                </button>
+                                <button class="btn btn-success btn-sm">
+                                    <i class="bi bi-star-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message 3 -->
+                <div class="col-12">
+                    <div class="border-success-subtle border rounded p-3 bg-light">
+                        <div class="d-flex align-items-start mb-2">
+                            <div class="avatar bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                style="width: 45px; height: 45px;">
+                                DR
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <strong class="text-success">Dr. Rodriguez</strong>
+                                    <small class="text-muted">Hier</small>
+                                </div>
+                                <h6 class="mb-1">Rappel : Consultation de suivi</h6>
+                                <p class="mb-0 text-muted">N'oubliez pas votre rendez-vous de suivi prévu la semaine
+                                    prochaine. Préparez vos questions et votre carnet de glycémie.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="badge bg-info">Médecin</span>
+                                <span class="badge bg-warning ms-2">Important</span>
+                            </div>
+                            <div>
+                                <button class="btn btn-outline-success btn-sm me-2">
+                                    <i class="bi bi-reply"></i>
+                                </button>
+                                <button class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-star"></i>
                                 </button>
                             </div>
                         </div>
@@ -108,197 +133,11 @@
                 </div>
             </div>
 
-            <!-- Messages Tabs -->
-            <div class="card border-success-subtle shadow-sm">
-                <div class="card-header bg-success-subtle p-0">
-                    <ul class="nav nav-tabs card-header-tabs" id="messagesTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active text-success" id="primary-tab" data-bs-toggle="tab"
-                                data-bs-target="#primary" type="button">
-                                <i class="bi bi-inbox me-2"></i>Principal
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link text-success" id="social-tab" data-bs-toggle="tab"
-                                data-bs-target="#social" type="button">
-                                <i class="bi bi-people me-2"></i>Social
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link text-success" id="promotions-tab" data-bs-toggle="tab"
-                                data-bs-target="#promotions" type="button">
-                                <i class="bi bi-tags me-2"></i>Promotions
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="card-body p-0">
-                    <div class="tab-content" id="messagesTabContent">
-                        <!-- Primary Messages -->
-                        <div class="tab-pane fade show active" id="primary">
-                            <div class="list-group list-group-flush">
-
-                                <!-- Message 1 - Non lu -->
-                                <div class="list-group-item list-group-item-action p-3 border-0 border-bottom">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <input type="checkbox" class="form-check-input">
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="bi bi-star text-muted"></i>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="avatar bg-success text-white rounded-circle d-flex align-items-center justify-content-center"
-                                                style="width: 40px; height: 40px;">
-                                                AP
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div class="flex-grow-1">
-                                                    <div class="d-flex align-items-center mb-1">
-                                                        <span class="badge bg-info me-2">Andres Posada</span>
-                                                        <strong class="text-dark">Excellent travail sur la dernière
-                                                            version</strong>
-                                                    </div>
-                                                    <p class="text-muted small mb-0">Plus de contenu ici concernant les
-                                                        nouvelles fonctionnalités...</p>
-                                                </div>
-                                                <div class="text-end">
-                                                    <small class="text-muted d-block">12:10</small>
-                                                    <i class="bi bi-paperclip text-muted"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Message 2 - Non lu -->
-                                <div class="list-group-item list-group-item-action p-3 border-0 border-bottom">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <input type="checkbox" class="form-check-input">
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="bi bi-star text-muted"></i>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="avatar bg-success text-white rounded-circle d-flex align-items-center justify-content-center"
-                                                style="width: 40px; height: 40px;">
-                                                JA
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div class="flex-grow-1">
-                                                    <div class="d-flex align-items-center mb-1">
-                                                        <span class="badge bg-success me-2">Juan Acosta</span>
-                                                        <strong class="text-dark">Recette de quinoa aux légumes</strong>
-                                                    </div>
-                                                    <p class="text-muted small mb-0">J'ai testé ta recette et c'est
-                                                        délicieux ! IG parfait pour nous diabétiques...</p>
-                                                </div>
-                                                <div class="text-end">
-                                                    <small class="text-muted d-block">12:09</small>
-                                                    <i class="bi bi-paperclip text-muted"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Message 3 - Lu et favoris -->
-                                <div class="list-group-item list-group-item-action p-3 border-0 border-bottom bg-light">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <input type="checkbox" class="form-check-input">
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="avatar bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center"
-                                                style="width: 40px; height: 40px;">
-                                                MJ
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div class="flex-grow-1">
-                                                    <div class="d-flex align-items-center mb-1">
-                                                        <span class="badge bg-warning me-2">Mariana Jaramillo</span>
-                                                        <span class="text-muted">Conseils pour la gestion du
-                                                            diabète</span>
-                                                    </div>
-                                                    <p class="text-muted small mb-0">Salut ! Comment tu gères ton taux
-                                                        de glycémie pendant le sport ?</p>
-                                                </div>
-                                                <div class="text-end">
-                                                    <small class="text-muted d-block">11:30</small>
-                                                    <i class="bi bi-paperclip text-muted"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Message 4 -->
-                                <div class="list-group-item list-group-item-action p-3 border-0 border-bottom">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <input type="checkbox" class="form-check-input">
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="bi bi-star text-muted"></i>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="avatar bg-info text-white rounded-circle d-flex align-items-center justify-content-center"
-                                                style="width: 40px; height: 40px;">
-                                                DR
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div class="flex-grow-1">
-                                                    <div class="d-flex align-items-center mb-1">
-                                                        <span class="badge bg-info me-2">Dr. Rodriguez</span>
-                                                        <strong class="text-dark">Rappel : Consultation de
-                                                            suivi</strong>
-                                                    </div>
-                                                    <p class="text-muted small mb-0">N'oubliez pas votre rendez-vous de
-                                                        suivi prévu la semaine prochaine...</p>
-                                                </div>
-                                                <div class="text-end">
-                                                    <small class="text-muted d-block">10:45</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- Social Messages -->
-                        <div class="tab-pane fade" id="social">
-                            <div class="text-center py-5">
-                                <i class="bi bi-people text-muted" style="font-size: 3rem;"></i>
-                                <h5 class="text-muted mt-3">Aucun message social</h5>
-                                <p class="text-muted">Les messages de vos amis et de la communauté apparaîtront ici.</p>
-                            </div>
-                        </div>
-
-                        <!-- Promotions Messages -->
-                        <div class="tab-pane fade" id="promotions">
-                            <div class="text-center py-5">
-                                <i class="bi bi-tags text-muted" style="font-size: 3rem;"></i>
-                                <h5 class="text-muted mt-3">Aucune promotion</h5>
-                                <p class="text-muted">Les offres et promotions apparaîtront ici.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Empty State -->
+            <div class="text-center py-4 mt-4">
+                <i class="bi bi-envelope-check text-success" style="font-size: 2rem;"></i>
+                <h6 class="text-success-emphasis mt-2">Tous vos messages sont à jour !</h6>
+                <p class="text-muted mb-0">Vous avez lu tous vos messages récents.</p>
             </div>
         </div>
     </div>
