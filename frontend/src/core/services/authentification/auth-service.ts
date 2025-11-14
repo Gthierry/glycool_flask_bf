@@ -29,6 +29,16 @@ export class AuthService {
   //signal pour communiquer l'état de connexion
   isLogged = signal<boolean>(false);
 
+  constructor() {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        this.isLogged.set(true);
+      }
+    }
+  }
+
   //login user
   async userLogin(user: UserLogin) {
     console.log('AuthService launched...');
@@ -61,5 +71,6 @@ export class AuthService {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     this.isLogged.set(false);
+    this.userSignal.set(null);
   }
 }

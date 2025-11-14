@@ -37,14 +37,14 @@ def get_user():
         user = UserService.get_user(form)
         if user:
             return jsonify(user.serialize())
-    return jsonify(form.errors), 400
+    return jsonify(form.errors), 404
 
 
 @app.get("/users/getuserbyid/<int:user_id>")
 def get_user_by_id(user_id):
     user = UserService.get_by_id(user_id)
     if user:
-        return jsonify(user.serialize())
+        return jsonify(user.serialize()), 200
     return jsonify({"error": "User not found"}), 404
 
 
@@ -54,8 +54,8 @@ def user_login():
     if form.validate():
         user, token = UserService.get_user_by_login(form)
         if user:
-            return jsonify({"user": user.serialize(), "token": token})
-    return jsonify(form.errors)
+            return jsonify({"user": user.serialize(), "token": token}), 200
+    return jsonify(form.errors), 404
 
 
 @app.post("/users/email")
@@ -64,8 +64,8 @@ def check_if_email_exist():
     if form.validate():
         user = UserService.get_user_by_email(form)
         if user:
-            return jsonify(user.serialize())
-    return jsonify(form.errors)
+            return jsonify(user.serialize()), 200
+    return jsonify(form.errors), 404
 
 
 @app.post("/users/create")
@@ -74,9 +74,9 @@ def create_user():
     if form.validate():
         user, token = UserService.create(form)
         print("Controller Form validated  !!!- Created User: " + str(user))
-        return jsonify({"user": user.serialize(), "token": token})
+        return jsonify({"user": user.serialize(), "token": token}), 201
     print("Controller - Form errors: " + str(form.errors))
-    return jsonify(form.errors)
+    return jsonify(form.errors), 400
 
 
 @app.put("/users/update")
@@ -89,11 +89,14 @@ def update_user():
         user = UserService.update(form)
         # return jsonify("test controller : " + str(user.username))
         if user is None:
-            return jsonify(form.errors, "Controller - User not found")
+            return jsonify(form.errors, "Controller - User not found"), 400
 
-        return jsonify(user.serialize())
+        return jsonify(user.serialize()), 201
     else:
-        return jsonify(
-            form.errors,
-            "From controller - form not valid - user not updated........................msg from controller",
+        return (
+            jsonify(
+                form.errors,
+                "From controller - form not valid - user not updated........................msg from controller",
+            ),
+            400,
         )
