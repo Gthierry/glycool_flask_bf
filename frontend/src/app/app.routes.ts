@@ -15,6 +15,7 @@ import { AvoidFoodComponent } from '../components/pages/avoid-food-component/avo
 import { WhatsDiabetRestaurantComponent } from '../components/pages/whats-diabet-restaurant-component/whats-diabet-restaurant-component';
 import { Informations } from '../components/pages/user-profil-component/user-profil-children/informations/informations';
 import { Messages } from '../components/pages/user-profil-component/user-profil-children/messages/messages';
+import { Contacts } from '../components/pages/user-profil-component/user-profil-children/contacts/contacts';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,6 +39,8 @@ export const routes: Routes = [
       { path: 'informations', component: Informations, pathMatch: 'full' },
       { path: 'infos-profil', component: InfosProfilComponent },
       { path: 'messages', component: Messages },
+      { path: 'contacts', component: Contacts },
+
     ],
   },
 

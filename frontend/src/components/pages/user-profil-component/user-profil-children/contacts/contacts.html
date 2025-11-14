@@ -1,0 +1,273 @@
+<!-- contacts.html -->
+<div class="container-fluid py-4">
+    <!-- Header Card with Search -->
+    <div class="card border-success-subtle shadow-sm mb-4">
+        <div class="card-header bg-success-subtle">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="text-success-emphasis mb-0">
+                    <i class="bi bi-people me-2"></i>Mes contacts
+                </h5>
+                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#addContactModal">
+                    <i class="bi bi-person-plus me-2"></i>Ajouter un contact
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- Search and Filter -->
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text border-success-subtle bg-white">
+                            <i class="bi bi-search text-success"></i>
+                        </span>
+                        <input type="text" class="form-control border-success-subtle"
+                            placeholder="Rechercher un contact...">
+                    </div>
+                </div>
+                <!-- <div class="col-md-3">
+                    <select class="form-select border-success-subtle">
+                        <option selected>Tous les contacts</option>
+                        <option>Médecins</option>
+                        <option>Diététiciens</option>
+                        <option>Communauté</option>
+                        <option>Famille</option>
+                    </select>
+                </div> -->
+                <div class="col-md-3">
+                    <select class="form-select border-success-subtle">
+                        <option selected>Trier par nom</option>
+                        <option>Récemment ajouté</option>
+                        <option>Plus actifs</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacts Grid -->
+    <div class="card border-success-subtle shadow-sm">
+        <div class="card-header bg-success-subtle">
+            <h6 class="text-success-emphasis mb-0">
+                <i class="bi bi-grid-3x3-gap me-2"></i>Liste des contacts (24)
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+
+                <!-- Contact 1 - Médecin -->
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="card border-success-subtle h-100">
+                        <div class="card-body text-center p-3">
+                            <div class="position-relative d-inline-block mb-3">
+                                <img src="profil-images/20180506_162941.jpg" alt="Stephanie" class="rounded-circle"
+                                    width="60" height="60" style="object-fit: cover;">
+
+                            </div>
+                            <h6 class="card-title text-success-emphasis mb-1">Stéphanie</h6>
+                            <p class="card-text text-muted small mb-2"></p>
+                            <!-- <div class="mb-3">
+                                <span class="badge bg-info-subtle text-info-emphasis">Médecin</span>
+                                <span class="badge bg-success-subtle text-success-emphasis">En ligne</span>
+                            </div> -->
+                            <div class="d-flex justify-content-center mt-4 gap-2">
+                                <!-- <button class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-envelope">Retirer</i>
+                                </button> -->
+                                <button class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-telephone">Profil</i>
+                                </button>
+                                <button class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-chat-dots">Envoyer un message</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact 2 - Diététicien -->
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="card border-success-subtle h-100">
+                        <div class="card-body text-center p-3">
+                            <div class="position-relative d-inline-block mb-3">
+                                <div class="avatar bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center"
+                                    style="width: 60px; height: 60px;">
+                                    SL
+                                </div>
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                    <i class="bi bi-clock"></i>
+                                </span>
+                            </div>
+                            <h6 class="card-title text-success-emphasis mb-1">Sophie Lefort</h6>
+                            <p class="card-text text-muted small mb-2">Diététicienne nutritionniste</p>
+                            <div class="mb-3">
+                                <span class="badge bg-warning-subtle text-warning-emphasis">Diététicien</span>
+                                <span class="badge bg-warning-subtle text-warning-emphasis">Absent</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-envelope"></i>
+                                </button>
+                                <button class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-telephone"></i>
+                                </button>
+                                <button class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-chat-dots"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact 3 - Communauté -->
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="card border-success-subtle h-100">
+                        <div class="card-body text-center p-3">
+                            <div class="position-relative d-inline-block mb-3">
+                                <div class="avatar bg-success text-white rounded-circle d-flex align-items-center justify-content-center"
+                                    style="width: 60px; height: 60px;">
+                                    MJ
+                                </div>
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                    <i class="bi bi-check"></i>
+                                </span>
+                            </div>
+                            <h6 class="card-title text-success-emphasis mb-1">Marie Jardin</h6>
+                            <p class="card-text text-muted small mb-2">Passionnée de cuisine saine</p>
+                            <div class="mb-3">
+                                <span class="badge bg-primary-subtle text-primary-emphasis">Communauté</span>
+                                <span class="badge bg-success-subtle text-success-emphasis">En ligne</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-envelope"></i>
+                                </button>
+                                <button class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                                <button class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-chat-dots"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- Empty State ou Load More -->
+            <div class="text-center py-4 mt-4">
+                <button class="btn btn-outline-success">
+                    <i class="bi bi-arrow-clockwise me-2"></i>Charger plus de contacts
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <!-- <div class="card border-success-subtle shadow-sm mt-4">
+        <div class="card-header bg-success-subtle">
+            <h6 class="text-success-emphasis mb-0">
+                <i class="bi bi-lightning me-2"></i>Actions rapides
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <button class="btn btn-outline-success w-100">
+                        <i class="bi bi-person-plus d-block mb-2" style="font-size: 1.5rem;"></i>
+                        Inviter un ami
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-success w-100">
+                        <i class="bi bi-people d-block mb-2" style="font-size: 1.5rem;"></i>
+                        Groupes
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-success w-100">
+                        <i class="bi bi-heart d-block mb-2" style="font-size: 1.5rem;"></i>
+                        Favoris
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-success w-100">
+                        <i class="bi bi-archive d-block mb-2" style="font-size: 1.5rem;"></i>
+                        Archivés
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>-->
+
+    <!-- Modal Ajouter Contact -->
+    <!-- <div class="modal fade" id="addContactModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content border-success-subtle">
+                <div class="modal-header bg-success-subtle">
+                    <h5 class="modal-title text-success-emphasis">
+                        <i class="bi bi-person-plus me-2"></i>Ajouter un contact
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label text-success-emphasis">Nom complet</label>
+                            <input type="text" class="form-control border-success-subtle" placeholder="Entrez le nom">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-success-emphasis">Email</label>
+                            <input type="email" class="form-control border-success-subtle"
+                                placeholder="email@exemple.com">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-success-emphasis">Téléphone (optionnel)</label>
+                            <input type="tel" class="form-control border-success-subtle"
+                                placeholder="+33 1 23 45 67 89">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-success-emphasis">Catégorie</label>
+                            <select class="form-select border-success-subtle">
+                                <option>Communauté</option>
+                                <option>Médecin</option>
+                                <option>Diététicien</option>
+                                <option>Pharmacien</option>
+                                <option>Coach</option>
+                                <option>Famille</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-success-emphasis">Message personnel (optionnel)</label>
+                            <textarea class="form-control border-success-subtle" rows="3"
+                                placeholder="Ajoutez un message personnel..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-success">
+                        <i class="bi bi-person-plus me-2"></i>Ajouter le contact
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <style>
+        .avatar {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            transition: transform 0.2s ease;
+        }
+    </style>
