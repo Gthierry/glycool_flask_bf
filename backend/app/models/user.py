@@ -54,3 +54,30 @@ class User(db.Model):
                 self.user_last_login.isoformat() if self.user_last_login else None
             ),
         }
+
+        # Helpers maybe
+
+    #         def add_contact(self, other_user: "User") -> None:
+    #     if other_user.user_id == self.user_id:
+    #         return  # éviter de s'ajouter soi-même
+
+    #     # éviter les doublons
+    #     exists = any(
+    #         link.contact_user_id == other_user.user_id
+    #         for link in self.contacts_links
+    #     )
+    #     if not exists:
+    #         self.contacts_links.append(
+    #             Contact(contact_user=other_user)
+    #         )
+
+    # def send_message(self, to: "User", title: str, body: str, msg_type: str | None = None) -> "Message":
+    #     msg = Message(
+    #         sender=self,
+    #         receiver=to,
+    #         message_title=title,
+    #         message_body=body,
+    #         message_type=msg_type,
+    #     )
+    #     db.session.add(msg)
+    #     return msg

@@ -12,7 +12,11 @@ class Message(db.Model):
     message_body = db.Column(db.String(), nullable=True)
     message_created_at = db.Column(db.DateTime, server_default=db.func.now())
     message_type = db.Column(db.String(10), nullable=False)
-    message_user_id = db.Column(
+    message_sender_user_id = db.Column(
         db.Integer, db.ForeignKey("users.user_id"), nullable=False
     )
-    user_messages = db.relationship("User_message", back_populates="message")
+    message_receiver_user_id = db.Column(
+        db.Integer, db.ForeignKey("users.user_id"), nullable=False
+    )
+    message_read = db.Column(db.Boolean, nullable=False)
+    user = db.relationship("User", back_populates="message")
