@@ -60,6 +60,6 @@ export class AuthService {
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    this.isLogged.set(true);
+    this.isLogged.set(false);
   }
 }

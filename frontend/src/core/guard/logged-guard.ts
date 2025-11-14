@@ -7,9 +7,11 @@ export const loggedGuard: CanActivateFn = (route, state): boolean | UrlTree => {
   const router = inject(Router);
 
   if (tokenService.getToken() === null || tokenService.isTokenExpired()) {
+    console.log('token null ??? ' + tokenService.getToken());
+    console.log('token expired ???' + tokenService.isTokenExpired);
+    debugger;
     return router.createUrlTree(['/login']);
   }
-  
+
   return true;
-  
 };

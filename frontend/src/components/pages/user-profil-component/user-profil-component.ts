@@ -27,18 +27,14 @@ export class UserProfilComponent {
   tokenService = inject(TokenService);
 
   constructor() {
+    console.log('passage par constructeur userprofil');
     //check if token is valid
     if (this.tokenService.getToken()) {
       //get user data from signal
       this.user = this.userSignal.userSignal();
-      console.log('User from localStorage:', this.user);
     } else {
       console.log('No valid token found, redirecting to register.');
       this.route.navigate(['register']);
     }
-  }
-
-  navigateToInfosProfile() {
-    this.route.navigate(['infos-profil']);
   }
 }
