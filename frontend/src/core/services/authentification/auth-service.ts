@@ -10,8 +10,23 @@ import { sign } from 'crypto';
 export class AuthService {
   apiURL: string = 'http://localhost:5000/users/login';
   httpClient = inject(HttpClient);
-
+  //signal pour communiquer l'état de l'utilisateur connecté
   userSignal = signal<User | null>(null);
+
+  //methode pour setter mon user dans mon siganl en lecture seule
+  setUserSignal(user: User) {
+    this.userSignal.set(user);
+  }
+
+  getCurrentUser(): User | null {
+    return this.userSignal();
+  }
+
+  clearUserSignal(): void {
+    this.userSignal.set(null);
+  }
+
+  //signal pour communiquer l'état de connexion
   isLogged = signal<boolean>(false);
 
   //login user
@@ -22,8 +37,8 @@ export class AuthService {
         const url = `${this.apiURL}`;
         this.httpClient.post<any>(url, user).subscribe({
           next: (response) => {
-            console.log('set the localStorage');
-            this.userSignal.set(response.user)
+            //set le signal userSignal avec les infos provenant de mon backend
+            this.userSignal.set(response.user);
             //localStorage.setItem('user', JSON.stringify(response.user));
             localStorage.setItem('token', response.token);
             this.isLogged.set(true);

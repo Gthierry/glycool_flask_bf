@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, effect, inject, Input } from '@angular/core';
 import { User } from '../../../../../core/models/user-models/user.model';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -16,21 +16,17 @@ import { AuthService } from '../../../../../core/services/authentification/auth-
 })
 export class InfosProfilComponent {
   //user utiliser pour afficher les infos de l'utilisateur connecté
-  user: User | undefined;
   //recupération du user directement du parent via signal
-  userSignal = inject(UserProfilComponent).userSignal;
+  authService = inject(AuthService);
+  userSignal = this.authService.userSignal;
+  user: User | null = this.userSignal();
 
   //formulaire de modification des infos du profil
   formBuilder = inject(FormBuilder);
   form: FormGroup;
 
   constructor() {
-    //recupération des données de l'utilisateur connecté depuis le signal du parent
-    const userData = this.userSignal();
-    if (userData) {
-      this.user = userData;
-      console.log('from const: ' + this.user?.user_id);
-    }
+    console.log('-------------------------' + this.user?.first_name);
     //creation du formulaire avec les valeurs initiales de l'utilisateur connecté
     this.form = this.formBuilder.group({
       bio: [this.user?.bio || '', Validators.maxLength(500)],
@@ -41,10 +37,19 @@ export class InfosProfilComponent {
       city: [this.user?.city || ''],
       birthdate: [this.user?.birthdate || ''],
     });
+
+    //Utiliser effect pour réagir aux changements du signal
+    effect(() => {
+      const userData = this.userSignal();
+      if (userData) {
+        this.user = userData;
+        console.log('User data updated in InfosProfilComponent:', this.user);
+      }
+    });
   }
 
-  returnButtonClick() {
-    window.history.back();
+  returnButtonClick(): void {
+    this.route.navigate(['/profil/informations']);
   }
 
   //injection du service utilisateur
@@ -78,11 +83,13 @@ export class InfosProfilComponent {
         //appel du service utilisateur pour mettre à jour les informations dans le backend
         const userUpdated = this.userService.updateUser(updatedUser).subscribe({
           next: (reponse) => {
-            this.user = reponse;
             //mise à jour du signal utilisateur avec les nouvelles données
-            this.userSignal.userSignal.update(() => this.user!);
+            this.authService.setUserSignal(reponse);
+
+            setTimeout(() => {
+              this.route.navigate(['/profil/informations']);
+            }, 100);
             // Redirection vers la page de profil
-            this.route.navigate(['/profil/informations']);
           },
           error: (error) => {
             console.error('Error updating user:', error);

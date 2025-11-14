@@ -30,7 +30,7 @@ export class UserProfilComponent {
     //check if token is valid
     if (this.tokenService.getToken()) {
       //get user data from signal
-      this.user = this.userSignal();
+      this.user = this.userSignal.userSignal();
       console.log('User from localStorage:', this.user);
     } else {
       console.log('No valid token found, redirecting to register.');

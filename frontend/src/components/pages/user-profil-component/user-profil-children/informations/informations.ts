@@ -1,4 +1,4 @@
-import { Component, inject, Input, input } from '@angular/core';
+import { Component, effect, inject, Input, input } from '@angular/core';
 import { User } from '../../../../../core/models/user-models/user.model';
 import { UserProfilComponent } from '../../user-profil-component';
 import { AuthService } from '../../../../../core/services/authentification/auth-service';
@@ -10,11 +10,16 @@ import { AuthService } from '../../../../../core/services/authentification/auth-
 })
 export class Informations {
   //injection of the parent to retrieve the siganl from the parent
-  userSignal = inject(UserProfilComponent).userSignal;
+  userSignal = inject(AuthService).userSignal;
   user: User | null = null;
 
   constructor() {
-    //retrieve user data from the signal
-    this.user = this.userSignal.userSignal();
+    effect(() => {
+      const userData = this.userSignal();
+      if (userData) {
+        this.user = userData;
+        console.log('User data updated in Informations component:', this.user);
+      }
+    });
   }
 }
