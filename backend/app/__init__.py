@@ -27,7 +27,7 @@ if os.path.exists(envlocal):
 
 app = Flask("app")
 app.debug = os.environ.get("DEBUG", False)
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://tgi:root@localhost:5432/glycool_database'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://tgi:root@localhost:5432/glycool_database'
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
@@ -48,7 +48,7 @@ migrate = Migrate(app, db)
 # Import the MODEL CLASSES, not modules
 from app.models.user import User
 from app.models.message import Message
-from app.models.user_message import User_message
+from app.models.contact import Contact
 from app.models.comment import Comment
 from app.models.story import Story
 from app.models.product import Product

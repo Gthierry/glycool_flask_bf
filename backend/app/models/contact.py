@@ -20,7 +20,7 @@ class Contact(db.Model):
 
     contact_created_at = db.Column(
         db.DateTime,
-        default=datetime.utcnow,
+        server_default=db.func.now(),
         nullable=False,
     )
 
