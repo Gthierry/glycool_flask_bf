@@ -1,7 +1,6 @@
 from email.policy import default
 from marshmallow import Schema, fields, validate
 from sqlalchemy import Integer
-from app.dtos import message_dto
 
 
 class MessageInsertSchema(Schema):
