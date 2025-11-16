@@ -30,7 +30,8 @@ class User(db.Model):
     comments = db.relationship("Comment", back_populates="user")
     restaurants = db.relationship("Restaurant", back_populates="user")
     story = db.relationship("Story", back_populates="user")
-    user_messages = db.relationship("User_message", back_populates="user")
+    messages = db.relationship("Message", back_populates="user")
+    contacts = db.relationship("Contact", back_populate="user")
 
     def to_dict(self):
         return {

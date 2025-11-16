@@ -20,9 +20,9 @@ class ContactService:
     @staticmethod
     def get_contacts_user_id(user_id: int) -> ContactDto | None:
 
-        contact = Contact.query.filter_by(user_id=user_id).first()
-        if contact:
-            return ContactDto(contact)
+        contacts = Contact.query.filter_by(user_id=user_id).all()
+        if contacts:
+            return ContactDto(contacts)
         return None
 
     @staticmethod
