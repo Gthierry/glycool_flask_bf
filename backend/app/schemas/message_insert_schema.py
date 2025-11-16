@@ -1,5 +1,6 @@
 from email.policy import default
 from marshmallow import Schema, fields, validate
+from sqlalchemy import Integer
 from app.dtos import message_dto
 
 
@@ -9,4 +10,5 @@ class MessageInsertSchema(Schema):
     message_subject = fields.String(required=True)
     message_body = fields.String(required=True)
     message_type = fields.String(required=True)
-    message_user_id = fields.Integer(required=True)
+    message_sender_id = fields.Integer(required=True)
+    message_receiver_id = fields.Integer(required=True)
