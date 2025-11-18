@@ -3,6 +3,7 @@ from flask import jsonify, request
 from app.services.message_service import MessageService
 from app.schemas.message_insert_schema import MessageInsertSchema
 from app.services import message_service
+from app.dtos.message_dto import MessageDto
 
 messageInsertSchema = MessageInsertSchema()
 
@@ -20,14 +21,15 @@ def create_message():
         return jsonify({"error from controller": str(e)}), 400
 
 
-@app.get("/message/getById/<int:message_id>")
-def getMessageOnId(message_id):
+@app.get("/message/getForAUserId/<int:user_id>")
+def getMessagesForAUserId(user_id):
     message_service = MessageService()
     try:
-
-        message_dto = message_service.get_message_by_id(message_id)
-        if message_dto:
-            return jsonify(message_dto.serialize()), 200
+        message_dtos : list[MessageDto] = message_service.get_messages_for_a_user_id(user_id)
+       
+        if message_dtos:
+            return jsonify([dto.serialize() for dto in message_dtos]), 200
+            
         else:
             return jsonify({"error": "Message not found"}), 404
     except Exception as e:

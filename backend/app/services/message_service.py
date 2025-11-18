@@ -1,3 +1,6 @@
+from email import message
+
+from flask import jsonify
 from app.dtos.message_dto import MessageDto
 from app.schemas.message_insert_schema import MessageInsertSchema
 from app.models.message import Message
@@ -19,11 +22,12 @@ class MessageService:
         return MessageDto(message)
 
     @staticmethod
-    def get_message_by_id(message_id: int) -> MessageDto | None:
+    def get_message_for_a_user_id(user_id: int) -> MessageDto | None:
 
-        message = Message.query.filter_by(message_id=message_id).first()
-        if message:
-            return MessageDto(message)
+        messages = Message.query.filter_by(message_receiver_user_id=user_id).all()
+        messageDtos: list[MessageDto] = []  
+        if messages:
+            return jsonify([MessageDto(message).serialize() for message in messages])
         return None
 
     @staticmethod
