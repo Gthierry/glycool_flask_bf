@@ -25,7 +25,7 @@ class MessageService:
     def get_message_for_a_user_id(user_id: int) -> MessageDto | None:
 
         messages = Message.query.filter_by(message_receiver_user_id=user_id).all()
-        messageDtos: list[MessageDto] = []  
+        messageDtos: list[MessageDto] = []
         if messages:
             return jsonify([MessageDto(message).serialize() for message in messages])
         return None

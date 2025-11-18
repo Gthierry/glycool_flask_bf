@@ -8,6 +8,7 @@ from app.schemas import contact_insert_schema
 
 contact_insert_schema = ContactInsertSchema()
 
+
 @app.post("/contacts/add")
 def add_contact():
     try:
