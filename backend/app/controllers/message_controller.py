@@ -1,23 +1,20 @@
 from app import app
 from flask import jsonify, request
-
 from app.services.message_service import MessageService
 from app.schemas.message_insert_schema import MessageInsertSchema
 from app.services import message_service
 
-message_schema = MessageInsertSchema()
-
+messageInsertSchema = MessageInsertSchema()
 
 @app.post("/message/create")
 def create_message():
     
     # TODO check also for the asiociative table user_message
-    message_service = MessageService()
     try:
         data = request.get_json()
         # Validation Marshmallow
-        validated_data = message_schema.load(data)
-        message_dto = message_service.create_message(validated_data)
+        validated_data = messageInsertSchema.load(data)
+        message_dto = MessageService.create_message(validated_data)
         return jsonify(message_dto.serialize()), 201
     except Exception as e:
         return jsonify({"error from controller": str(e)}), 400

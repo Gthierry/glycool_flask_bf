@@ -1,5 +1,6 @@
 # models.py
 # Import the db instance
+from email.policy import default
 from app import db
 
 
@@ -29,7 +30,7 @@ class Message(db.Model):
        foreign_keys=[message_receiver_user_id],
        back_populates="received_messages"
     )
-    message_read = db.Column(db.Boolean, nullable=False)
+    message_read = db.Column(db.Boolean, nullable=False, default=False)
     #user = db.relationship("User", back_populates="message_read")
     
     def serialize(self):

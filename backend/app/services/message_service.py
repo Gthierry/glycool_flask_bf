@@ -8,9 +8,7 @@ class MessageService:
 
     @staticmethod
     def create_message(data: dict) -> MessageDto:
-
         message_data = data.copy()
-
         message = Message(**message_data)
         print("Created Message object:", message)
         db.session.add(message)

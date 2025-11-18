@@ -12,7 +12,10 @@ class MessageDto(AbstractDto):
         self.body = Message.message_body
         self.created_at = Message.message_created_at
         self.type = Message.message_type
-        self.user_id = Message.message_user_id
+        self.read = Message.message_read
+        self.sender_user_id = Message.message_sender_user_id
+        self.receiver_user_id = Message.message_receiver_user_id
+
 
     def serialize(self):
         dto = deepcopy(self)
