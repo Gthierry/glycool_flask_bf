@@ -22,12 +22,12 @@ class MessageService:
         return MessageDto(message)
 
     @staticmethod
-    def get_message_for_a_user_id(user_id: int) -> MessageDto | None:
+    def get_message_for_a_user_id(user_id: int) -> MessageDto:
 
-        messages = Message.query.filter_by(message_receiver_user_id=user_id).all()
-        messageDtos: list[MessageDto] = []
-        if messages:
-            return jsonify([MessageDto(message).serialize() for message in messages])
+        messages = Message.query.filter_by(message_sender_user_id=user_id).all()
+        if len(messages) > 0:
+            return [MessageDto(message) for message in messages]
+
         return None
 
     @staticmethod

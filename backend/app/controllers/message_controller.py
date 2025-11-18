@@ -7,9 +7,10 @@ from app.dtos.message_dto import MessageDto
 
 messageInsertSchema = MessageInsertSchema()
 
+
 @app.post("/message/create")
 def create_message():
-    
+
     # TODO check also for the asiociative table user_message
     try:
         data = request.get_json()
@@ -25,13 +26,15 @@ def create_message():
 def getMessagesForAUserId(user_id):
     message_service = MessageService()
     try:
-        message_dtos : list[MessageDto] = message_service.get_messages_for_a_user_id(user_id)
-       
-        if message_dtos:
+        message_dtos: list[MessageDto] = message_service.get_message_for_a_user_id(
+            user_id
+        )
+
+        if len(message_dtos) > 0:
             return jsonify([dto.serialize() for dto in message_dtos]), 200
-            
         else:
             return jsonify({"error": "Message not found"}), 404
+
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
