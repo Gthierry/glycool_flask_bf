@@ -12,8 +12,11 @@ class MessageService:
         message_data = data.copy()
 
         message = Message(**message_data)
+        print("Created Message object:", message)
         db.session.add(message)
+        print("Added Message to session:", message)
         db.session.commit()
+        print("Committed session to database.")
         db.session.refresh(message)
         return MessageDto(message)
 

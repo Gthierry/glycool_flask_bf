@@ -58,7 +58,7 @@ from app.models.ingredient import Ingredient
 from app.models.restaurant import Restaurant
 from app.models.recipe_ingredients import Recipe_ingredients
 
-from app.controllers import user_controller, message_controller
+from app.controllers import user_controller, message_controller, contact_controller
 
 
 # Route de test JWT

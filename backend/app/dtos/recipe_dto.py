@@ -5,12 +5,13 @@ from copy import deepcopy
 
 from app.dtos.abstract_dto import AbstractDto
 from backend.app.models import recipe_ingredients
+from backend.app.models import recipe
 
 
 @dataclass
 class RestaurantDto(AbstractDto):
 
-    def __init__(self, Recipe: recipe_ingredients):
+    def __init__(self, Recipe: Recipe):
         self.id = Recipe.recipe_id
 
         self.name = Recipe.name

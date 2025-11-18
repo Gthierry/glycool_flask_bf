@@ -1,3 +1,4 @@
+from sqlite3 import IntegrityError
 import token
 
 import jwt
@@ -23,10 +24,11 @@ def get_users():
     try:
         print("getting users")
         users = UserService.get_all()
-
+        for user in users:
+            print("user: " + str(user.username))
         return jsonify([user.__dict__ for user in users])
-    except:
-        return jsonify({"error": "No users found"}), 404
+    except IntegrityError as  e:
+        return jsonify({"error": str(e)}), 404
 
 
 @app.post("/users/getuser")
@@ -58,7 +60,7 @@ def user_login():
     return jsonify(form.errors), 404
 
 
-@app.post("/users/email")
+@app.post("/users/emailcheck")
 def check_if_email_exist():
     form = UserEmailForm.from_json(request.json)
     if form.validate():

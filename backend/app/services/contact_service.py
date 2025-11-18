@@ -7,10 +7,9 @@ from app import db
 class ContactService:
 
     @staticmethod
-    def create_contact(data: dict) -> ContactDto:
+    def add_contact(data: dict) -> ContactDto:
 
         contact_data = data.copy()
-
         contact = Contact(**contact_data)
         db.session.add(contact)
         db.session.commit()
@@ -22,7 +21,10 @@ class ContactService:
 
         contacts = Contact.query.filter_by(user_id=user_id).all()
         if contacts:
-            return ContactDto(contacts)
+             contactDtos: list[ContactDto] = []  #  Syntaxe correcte et initialisation
+             for contact in contacts:
+                 contactDtos.append(ContactDto(contact))  #  Conversion en ContactDto
+             return contactDtos
         return None
 
     @staticmethod

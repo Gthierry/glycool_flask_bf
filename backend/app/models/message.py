@@ -18,5 +18,30 @@ class Message(db.Model):
     message_receiver_user_id = db.Column(
         db.Integer, db.ForeignKey("users.user_id"), nullable=False
     )
+
+    sender = db.relationship(
+       "User", 
+       foreign_keys=[message_sender_user_id],
+       back_populates="sent_messages"
+    )
+    receiver = db.relationship(
+       "User", 
+       foreign_keys=[message_receiver_user_id],
+       back_populates="received_messages"
+    )
     message_read = db.Column(db.Boolean, nullable=False)
-    user = db.relationship("User", back_populates="message")
+    #user = db.relationship("User", back_populates="message_read")
+    
+    def serialize(self):
+           return {
+               "message_id": self.message_id,
+               "message_subject": self.message_subject,
+               "message_body": self.message_body,
+               "message_created_at": self.message_created_at.isoformat() if self.message_created_at else None,
+               "message_type": self.message_type,
+               "message_sender_user_id": self.message_sender_user_id,
+               "message_receiver_user_id": self.message_receiver_user_id,
+               "message_read": self.message_read,
+               "sender": self.sender.serialize() if self.sender else None,
+               "receiver": self.receiver.serialize() if self.receiver else None
+           }

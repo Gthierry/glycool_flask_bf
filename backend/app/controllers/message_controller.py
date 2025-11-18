@@ -10,6 +10,7 @@ message_schema = MessageInsertSchema()
 
 @app.post("/message/create")
 def create_message():
+    
     # TODO check also for the asiociative table user_message
     message_service = MessageService()
     try:
@@ -19,7 +20,7 @@ def create_message():
         message_dto = message_service.create_message(validated_data)
         return jsonify(message_dto.serialize()), 201
     except Exception as e:
-        return jsonify({"error": str(e)}), 400
+        return jsonify({"error from controller": str(e)}), 400
 
 
 @app.get("/message/getById/<int:message_id>")

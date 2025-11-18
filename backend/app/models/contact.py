@@ -28,14 +28,15 @@ class Contact(db.Model):
     owner = db.relationship(
         "User",
         foreign_keys=[user_id],
-        back_populates="contacts_links",
+        back_populates="contacts",
     )
-
-    # le user qui EST le contact
+     # L'utilisateur qui EST le contact (relation manquante)
     contact_user = db.relationship(
         "User",
         foreign_keys=[contact_user_id],
+        back_populates="contact_of",
     )
 
+  
     def __repr__(self):
         return f"<Contact user={self.user_id} contact={self.contact_user_id}>"

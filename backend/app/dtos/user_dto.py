@@ -40,6 +40,8 @@ class UserDto(AbstractDto):
 
         self.role = User.user_role
 
+        
+
     def serialize(self):
 
         dto = deepcopy(self)

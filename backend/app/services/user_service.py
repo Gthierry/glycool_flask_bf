@@ -28,12 +28,12 @@ from app.forms.users import user_username_form
 
 class UserService(Base_service):
     @staticmethod
-    @jwt_required
+    
     def get_all():
         return [UserDto(u) for u in User.query.all()]
 
     @staticmethod
-    @jwt_required
+   
     def get_by_id(user_id: int):
         user = User.query.get(user_id)
         if user:
@@ -41,7 +41,7 @@ class UserService(Base_service):
         return None
 
     @staticmethod
-    @jwt_required_simple
+   
     def get_user(form: UserUsernameForm):
         try:
             print("Getting user by username: " + form.username.data + " in service")
@@ -52,11 +52,13 @@ class UserService(Base_service):
             return None
 
     @staticmethod
-    @jwt_required_simple
+    #@jwt_required_simple
     def get_user_by_email(form: UserEmailForm):
         if form.validate():
+            print("Form validated for email: " + form.email.data)
             try:
                 user = User.query.filter_by(user_email=form.email.data).one()
+                print("User found by email: " + user.user_email)
                 return UserDto(user)
             except:
                 return None
@@ -128,7 +130,7 @@ class UserService(Base_service):
                 return None
 
     @staticmethod
-    @jwt_required_simple
+    #@jwt_required
     def update(form: UserUpdateForm):
         if form.validate() is False:
             return None

@@ -30,9 +30,33 @@ class User(db.Model):
     comments = db.relationship("Comment", back_populates="user")
     restaurants = db.relationship("Restaurant", back_populates="user")
     story = db.relationship("Story", back_populates="user")
-    messages = db.relationship("Message", back_populates="user")
-    contacts = db.relationship("Contact", back_populate="user")
+    #messages = db.relationship("Message", back_populates="user")
+    #Relations Contact avec foreign_keys spécifiés
+    contacts = db.relationship(
+        "Contact", 
+        foreign_keys="Contact.user_id",
+        back_populates="owner"
+    )
+    
+    contact_of = db.relationship(
+        "Contact", 
+        foreign_keys="Contact.contact_user_id",
+        back_populates="contact_user"
+    )
 
+    sent_messages = db.relationship(
+     "Message",
+     foreign_keys="Message.message_sender_user_id",
+     back_populates="sender",
+     lazy="dynamic"
+    )
+    
+    received_messages = db.relationship(
+        "Message",
+        foreign_keys="Message.message_receiver_user_id", 
+        back_populates="receiver",
+        lazy="dynamic"
+    )
     def to_dict(self):
         return {
             "user_id": self.user_id,
@@ -47,6 +71,7 @@ class User(db.Model):
             "user_avatar": self.user_avatar,
             "user_role": self.user_role,
             "user_bio": self.user_bio,
+            "user_humor": self.user_humor,
             "user_active": self.user_active,
             "user_created_at": (
                 self.user_created_at.isoformat() if self.user_created_at else None
