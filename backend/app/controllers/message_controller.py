@@ -39,6 +39,23 @@ def getMessagesForAUserId(user_id):
         return jsonify({"error": str(e)}), 400
 
 
+@app.get("/message/recipient/<int:user_id>")
+def getMessagesForRecipient(user_id):
+    message_service = MessageService()
+    try:
+        message_dtos: list[MessageDto] = (
+            message_service.get_all_messages_for_a_recipient(user_id)
+        )
+
+        if len(message_dtos) > 0:
+            return jsonify([dto.serialize() for dto in message_dtos]), 200
+        else:
+            return jsonify({"error": "Message not found"}), 404
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
+
 @app.delete("/message/delete/<int:message_id>")
 # TODO check also if i really delete it
 def delete_message(message_id):
