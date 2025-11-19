@@ -1,4 +1,3 @@
-<p>contacts-component works!</p>
 <!-- contacts.html -->
 <div class="container-fluid py-4">
     <!-- Header Card with Search -->
@@ -13,6 +12,9 @@
                     <i class="bi bi-person-plus me-2"></i>Ajouter un contact
                 </button>
             </div>
+
+
+
         </div>
         <div class="card-body">
             <!-- Search and Filter -->
@@ -25,6 +27,9 @@
                         <input type="text" class="form-control border-success-subtle"
                             placeholder="Rechercher un contact...">
                     </div>
+
+
+
                 </div>
                 <!-- <div class="col-md-3">
                     <select class="form-select border-success-subtle">
@@ -50,13 +55,14 @@
     <div class="card border-success-subtle shadow-sm">
         <div class="card-header bg-success-subtle">
             <h6 class="text-success-emphasis mb-0">
-                <i class="bi bi-grid-3x3-gap me-2"></i>Liste des contacts (24)
+                <i class="bi bi-grid-3x3-gap me-2"></i>Liste des contacts ({{contactList.length}})
             </h6>
         </div>
         <div class="card-body">
             <div class="row g-3">
+                @for(contact of contactList; track contact.user_id) {
 
-                <!-- Contact 1 - Médecin -->
+                <!-- Contact 1 -->
                 <div class="col-xl-4 col-lg-6 col-md-6">
                     <div class="card border-success-subtle h-100">
                         <div class="card-body text-center p-3">
@@ -68,7 +74,7 @@
                             <h6 class="card-title text-success-emphasis mb-1">Stéphanie</h6>
                             <p class="card-text text-muted small mb-2"></p>
                             <!-- <div class="mb-3">
-                                <span class="badge bg-info-subtle text-info-emphasis">Médecin</span>
+                                <span class="badge bg-info-subtle text-info-emphasis"></span>
                                 <span class="badge bg-success-subtle text-success-emphasis">En ligne</span>
                             </div> -->
                             <div class="d-flex justify-content-center mt-4 gap-2">
@@ -85,76 +91,9 @@
                         </div>
                     </div>
                 </div>
+                }
 
-                <!-- Contact 2 - Diététicien -->
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="card border-success-subtle h-100">
-                        <div class="card-body text-center p-3">
-                            <div class="position-relative d-inline-block mb-3">
-                                <div class="avatar bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center"
-                                    style="width: 60px; height: 60px;">
-                                    SL
-                                </div>
-                                <span
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
-                                    <i class="bi bi-clock"></i>
-                                </span>
-                            </div>
-                            <h6 class="card-title text-success-emphasis mb-1">Sophie Lefort</h6>
-                            <p class="card-text text-muted small mb-2">Diététicienne nutritionniste</p>
-                            <div class="mb-3">
-                                <span class="badge bg-warning-subtle text-warning-emphasis">Diététicien</span>
-                                <span class="badge bg-warning-subtle text-warning-emphasis">Absent</span>
-                            </div>
-                            <div class="d-flex justify-content-center gap-2">
-                                <button class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-envelope"></i>
-                                </button>
-                                <button class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-telephone"></i>
-                                </button>
-                                <button class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-chat-dots"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Contact 3 - Communauté -->
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="card border-success-subtle h-100">
-                        <div class="card-body text-center p-3">
-                            <div class="position-relative d-inline-block mb-3">
-                                <div class="avatar bg-success text-white rounded-circle d-flex align-items-center justify-content-center"
-                                    style="width: 60px; height: 60px;">
-                                    MJ
-                                </div>
-                                <span
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                                    <i class="bi bi-check"></i>
-                                </span>
-                            </div>
-                            <h6 class="card-title text-success-emphasis mb-1">Marie Jardin</h6>
-                            <p class="card-text text-muted small mb-2">Passionnée de cuisine saine</p>
-                            <div class="mb-3">
-                                <span class="badge bg-primary-subtle text-primary-emphasis">Communauté</span>
-                                <span class="badge bg-success-subtle text-success-emphasis">En ligne</span>
-                            </div>
-                            <div class="d-flex justify-content-center gap-2">
-                                <button class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-envelope"></i>
-                                </button>
-                                <button class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-heart"></i>
-                                </button>
-                                <button class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-chat-dots"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
 
 
