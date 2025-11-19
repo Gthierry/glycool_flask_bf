@@ -16,6 +16,7 @@ import { WhatsDiabetRestaurantComponent } from '../components/pages/whats-diabet
 import { ContactsComponent } from '../components/pages/user-profil-component/user-profil-children/contacts-component/contacts-component';
 import { UserInformationsComponent } from '../components/pages/user-profil-component/user-profil-children/user-informations-component/user-informations-component';
 import { MessagesComponent } from '../components/pages/user-profil-component/user-profil-children/messages-component/messages-component';
+import { SendMessageComponent } from '../components/pages/user-profil-component/user-profil-children/send-message-component/send-message-component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,6 +41,7 @@ export const routes: Routes = [
       { path: 'infos-profil', component: InfosProfilComponent },
       { path: 'messages', component: MessagesComponent },
       { path: 'contacts', component: ContactsComponent },
+      { path: 'send-message', component: SendMessageComponent },
     ],
   },
 
