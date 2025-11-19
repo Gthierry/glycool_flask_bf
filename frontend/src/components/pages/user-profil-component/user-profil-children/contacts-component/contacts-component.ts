@@ -4,7 +4,7 @@ import { ContactService } from '../../../../../core/services/contact-service/con
 import { Contact } from '../../../../../core/models/contact-models/contact.model';
 import { User } from '../../../../../core/models/user-models/user.model';
 import { UserService } from '../../../../../core/services/user-services/user-service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contacts-component',
@@ -23,11 +23,13 @@ export class ContactsComponent {
   // injection du ContactService afin de récupérer les contacts
   contactService = inject(ContactService);
 
-  //injection de router afin de naviguer vers les autres composants
   route = inject(Router);
+  //injection de ActivatedRoute afin de naviguer vers les autres composants enfants
+  activatedRoute = inject(ActivatedRoute);
 
   // déclaration des variables globales user, contactList pour récupérer les contacts utilisateurs, contacts pour récupérer les contacts
   user: User | null = null;
+  // utilisation de sig
   contactListSignal = signal<User[]>([]);
   contacts: Contact[] | undefined;
 
@@ -69,8 +71,12 @@ export class ContactsComponent {
       }
     });
   }
-
   navigateToSendMessage() {
-    this.route.navigateByUrl('send-message');
+    console.log('navigation to send-message');
+    // Navigation vers le composant d'envoi de message
+    this.route.navigate(['../send-message'], { relativeTo: this.activatedRoute });
+  }
+  navigateToContactProfile() {
+    this.route.navigate(['../informations'], { relativeTo: this.activatedRoute });
   }
 }

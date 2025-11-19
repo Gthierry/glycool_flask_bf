@@ -44,6 +44,5 @@ export const routes: Routes = [
       { path: 'send-message', component: SendMessageComponent },
     ],
   },
-
   { path: 'forum', component: ForumComponent },
 ];
