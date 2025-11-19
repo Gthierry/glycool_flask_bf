@@ -19,7 +19,7 @@ export class UserService {
   //récupération d'un utilisateur par son id
   getUserById(id: number): Observable<User> {
     try {
-      const url = `${this.apiUrl}/${id}`;
+      const url = `${this.apiUrl}/getuserbyid/${id}`;
       return this.httpClient.get<User>(url);
     } catch (error) {
       console.error('Error fetching user by ID:', error);

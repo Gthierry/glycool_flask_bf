@@ -1,4 +1,5 @@
 export interface Contact {
-  userId: number;
-  contactUserId: number;
+  user_id: number;
+  contact_user_id: number;
+  created_at: Date | null;
 }
