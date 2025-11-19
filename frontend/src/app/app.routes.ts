@@ -13,9 +13,9 @@ import { AlimentationComponent } from '../components/pages/alimentation-componen
 import { HealthyFoodComponent } from '../components/pages/healthy-food-component/healthy-food-component';
 import { AvoidFoodComponent } from '../components/pages/avoid-food-component/avoid-food-component';
 import { WhatsDiabetRestaurantComponent } from '../components/pages/whats-diabet-restaurant-component/whats-diabet-restaurant-component';
-import { Informations } from '../components/pages/user-profil-component/user-profil-children/informations/informations';
-import { Messages } from '../components/pages/user-profil-component/user-profil-children/messages/messages';
-import { Contacts } from '../components/pages/user-profil-component/user-profil-children/contacts/contacts';
+import { ContactsComponent } from '../components/pages/user-profil-component/user-profil-children/contacts-component/contacts-component';
+import { UserInformationsComponent } from '../components/pages/user-profil-component/user-profil-children/user-informations-component/user-informations-component';
+import { MessagesComponent } from '../components/pages/user-profil-component/user-profil-children/messages-component/messages-component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,11 +36,10 @@ export const routes: Routes = [
     canActivate: [loggedGuard],
     children: [
       { path: '', redirectTo: 'informations', pathMatch: 'full' },
-      { path: 'informations', component: Informations, pathMatch: 'full' },
+      { path: 'informations', component: UserInformationsComponent, pathMatch: 'full' },
       { path: 'infos-profil', component: InfosProfilComponent },
-      { path: 'messages', component: Messages },
-      { path: 'contacts', component: Contacts },
-
+      { path: 'messages', component: MessagesComponent },
+      { path: 'contacts', component: ContactsComponent },
     ],
   },
 

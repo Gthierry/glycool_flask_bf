@@ -1,16 +1,17 @@
-import { Component, effect, inject, Input, input } from '@angular/core';
-import { User } from '../../../../../core/models/user-models/user.model';
-import { UserProfilComponent } from '../../user-profil-component';
+import { Component, effect, inject, Signal } from '@angular/core';
+
 import { AuthService } from '../../../../../core/services/authentification/auth-service';
+import { User } from '../../../../../core/models/user-models/user.model';
+
 @Component({
-  selector: 'informations',
+  selector: 'app-user-informations-component',
   imports: [],
-  templateUrl: './informations.html',
-  styleUrl: './informations.css',
+  templateUrl: './user-informations-component.html',
+  styleUrl: './user-informations-component.css',
 })
-export class Informations {
+export class UserInformationsComponent {
   //injection of the parent to retrieve the siganl from the parent
-  userSignal = inject(AuthService).userSignal;
+  userSignal: Signal<User | null> = inject(AuthService).userSignal;
   user: User | null = null;
 
   constructor() {

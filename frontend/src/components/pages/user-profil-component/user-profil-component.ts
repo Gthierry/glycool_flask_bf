@@ -5,8 +5,6 @@ import { Router, RouterOutlet, ActivatedRoute, NavigationEnd } from '@angular/ro
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { Messages } from './user-profil-children/messages/messages';
-import { Informations } from './user-profil-children/informations/informations';
 import { AuthService } from '../../../core/services/authentification/auth-service';
 
 @Component({
