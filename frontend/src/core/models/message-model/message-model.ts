@@ -1,5 +1,6 @@
 import { MessageTypeEnum } from './message-type-enum';
 
+//Objet Message
 export interface Message {
   id: number;
   senderUserId: number;
@@ -10,3 +11,19 @@ export interface Message {
   type: string;
   read: boolean;
 }
+//Objet pour récupérer mon objet depuis json
+export interface MessageJson{
+  id: number;
+  sender_user_id: number;
+  receiver_user_id: number;
+  subject: string;
+  body: string;
+  created_at: string;
+  type: string;
+  read: boolean;
+}
+
+
+
+
+ 

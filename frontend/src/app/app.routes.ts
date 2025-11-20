@@ -17,6 +17,7 @@ import { ContactsComponent } from '../components/pages/user-profil-component/use
 import { UserInformationsComponent } from '../components/pages/user-profil-component/user-profil-children/user-informations-component/user-informations-component';
 import { MessagesComponent } from '../components/pages/user-profil-component/user-profil-children/messages-component/messages-component';
 import { SendMessageComponent } from '../components/pages/user-profil-component/user-profil-children/send-message-component/send-message-component';
+import { messageResolverResolver } from '../core/resolver/message-resolver/message-resolver-resolver';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,9 +40,9 @@ export const routes: Routes = [
       { path: '', redirectTo: 'informations', pathMatch: 'full' },
       { path: 'informations', component: UserInformationsComponent, pathMatch: 'full' },
       { path: 'infos-profil', component: InfosProfilComponent },
-      { path: 'messages', component: MessagesComponent },
+      { path: 'messages', component: MessagesComponent,resolve: {messages: messageResolverResolver} },
       { path: 'contacts', component: ContactsComponent },
-      { path: 'send-message', component: SendMessageComponent },
+      { path: 'send-message', component: SendMessageComponent, resolve: {messages: messageResolverResolver} },
     ],
   },
   { path: 'forum', component: ForumComponent },

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MessageJson } from '../../../../../core/models/message-model/message-model';
 
 @Component({
   selector: 'app-messages-component',
@@ -7,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './messages-component.css',
 })
 export class MessagesComponent {
+  
+  messages:MessageJson [] = []
+  activatedRoute = inject(ActivatedRoute);
 
+  constructor() {
+   this.messages = this.activatedRoute.snapshot.data['messages'];
+  }
+
+ 
 }
