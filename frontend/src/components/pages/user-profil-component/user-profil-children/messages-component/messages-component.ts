@@ -12,9 +12,11 @@ export class MessagesComponent {
   
   messages:MessageJson [] = []
   activatedRoute = inject(ActivatedRoute);
+  userService = inject(UserService);
 
   constructor() {
    this.messages = this.activatedRoute.snapshot.data['messages'];
+
    
   }
 

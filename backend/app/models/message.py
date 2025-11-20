@@ -44,5 +44,5 @@ class Message(db.Model):
                "message_receiver_user_id": self.message_receiver_user_id,
                "message_read": self.message_read,
                "sender": self.sender.serialize() if self.sender else None,
-               "receiver": self.receiver.serialize() if self.receiver else None
+               
            }
