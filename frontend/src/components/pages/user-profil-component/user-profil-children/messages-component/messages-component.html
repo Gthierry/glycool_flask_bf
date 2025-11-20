@@ -29,7 +29,7 @@
             <div class="row g-3">
                
                 <div class="col-12">
-                    @for (msg of messages; track msg.id) {
+                    @for (msg of messages(); track msg.id) {
                     <div class="border-success-subtle border rounded p-3">
                         <div class="d-flex align-items-start mb-2">
 
@@ -54,8 +54,8 @@
                             </div>
                         
                             <div>
-                                <button class="btn btn-outline-success btn-sm me-2">
-                                    <i class="bi bi-reply">Supprimer</i>
+                                <button class="btn btn-outline-success btn-sm me-2" (click)="delete(msg.id)">
+                                    <i class="bi bi-reply"></i> Supprimer
                                 </button>
                                 <button class="btn btn-outline-success btn-sm">
                                     <i class="bi bi-star">Repondre</i>
