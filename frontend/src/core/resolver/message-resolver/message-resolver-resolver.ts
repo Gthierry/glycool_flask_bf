@@ -11,18 +11,17 @@ export const messageResolverResolver: ResolveFn<MessageJson[] | null> = (route, 
  const router = inject(Router)
 
  let userSignal = inject(AuthService).userSignal
- let messages: MessageJson[] = [];
  
  
  
 
     const user = userSignal();
-    if (user && user.user_id !== null) {
-        return messageService.getAllMessagesForRecipient(user.user_id)
-         
-
+    
+    if (user && user.user_id !== null && user.user_id !== undefined) {
+        
+      const userId = user.user_id;
+      return messageService.getAllMessagesForRecipient(userId);
     }
-
 
 router.navigate(['messages'])
 return null

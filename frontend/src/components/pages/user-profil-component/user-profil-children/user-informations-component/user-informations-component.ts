@@ -11,12 +11,12 @@ import { User } from '../../../../../core/models/user-models/user.model';
 })
 export class UserInformationsComponent {
   //injection of the parent to retrieve the siganl from the parent
-  userSignal: Signal<User | null> = inject(AuthService).userSignal;
+  authService = inject(AuthService);
   user: User | null = null;
 
   constructor() {
     effect(() => {
-      const userData = this.userSignal();
+      const userData = this.authService.userSignal();
       if (userData) {
         this.user = userData;
         console.log('User data updated in Informations component:', this.user);

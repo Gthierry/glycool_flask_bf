@@ -15,6 +15,7 @@ export class MessagesComponent {
 
   constructor() {
    this.messages = this.activatedRoute.snapshot.data['messages'];
+   
   }
 
  
