@@ -33,7 +33,7 @@ export interface MessageSenderJson{
   created_at: string;
   type: string;
   read: boolean;
-  user:User
+  sender:User
 }
 
 

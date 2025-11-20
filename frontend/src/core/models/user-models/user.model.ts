@@ -13,6 +13,23 @@ export interface User {
   bio?: string | null;
   humor?: string | null;
 }
+export interface UserMessage {
+  active: boolean;
+  avatar?: string | null;
+  bio?: string | null;
+  birthdate?: Date | null;
+  city?: string | null;
+  created_at: string | null;
+  email: string;
+  first_name: string | null;
+  humor?: string | null;
+  last_login: string | null;
+  last_name?: string | null;
+  role: string | 'user';
+  user_id: number | null;
+  username: string;
+
+}
 export interface UserLogin {
   email: string;
   password: string;

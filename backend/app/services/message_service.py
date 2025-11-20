@@ -34,6 +34,7 @@ class MessageService:
         return None
 
     @staticmethod
+    #TODO à tester une autre solution possible
     def get_all_messages_for_a_recipient(recipient_user_id: int) -> MessageDto:
         #récupération des messages pour un utilisateur donné
         messages: Message = Message.query.filter_by(message_receiver_user_id=recipient_user_id).all()
