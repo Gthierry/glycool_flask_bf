@@ -41,6 +41,9 @@ def get_user():
             return jsonify(user.serialize())
     return jsonify(form.errors), 404
 
+@app.post("/users/getuserbyemailorusername")
+def 
+
 
 @app.get("/users/getuserbyid/<int:user_id>")
 def get_user_by_id(user_id):

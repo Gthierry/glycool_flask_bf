@@ -19,4 +19,9 @@ export class MessageService {
     const url = `${this.apiUrl}/delete/${messageId}`;
     return this.httpClient.delete<void>(url);
   }
+
+  sendMessage(message: MessageJson): Observable<MessageJson> {
+    const url = `${this.apiUrl}/create`;
+    return this.httpClient.post<MessageJson>(url, message);
+  }
 }

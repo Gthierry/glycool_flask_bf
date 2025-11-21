@@ -27,6 +27,11 @@ export class UserService {
     }
   }
 
+  getUserByEmailOrUsername(email: string |null = null, username: string |null  = null): Observable<User> {
+    
+    return this.httpClient.get<User>(`${this.apiUrl}/getuserbyemailorusername`, {
+  }
+
   createUser(user: UserRegister): Observable<any> {
     try {
       console.log('UserService: createUser called');
