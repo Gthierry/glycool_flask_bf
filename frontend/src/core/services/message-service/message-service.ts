@@ -10,9 +10,7 @@ export class MessageService {
   httpClient = inject(HttpClient);
   private readonly apiUrl = 'http://127.0.0.1:5000/message';
 
-
-
-  getAllMessagesForRecipient(recipientUserId: number): Observable<MessageSenderJson[]> {
+  getAllMessagesForRecipient(recipientUserId: number): Observable<MessageSenderJson[] | null> {
     const url = `${this.apiUrl}/recipient/${recipientUserId}`;
     return this.httpClient.get<MessageSenderJson[]>(url);
   }

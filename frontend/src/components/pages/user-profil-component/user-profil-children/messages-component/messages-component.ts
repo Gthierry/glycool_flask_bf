@@ -15,15 +15,26 @@ import { MessageService } from '../../../../../core/services/message-service/mes
   styleUrl: './messages-component.css',
 })
 export class MessagesComponent {
+  //injections activated route to use with resolver and message service
   activatedRoute = inject(ActivatedRoute);
   messageService = inject(MessageService);
-  user: User | undefined;
+
+  //sendersignal to hold the sender user
+  sender = signal<User | null>(null);
+  //signal to hold the list of messages
   messages = signal<MessageSenderJson[]>([]);
+
+  messageToDisplay = signal<boolean>(false);
 
   constructor() {
     effect(() => {
-      this.messages.set(this.activatedRoute.snapshot.data['messages']);
-      this.user = this.activatedRoute.snapshot.data['messages'][0]?.sender;
+      if (this.activatedRoute.snapshot.data['messages']?.length > 0) {
+        this.messageToDisplay.set(true);
+        this.messages.set(this.activatedRoute.snapshot.data['messages']);
+        this.sender.set(this.activatedRoute.snapshot.data['messages'][0]?.sender);
+      } else {
+        this.messageToDisplay.set(false);
+      }
     });
   }
 

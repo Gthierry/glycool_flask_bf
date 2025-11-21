@@ -7,7 +7,6 @@ import { AuthService } from '../../services/authentification/auth-service';
 import { Observable } from 'rxjs';
 
 export const messageResolverResolver: ResolveFn<MessageSenderJson[] | null> = (route, state) => {
-
   const messageService = inject(MessageService);
   const router = inject(Router);
 
@@ -16,8 +15,13 @@ export const messageResolverResolver: ResolveFn<MessageSenderJson[] | null> = (r
   const user = userSignal();
 
   if (user && user.user_id !== null && user.user_id !== undefined) {
-    const userId = user.user_id;
-    return messageService.getAllMessagesForRecipient(userId);
+    try {
+      const userId = user.user_id;
+      return messageService.getAllMessagesForRecipient(userId);
+    } catch (error) {
+      return null;
+      router.navigate(['messages']);
+    }
   } else {
     router.navigate(['messages']);
     return null;
