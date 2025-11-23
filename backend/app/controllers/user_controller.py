@@ -1,3 +1,4 @@
+from math import e
 from sqlite3 import IntegrityError
 import token
 
@@ -27,22 +28,34 @@ def get_users():
         for user in users:
             print("user: " + str(user.username))
         return jsonify([user.__dict__ for user in users])
-    except IntegrityError as  e:
+    except IntegrityError as e:
         return jsonify({"error": str(e)}), 404
 
 
-@app.post("/users/getuser")
+# @app.post("/users/getuser")
+# def get_user():
+#     form = UserUsernameForm.from_json(request.json)
+#     if form.validate():
+#         print("form validate :" + str(form.username.data))
+#         user = UserService.get_user(form)
+#         if user:
+#             return jsonify(user.serialize()), 200
+#     return jsonify(form.errors), 404
+
+
+@app.post("/users/getuserbyletter")
 def get_user():
     form = UserUsernameForm.from_json(request.json)
     if form.validate():
         print("form validate :" + str(form.username.data))
-        user = UserService.get_user(form)
-        if user:
-            return jsonify(user.serialize())
+        users = UserService.get_user(form)
+        if users != None and len(users) == 1:
+            return jsonify(users[0].serialize()), 200
+        elif users != None and len(users) > 1:
+            return jsonify([user.serialize() for user in users]), 200
+        else:
+            return jsonify({"error": "User not found"}), 404
     return jsonify(form.errors), 404
-
-@app.post("/users/getuserbyemailorusername")
-def 
 
 
 @app.get("/users/getuserbyid/<int:user_id>")
