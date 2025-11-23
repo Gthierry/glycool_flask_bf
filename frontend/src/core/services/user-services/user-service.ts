@@ -27,9 +27,9 @@ export class UserService {
     }
   }
 
-  getUserByEmailOrUsername(email: string |null = null, username: string |null  = null): Observable<User> {
-    
-    return this.httpClient.get<User>(`${this.apiUrl}/getuserbyemailorusername`, {
+  getUserByletter(data: string): Observable<User> {
+    const url = `${this.apiUrl}/getuserbyletter/${data}`;
+    return this.httpClient.get<User>(url);
   }
 
   createUser(user: UserRegister): Observable<any> {

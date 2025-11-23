@@ -9,6 +9,7 @@ import { User, UserMessage } from '../../../../../core/models/user-models/user.m
 import { MessageService } from '../../../../../core/services/message-service/message-service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../../../core/services/authentification/auth-service';
+import { time } from 'node:console';
 
 @Component({
   selector: 'app-messages-component',
@@ -16,7 +17,7 @@ import { AuthService } from '../../../../../core/services/authentification/auth-
   templateUrl: './messages-component.html',
   styleUrl: './messages-component.css',
 })
-export class MessagesComponent {
+export class MessagesComponent implements OnInit {
   //injections activated route to use with resolver and message service
   activatedRoute = inject(ActivatedRoute);
   messageService = inject(MessageService);
@@ -55,6 +56,13 @@ export class MessagesComponent {
     this.currentUser.set(this.authService.getCurrentUser());
   }
 
+  ngOnInit(): void {
+    // Example: subscribe to changes in the recipient field of the form
+    this.messageForm.get('recipient')?.valueChanges.subscribe((value) => {
+      console.log('Recipient changed to:', value);
+    });
+  }
+
   //delete message function to be implemented
   delete(messageId: number) {
     this.messageService.deleteMessage(messageId).subscribe({
@@ -67,11 +75,12 @@ export class MessagesComponent {
   sendMessage() {
     if (this.messageForm.valid && this.currentUser()) {
       const newMessage: MessageJson = {
-        sender_user_id: this.currentUser().user_id,
+        id: 0,
+        sender_user_id: this.currentUser()?.user_id ?? 0,
         receiver_user_id: this.messageForm.value.recipient,
         subject: this.messageForm.value.subject,
         body: this.messageForm.value.body,
-        created_at: new Date().toISOString(),
+        created_at: Date.now().toString(),
         type: 'message',
         read: false,
       };
