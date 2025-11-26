@@ -10,7 +10,11 @@ export class TokenService {
     if (!token) return true;
     const decoded: any = jwtDecode(token);
 
-    return decoded.exp < Date.now() / 1000;
+    const expired = decoded.exp < Date.now() / 1000;
+    if (expired) {
+      console.log('Token expired !');
+    }
+    return expired;
   }
 
   getRole() {
@@ -30,8 +34,8 @@ export class TokenService {
   }
 
   getToken() {
-    try{
-    return localStorage.getItem('token');
+    try {
+      return localStorage.getItem('token');
     } catch {
       return null;
     }

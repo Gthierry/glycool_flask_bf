@@ -3,6 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { User, UserLogin } from '../../models/user-models/user.model';
 import { Observable } from 'rxjs';
 import { sign } from 'crypto';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -38,9 +39,11 @@ export class AuthService {
         this.httpClient.post<any>(url, user).subscribe({
           next: (response) => {
             //set le signal userSignal avec les infos provenant de mon backend
-            this.userSignal.set(response.user);
+            this.setUserSignal(response.user);
+            console.log('authservice user:', response.user);
             //localStorage.setItem('user', JSON.stringify(response.user));
             localStorage.setItem('token', response.token);
+            localStorage.setItem('user', JSON.stringify(response.user));
             this.isLogged.set(true);
             console.log('Is logged in authService value = ' + this.isLogged);
             resolve();

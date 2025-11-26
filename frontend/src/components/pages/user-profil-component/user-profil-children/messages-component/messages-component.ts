@@ -94,6 +94,7 @@ export class MessagesComponent implements OnInit {
   //used for toggling the contacts list display in html
   displayContactsListe = signal<boolean>(false);
   FilteredContacts: User[] = [];
+  displaySendMessageOk = signal<boolean>(false);
 
   ngOnInit(): void {
     //subscribe to changes in the recipient field of the form
@@ -141,6 +142,10 @@ export class MessagesComponent implements OnInit {
         this.messageService.sendMessage(newMessage).subscribe({
           next: (response) => {
             console.log('Message sent successfully:', response);
+            this.displaySendMessageOk.set(true);
+            // Optionally, reset the form after successful sending
+            this.messageForm.reset();
+            setTimeout(() => this.displaySendMessageOk.set(false), 3000);
           },
           error: (error) => {
             console.error('Error sending message:', error);

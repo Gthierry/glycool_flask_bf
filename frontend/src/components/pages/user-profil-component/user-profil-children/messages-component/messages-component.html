@@ -35,6 +35,11 @@
                             class="form-control border-success-subtle"></textarea>
                     </div>
                     <div class="d-flex justify-content-end">
+                        @if(displaySendMessageOk()){
+                        <div class="alert alert-success me-3" role="alert">
+                            Message envoyé !
+                        </div>
+                        }
                         <button class="btn btn-success" type="submit">
                             <i class="bi bi-send me-2"></i>Envoyer
                         </button>

@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthService } from '../../../core/services/authentification/auth-service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'user-profil-component',
@@ -32,6 +33,19 @@ export class UserProfilComponent {
       this.user = this.userSignal.userSignal();
     } else {
       console.log('No valid token found, redirecting to register.');
+      this.route.navigate(['register']);
+    }
+  }
+  // In AuthService or AppComponent
+  ngOnInit() {
+    const token = localStorage.getItem('token');
+    if (token && !this.tokenService.isTokenExpired()) {
+      const decoded = jwtDecode(token);
+      // Restore user/session state here
+      this.user = this.userSignal.userSignal();
+      console.log('User session restored in UserProfilComponent:', this.user);
+    } else {
+      // Clear sessio console.log('No valid token found, redirecting to register.');
       this.route.navigate(['register']);
     }
   }
