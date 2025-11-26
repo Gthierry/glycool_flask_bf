@@ -18,6 +18,7 @@ import { UserInformationsComponent } from '../components/pages/user-profil-compo
 import { MessagesComponent } from '../components/pages/user-profil-component/user-profil-children/messages-component/messages-component';
 import { SendMessageComponent } from '../components/pages/user-profil-component/user-profil-children/send-message-component/send-message-component';
 import { messageResolverResolver } from '../core/resolver/message-resolver/message-resolver-resolver';
+import { ReadMessageComponent } from '../components/pages/user-profil-component/user-profil-children/read-message-component/read-message-component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,9 +41,22 @@ export const routes: Routes = [
       { path: '', redirectTo: 'informations', pathMatch: 'full' },
       { path: 'informations', component: UserInformationsComponent, pathMatch: 'full' },
       { path: 'infos-profil', component: InfosProfilComponent },
-      { path: 'messages', component: MessagesComponent,resolve: {messages: messageResolverResolver} },
+      {
+        path: 'messages',
+        component: MessagesComponent,
+        resolve: { messages: messageResolverResolver },
+      },
       { path: 'contacts', component: ContactsComponent },
-      { path: 'send-message', component: SendMessageComponent, resolve: {messages: messageResolverResolver} },
+      {
+        path: 'send-message',
+        component: SendMessageComponent,
+        resolve: { messages: messageResolverResolver },
+      },
+      {
+        path: 'readmessage',
+        component: ReadMessageComponent,
+        resolve: { messages: messageResolverResolver },
+      },
     ],
   },
   { path: 'forum', component: ForumComponent },

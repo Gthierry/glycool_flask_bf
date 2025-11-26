@@ -24,7 +24,7 @@ export class ContactsComponent {
   contactService = inject(ContactService);
 
   route = inject(Router);
-  //injection de ActivatedRoute afin de naviguer vers les autres composants enfants
+  //injection de ActivatedRoute afin de naviguer vers les autres composants enfants avec les informations concernant le user selectionné
   activatedRoute = inject(ActivatedRoute);
 
   // déclaration des variables globales user, contactList pour récupérer les contacts utilisateurs, contacts pour récupérer les contacts
@@ -71,12 +71,14 @@ export class ContactsComponent {
       }
     });
   }
-  navigateToSendMessage() {
-    console.log('navigation to send-message');
-    // Navigation vers le composant d'envoi de message
-    this.route.navigate(['../send-message'], { relativeTo: this.activatedRoute });
+  navigateToReadMessage() {
+    console.log('navigation to readmessage');
+    // Navigation vers le composant de lecture de message
+    this.route.navigate(['../readmessage'], { relativeTo: this.activatedRoute });
   }
   navigateToContactProfile() {
+    console.log('navigation to contact profile informations');
+    // Navigation vers le composant des informations du profil du contact
     this.route.navigate(['../informations'], { relativeTo: this.activatedRoute });
   }
 }
