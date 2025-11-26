@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Contact } from '../../models/contact-models/contact.model';
 import { User } from '../../models/user-models/user.model';
@@ -8,7 +8,12 @@ import { User } from '../../models/user-models/user.model';
   providedIn: 'root',
 })
 export class ContactService {
+  UserContactSignal = signal<User | null>(null);
   contacts: Contact[] = [];
+
+  setUserContactSignal(user: User | null) {
+    this.UserContactSignal.set(user);
+  }
 
   //define the api url
   private apiUrl = 'http://localhost:5000/contacts/';

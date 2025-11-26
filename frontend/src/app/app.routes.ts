@@ -19,6 +19,7 @@ import { MessagesComponent } from '../components/pages/user-profil-component/use
 import { SendMessageComponent } from '../components/pages/user-profil-component/user-profil-children/send-message-component/send-message-component';
 import { messageResolverResolver } from '../core/resolver/message-resolver/message-resolver-resolver';
 import { ReadMessageComponent } from '../components/pages/user-profil-component/user-profil-children/read-message-component/read-message-component';
+import { ContactInformations } from '../components/pages/user-profil-component/user-profil-children/contact-informations/contact-informations';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -48,15 +49,16 @@ export const routes: Routes = [
       },
       { path: 'contacts', component: ContactsComponent },
       {
-        path: 'send-message',
-        component: SendMessageComponent,
-        resolve: { messages: messageResolverResolver },
+        path: 'contactinformations',
+        component: ContactInformations,
       },
-      {
-        path: 'readmessage',
-        component: ReadMessageComponent,
-        resolve: { messages: messageResolverResolver },
-      },
+
+      //TODO
+      // {
+      //   path: 'readmessage',
+      //   component: ReadMessageComponent,
+      //   resolve: { messages: messageResolverResolver },
+      // },
     ],
   },
   { path: 'forum', component: ForumComponent },

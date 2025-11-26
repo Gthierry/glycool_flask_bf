@@ -1,0 +1,166 @@
+<!-- contact-informations.html -->
+<div class="container-fluid py-4">
+    <!-- Profil du contact -->
+
+    <!-- contact-informations.html -->
+    <div class="container-fluid py-4">
+        <!-- Profil du contact -->
+        <div class="card border-success-subtle shadow-sm mb-4">
+            <div class="card-header bg-success-subtle">
+                <h5 class="text-success-emphasis mb-0 d-flex align-items-center gap-2">
+                    <i class="bi bi-person-circle"></i> Profil du contact
+                    <span class="badge bg-success-subtle text-success-emphasis ms-2">En ligne</span>
+                </h5>
+            </div>
+            <div class="card-body d-flex align-items-center gap-4">
+                <div>
+                    <img src="https://via.placeholder.com/80x80.png?text=Avatar" alt="Avatar"
+                        class="rounded-circle shadow" width="80" height="80">
+                </div>
+                <div class="flex-grow-1">
+                    @if(contact()?.first_name || contact()?.last_name ) {
+                    <h4 class="mb-2 text-success d-flex align-items-center gap-2">
+                        {{ contact()?.first_name }} {{ contact()?.last_name }}
+                    </h4>
+                    }
+                    <div class="mb-2 d-flex align-items-center gap-3">
+                        <span class="text-muted d-flex align-items-center gap-2">
+                            <strong>{{ contact()?.username }}</strong>
+                        </span>
+                    </div>
+
+
+                    @if(contact()?.humor ) {
+                    <div class="mb-2">
+                        <div class="card  shadow-sm">
+                            <div class="card-body py-2 px-3 d-flex align-items-center gap-2">
+                                <span class="fw-bold text-success-emphasis"></span>
+                                <span class="fw-bold">{{ contact()?.humor }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages envoyés -->
+        <div class="card border-success-subtle shadow-sm mb-4">
+            <div class="card-header bg-success-subtle">
+                <h6 class="text-success-emphasis mb-0">
+                    <i class="bi bi-send me-2"></i>Messages envoyés
+                </h6>
+            </div>
+            <div class="card-body">
+                <div
+                    class="mb-3 p-3 border rounded bg-success-subtle d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="mb-2">
+                            <strong class="text-success">Vous</strong>
+                            <small class="text-muted float-end">Il y a 1 heure</small>
+                        </div>
+                        <div class="fw-bold mb-1">Sujet : Invitation</div>
+                        <p class="mb-0">Salut Jean ! Je vais bien merci, et toi ?</p>
+                    </div>
+                    <button class="btn btn-outline-success ms-3">
+                        <i class="bi bi-eye"></i> Lire
+                    </button>
+                </div>
+                <div
+                    class="mb-3 p-3 border rounded bg-success-subtle d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="mb-2">
+                            <strong class="text-success">Vous</strong>
+                            <small class="text-muted float-end">Il y a 15 minutes</small>
+                        </div>
+                        <div class="fw-bold mb-1">Sujet : Sortie</div>
+                        <p class="mb-0">Excellente idée ! Samedi après-midi ça te va ?</p>
+                    </div>
+                    <button class="btn btn-outline-success ms-3">
+                        <i class="bi bi-eye"></i> Lire
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages reçus -->
+        <div class="card border-success-subtle shadow-sm">
+            <div class="card-header bg-success-subtle">
+                <h6 class="text-success-emphasis mb-0">
+                    <i class="bi bi-inbox me-2"></i>Messages reçus
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="mb-3 p-3 border rounded d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="mb-2">
+                            <strong class="text-success">Jean Dupont</strong>
+                            <small class="text-muted float-end">Il y a 2 heures</small>
+                        </div>
+                        <div class="fw-bold mb-1">Sujet : Invitation</div>
+                        <p class="mb-0">Bonjour ! Comment vas-tu ?</p>
+                    </div>
+                    <button class="btn btn-outline-success ms-3">
+                        <i class="bi bi-eye"></i> Lire
+                    </button>
+                </div>
+                <div class="mb-3 p-3 border rounded d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="mb-2">
+                            <strong class="text-success">Jean Dupont</strong>
+                            <small class="text-muted float-end">Il y a 30 minutes</small>
+                        </div>
+                        <div class="fw-bold mb-1">Sujet : Sortie</div>
+                        <p class="mb-0">Super ! On se voit ce weekend ?</p>
+                    </div>
+                    <button class="btn btn-outline-success ms-3">
+                        <i class="bi bi-eye"></i> Lire
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Messages envoyés -->
+    <div class="card border-success-subtle shadow-sm mb-4">
+        <div class="card-header bg-success-subtle">
+            <h6 class="text-success-emphasis mb-0">
+                <i class="bi bi-send me-2"></i>Messages envoyés
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="mb-3 p-3 border rounded bg-success-subtle d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="mb-2">
+                        <strong class="text-success">Vous</strong>
+                        <small class="text-muted float-end">Il y a 1 heure</small>
+                    </div>
+                    <div class="fw-bold mb-1">Sujet : Invitation</div>
+                    <p class="mb-0">Salut Jean ! Je vais bien merci, et toi ?</p>
+                </div>
+                <button class="btn btn-outline-success ms-3">
+                    <i class="bi bi-eye"></i> Lire
+                </button>
+            </div>
+            <div class="mb-3 p-3 border rounded bg-success-subtle d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="mb-2">
+                        <strong class="text-success">Vous</strong>
+                        <small class="text-muted float-end">Il y a 15 minutes</small>
+                    </div>
+                    <div class="fw-bold mb-1">Sujet : Sortie</div>
+                    <p class="mb-0">Excellente idée ! Samedi après-midi ça te va ?</p>
+                </div>
+                <button class="btn btn-outline-success ms-3">
+                    <i class="bi bi-eye"></i> Lire
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages reçus -->
+
+</div>

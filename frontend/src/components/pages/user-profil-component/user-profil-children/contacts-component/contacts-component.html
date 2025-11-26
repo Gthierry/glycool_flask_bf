@@ -69,7 +69,7 @@
                     <div class="card border-success-subtle h-100">
                         <div class="card-body text-center p-3">
                             <div class="position-relative d-inline-block mb-3">
-                                <img src="profil-images/default.png" alt="Stephanie" class="rounded-circle" width="60"
+                                <img src="profil-images/default.png" alt="avatar" class="rounded-circle" width="60"
                                     height="60" style="object-fit: cover;">
 
                             </div>
@@ -84,12 +84,13 @@
                                 <!-- <button class="btn btn-outline-success btn-sm">
                                     <i class="bi bi-envelope">Retirer</i>
                                 </button> -->
-                                <button class="btn btn-outline-success btn-sm" (click)="navigateToContactProfile()">
-                                    <i class="bi bi-telephone">Profil</i>
+                                <button class="btn btn-outline-success w-50 m-auto btn-sm"
+                                    (click)="navigateToContactDetails(contact)">
+                                    Détails
                                 </button>
-                                <button class="btn btn-outline-success btn-sm" (click)="navigateToReadMessage()">
+                                <!-- <button class="btn btn-outline-success btn-sm" (click)="navigateToReadMessage()">
                                     <i class="bi bi-chat-dots">Message</i>
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                     </div>
@@ -214,8 +215,8 @@
             font-weight: 600;
         }
 
-        .card:hover {
+        /* .card:hover {
             transform: translateY(-2px);
             transition: transform 0.2s ease;
-        }
+        } */
     </style>
