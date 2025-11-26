@@ -10,7 +10,7 @@
         <div class="card-body">
 
             <div class="mb-3">
-                <form [formGroup]="messageForm">
+                <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
                     <div class="d-flex mb-3">
                         <h6 class=" border-2 bg-success-subtle p-2 rounded text-success-emphasis">
                             Destinataire:
@@ -22,12 +22,11 @@
                             style="max-height: 200px; overflow-y: auto;">
                             @if(FilteredContacts.length > 0 && displayContactsListe()){
                             @for(user of FilteredContacts; track user.user_id) {
-                            <li><a class="dropdown-item" href="#">{{user.username}}</a></li>
+                            <li><a class="dropdown-item" (click)="selectRecipient(user.username)">{{user.username}}</a>
+                            </li>
                             }
                             }
                         </ul>
-
-
                     </div>
                     <div class="mb-3">
                         <input type="text" class="form-control border-2 border-success-subtle mb-2 "
@@ -36,7 +35,7 @@
                             class="form-control border-success-subtle"></textarea>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button class="btn btn-success" (click)="sendMessage()">
+                        <button class="btn btn-success" type="submit">
                             <i class="bi bi-send me-2"></i>Envoyer
                         </button>
                     </div>

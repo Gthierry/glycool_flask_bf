@@ -13,7 +13,7 @@ export interface Message {
   read: boolean;
 }
 //Objet pour récupérer mon objet depuis json
-export interface MessageJson{
+export interface MessageJson {
   id: number;
   sender_user_id: number;
   receiver_user_id: number;
@@ -24,7 +24,7 @@ export interface MessageJson{
   read: boolean;
 }
 
-export interface MessageSenderJson{
+export interface MessageSenderJson {
   id: number;
   sender_user_id: number;
   receiver_user_id: number;
@@ -33,9 +33,14 @@ export interface MessageSenderJson{
   created_at: string;
   type: string;
   read: boolean;
-  sender:User
+  sender: User;
 }
 
-
-
- 
+export interface MessageSendJson {
+  message_sender_user_id: number;
+  message_receiver_user_id: number;
+  message_subject: string;
+  message_body: string;
+  message_type: string;
+  message_read: boolean | false;
+}

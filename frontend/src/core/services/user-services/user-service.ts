@@ -12,9 +12,6 @@ export class UserService {
   // Inject HttpClient
   private httpClient = inject(HttpClient);
 
-  //Signal to hold list of users for the contacts
-  ContactsUserSignal = signal<User[]>([]);
-
   //get a list of users from the backend
   getAllUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.apiUrl);

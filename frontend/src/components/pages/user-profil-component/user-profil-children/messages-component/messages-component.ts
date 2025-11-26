@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {
   MessageJson,
   MessageSenderJson,
+  MessageSendJson,
 } from '../../../../../core/models/message-model/message-model';
 import { UserService } from '../../../../../core/services/user-services/user-service';
 import { User, UserMessage } from '../../../../../core/models/user-models/user.model';
@@ -107,9 +108,11 @@ export class MessagesComponent implements OnInit {
     });
   }
 
-  selectRecipient(username: string): void {
+  selectRecipient(username: string): number {
     this.messageForm.get('recipient')?.setValue(username);
+    const id = this.userContacts.find((user) => user.username === username)?.user_id;
     this.displayContactsListe.set(false);
+    return id ?? 0;
   }
 
   //delete message function to be implemented
@@ -124,17 +127,28 @@ export class MessagesComponent implements OnInit {
   //send message function to be implemented
   sendMessage() {
     if (this.messageForm.valid && this.currentUser()) {
-      const newMessage: MessageJson = {
-        id: 0,
-        sender_user_id: this.currentUser()?.user_id ?? 0,
-        receiver_user_id: this.messageForm.value.recipient,
-        subject: this.messageForm.value.subject,
-        body: this.messageForm.value.body,
-        created_at: Date.now().toString(),
-        type: 'message',
-        read: false,
+      console.log('Sending message with form values:', this.messageForm.value);
+      const newMessage: MessageSendJson = {
+        message_sender_user_id: this.currentUser()?.user_id ?? 0,
+        message_receiver_user_id: this.selectRecipient(this.messageForm.value.recipient),
+        message_subject: this.messageForm.value.subject,
+        message_body: this.messageForm.value.body,
+        message_type: 'message',
+        message_read: false,
       };
-      // Implement sending logic here
+      try {
+        console.log('New Message to send:', newMessage);
+        this.messageService.sendMessage(newMessage).subscribe({
+          next: (response) => {
+            console.log('Message sent successfully:', response);
+          },
+          error: (error) => {
+            console.error('Error sending message:', error);
+          },
+        });
+      } catch (error) {
+        console.error('Error sending message:', error);
+      }
     }
   }
 }

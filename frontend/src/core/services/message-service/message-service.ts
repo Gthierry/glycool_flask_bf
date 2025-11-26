@@ -1,7 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Message, MessageJson, MessageSenderJson } from '../../models/message-model/message-model';
+import {
+  Message,
+  MessageJson,
+  MessageSenderJson,
+  MessageSendJson,
+} from '../../models/message-model/message-model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +25,8 @@ export class MessageService {
     return this.httpClient.delete<void>(url);
   }
 
-  sendMessage(message: MessageJson): Observable<MessageJson> {
+  sendMessage(message: MessageSendJson): Observable<MessageSendJson> {
     const url = `${this.apiUrl}/create`;
-    return this.httpClient.post<MessageJson>(url, message);
+    return this.httpClient.post<MessageSendJson>(url, message);
   }
 }

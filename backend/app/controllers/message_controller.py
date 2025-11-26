@@ -10,13 +10,21 @@ messageInsertSchema = MessageInsertSchema()
 
 @app.post("/message/create")
 def create_message():
-
+    print("Received request to create message")
     # TODO check also for the asiociative table user_message
     try:
+        print("Parsing JSON data from request")
         data = request.get_json()
+        print("Received data:", data)
         # Validation Marshmallow
-        validated_data = messageInsertSchema.load(data)
+        try:
+            validated_data = messageInsertSchema.load(data)
+        except Exception as ve:
+            print("Validation error:", ve)
+            return jsonify({"error": "Invalid data", "details": str(ve)}), 400
+        print("Validated data:", validated_data)
         message_dto = MessageService.create_message(validated_data)
+        print("Created MessageDto:", message_dto)
         return jsonify(message_dto.serialize()), 201
     except Exception as e:
         return jsonify({"error from controller": str(e)}), 400
