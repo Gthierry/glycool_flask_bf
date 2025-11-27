@@ -7,9 +7,14 @@
         <!-- Profil du contact -->
         <div class="card border-success-subtle shadow-sm mb-4">
             <div class="card-header bg-success-subtle">
-                <h5 class="text-success-emphasis mb-0 d-flex align-items-center gap-2">
-                    Profil du contact
-                </h5>
+                <div class="d-flex align-items-center justify-content-between">
+                    <h5 class="text-success-emphasis mb-0 d-flex align-items-center gap-2">
+                        Profil du contact
+                    </h5>
+                    @if(contact()?.humor ) {
+                    <span class="small fs-6 text-success">{{ contact()?.humor }}</span>
+                    }
+                </div>
             </div>
             <div class="card-body d-flex align-items-center gap-4">
                 <div>
@@ -19,7 +24,7 @@
                 <div class="flex-grow-1">
                     <div class="d-flex align-items-center justify-content-between">
                         @if(contact()?.first_name || contact()?.last_name ) {
-                        <h5 class="mb-2 text-success d-flex align-items-center gap-2">
+                        <h5 class="mb-2  text-success d-flex align-items-center ">
                             {{ contact()?.first_name }} {{ contact()?.last_name }}
                         </h5>
                         }
@@ -33,21 +38,15 @@
                         </span>
                     </div>
                     <div class="mb-2 d-flex align-items-center gap-3">
-                        <span class="d-flex align-items-center gap-2">
+                        <span class="d-flex align-items-center text-success gap-2">
                             {{ contact()?.username }}
                         </span>
                     </div>
-                    @if(contact()?.humor ) {
-                    <div class="mb-2 d-flex align-items-center gap-2">
 
-
-                        <span class="fw-bold">{{ contact()?.humor }}</span>
-                    </div>
-                    }
                     @if(contact()?.bio ) {
-                    <div class="mb-2 d-flex align-items-center gap-2">
+                    <div class="mb-2 fs-6 d-flex align-items-center gap-2">
 
-                        <span class="text-success">{{ contact()?.bio }}</span>
+                        <span class=" text-bg-success-subtle small">{{ contact()?.bio }}</span>
                     </div>
                     }
                 </div>
