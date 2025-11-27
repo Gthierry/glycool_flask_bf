@@ -1,6 +1,7 @@
 from email import message
 
 from flask import jsonify
+from sqlalchemy import exists
 from app.dtos.message_dto import MessageDto
 from app.schemas.message_insert_schema import MessageInsertSchema
 from app.models.message import Message
@@ -59,3 +60,21 @@ class MessageService:
             db.session.commit()
             return True
         return False
+
+    @staticmethod
+    # retrieve all messages sended by a user for one recipient id
+    def getmessagesUserContact(user_id: int, sender_id: int) -> MessageDto:
+        print("enter service to do the request (getMessagesUserContact)")
+        print(str(user_id))
+        print(str(sender_id))
+
+        messages_list = Message.query.filter_by(
+            message_sender_user_id=user_id, message_receiver_user_id=sender_id
+        ).all()
+        print("service request done !")
+        if messages_list:
+            print("message_list ok")
+            return [MessageDto(message) for message in messages_list]
+        else:
+            print("service ->>>>>none")
+            return None

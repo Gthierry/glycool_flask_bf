@@ -63,6 +63,25 @@ def getMessagesForRecipient(user_id):
         return jsonify({"error": str(e)}), 400
 
 
+@app.get("/message/senderandreceiver/<int:user_id>/<int:sender_id>")
+# get all message from a user to recipient
+def getMessagesForAUserToDistinctRecipient(user_id, sender_id):
+    message_service = MessageService()
+    try:
+        messages_list: list[MessageDto] = MessageService.getmessagesUserContact(
+            user_id, sender_id
+        )
+    except Exception as e:
+        return jsonify({"error: " + e})
+    if messages_list:
+        try:
+            return jsonify([dto.serialize() for dto in messages_list]), 200
+        except Exception as e:
+            return jsonify({"error": str(e)}), 400
+    else:
+        return {"error, check service"}
+
+
 @app.delete("/message/delete/<int:message_id>")
 # TODO check also if i really delete it
 def delete_message(message_id):
