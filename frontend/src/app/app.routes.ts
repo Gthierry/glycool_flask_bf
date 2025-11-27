@@ -20,6 +20,7 @@ import { SendMessageComponent } from '../components/pages/user-profil-component/
 import { messageResolverResolver } from '../core/resolver/message-resolver/message-resolver-resolver';
 import { ReadMessageComponent } from '../components/pages/user-profil-component/user-profil-children/read-message-component/read-message-component';
 import { ContactInformations } from '../components/pages/user-profil-component/user-profil-children/contact-informations/contact-informations';
+import { inOutMessageboxResolver } from '../core/resolver/in-out-messagebox-resolver/in-out-messagebox-resolver';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -51,6 +52,7 @@ export const routes: Routes = [
       {
         path: 'contactinformations',
         component: ContactInformations,
+        resolve: { messages: inOutMessageboxResolver },
       },
 
       //TODO

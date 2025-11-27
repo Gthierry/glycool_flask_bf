@@ -7,6 +7,7 @@ import {
   MessageSenderJson,
   MessageSendJson,
 } from '../../models/message-model/message-model';
+import { urlencoded } from 'express';
 
 @Injectable({
   providedIn: 'root',
@@ -29,4 +30,10 @@ export class MessageService {
     const url = `${this.apiUrl}/create`;
     return this.httpClient.post<MessageSendJson>(url, message);
   }
+
+  getMessagesForUser1Contact(sender_id:number,receiver_id:number): Observable<MessageSenderJson[] | null>{
+    const url = `${this.apiUrl}/getMessagesForAUserToDistinctRecipient/${sender_id}/${receiver_id}`;
+    return this.httpClient.get<MessageSenderJson[]>(url)
+  }
 }
+

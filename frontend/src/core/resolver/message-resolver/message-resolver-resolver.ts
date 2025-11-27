@@ -11,7 +11,6 @@ export const messageResolverResolver: ResolveFn<MessageSenderJson[] | null> = (r
   const router = inject(Router);
 
   const userSignal = inject(AuthService).userSignal;
-  const contactsSignal = inject;
 
   const user = userSignal();
 
