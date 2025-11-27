@@ -54,34 +54,24 @@
                 </h6>
             </div>
             <div class="card-body">
+                @if(sendedMessages().length >0){
+                @for(message of sendedMessages();track message.id){
                 <div
                     class="mb-3 p-3 border rounded bg-success-subtle d-flex justify-content-between align-items-center">
                     <div>
                         <div class="mb-2">
-                            <strong class="text-success">Vous</strong>
-                            <small class="text-muted float-end">Il y a 1 heure</small>
+                            <small class="text-muted float-end">{{message.created_at}}</small>
                         </div>
-                        <div class="fw-bold mb-1">Sujet : Invitation</div>
-                        <p class="mb-0">Salut Jean ! Je vais bien merci, et toi ?</p>
+                        <div class="fw-bold mb-1">{{message.subject}}</div>
+                        <p class="mb-0">{{message.body}}</p>
                     </div>
                     <button class="btn btn-outline-success ms-3">
                         <i class="bi bi-eye"></i> Lire
                     </button>
                 </div>
-                <div
-                    class="mb-3 p-3 border rounded bg-success-subtle d-flex justify-content-between align-items-center">
-                    <div>
-                        <div class="mb-2">
-                            <strong class="text-success">Vous</strong>
-                            <small class="text-muted float-end">Il y a 15 minutes</small>
-                        </div>
-                        <div class="fw-bold mb-1">Sujet : Sortie</div>
-                        <p class="mb-0">Excellente idée ! Samedi après-midi ça te va ?</p>
-                    </div>
-                    <button class="btn btn-outline-success ms-3">
-                        <i class="bi bi-eye"></i> Lire
-                    </button>
-                </div>
+                }
+                }
+
             </div>
         </div>
 
@@ -93,74 +83,28 @@
                 </h6>
             </div>
             <div class="card-body">
+                @if(receivedMessages().length>0){
+                @for(message of receivedMessages();track message.id){
                 <div class="mb-3 p-3 border rounded d-flex justify-content-between align-items-center">
                     <div>
                         <div class="mb-2">
-                            <strong class="text-success">Jean Dupont</strong>
-                            <small class="text-muted float-end">Il y a 2 heures</small>
+                            <strong class="text-success">{{message.sender.username}}</strong>
+                            <small class="text-muted float-end">{{message.created_at}}</small>
                         </div>
-                        <div class="fw-bold mb-1">Sujet : Invitation</div>
-                        <p class="mb-0">Bonjour ! Comment vas-tu ?</p>
+                        <div class="fw-bold mb-1">{{message.subject}}</div>
+                        <p class="mb-0">{{message.body}}</p>
                     </div>
                     <button class="btn btn-outline-success ms-3">
                         <i class="bi bi-eye"></i> Lire
                     </button>
                 </div>
-                <div class="mb-3 p-3 border rounded d-flex justify-content-between align-items-center">
-                    <div>
-                        <div class="mb-2">
-                            <strong class="text-success">Jean Dupont</strong>
-                            <small class="text-muted float-end">Il y a 30 minutes</small>
-                        </div>
-                        <div class="fw-bold mb-1">Sujet : Sortie</div>
-                        <p class="mb-0">Super ! On se voit ce weekend ?</p>
-                    </div>
-                    <button class="btn btn-outline-success ms-3">
-                        <i class="bi bi-eye"></i> Lire
-                    </button>
-                </div>
+                }
+                }
+
             </div>
         </div>
 
     </div>
 
-    <!-- Messages envoyés -->
-    <div class="card border-success-subtle shadow-sm mb-4">
-        <div class="card-header bg-success-subtle">
-            <h6 class="text-success-emphasis mb-0">
-                <i class="bi bi-send me-2"></i>Messages envoyés
-            </h6>
-        </div>
-        <div class="card-body">
-            <div class="mb-3 p-3 border rounded bg-success-subtle d-flex justify-content-between align-items-center">
-                <div>
-                    <div class="mb-2">
-                        <strong class="text-success">Vous</strong>
-                        <small class="text-muted float-end">Il y a 1 heure</small>
-                    </div>
-                    <div class="fw-bold mb-1">Sujet : Invitation</div>
-                    <p class="mb-0">Salut Jean ! Je vais bien merci, et toi ?</p>
-                </div>
-                <button class="btn btn-outline-success ms-3">
-                    <i class="bi bi-eye"></i> Lire
-                </button>
-            </div>
-            <div class="mb-3 p-3 border rounded bg-success-subtle d-flex justify-content-between align-items-center">
-                <div>
-                    <div class="mb-2">
-                        <strong class="text-success">Vous</strong>
-                        <small class="text-muted float-end">Il y a 15 minutes</small>
-                    </div>
-                    <div class="fw-bold mb-1">Sujet : Sortie</div>
-                    <p class="mb-0">Excellente idée ! Samedi après-midi ça te va ?</p>
-                </div>
-                <button class="btn btn-outline-success ms-3">
-                    <i class="bi bi-eye"></i> Lire
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Messages reçus -->
 
 </div>

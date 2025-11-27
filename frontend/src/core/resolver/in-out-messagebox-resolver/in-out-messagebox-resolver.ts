@@ -4,27 +4,31 @@ import { inject } from '@angular/core';
 import { MessageService } from '../../services/message-service/message-service';
 import { AuthService } from '../../services/authentification/auth-service';
 import { ContactService } from '../../services/contact-service/contact-service';
-import { forkJoin } from 'rxjs';
+import { forkJoin, map } from 'rxjs';
 
-export const inOutMessageboxResolver: ResolveFn<MessageSenderJson[] | null> = (route, state) => {
-  
+export const inOutMessageboxResolver: ResolveFn<{
+  messagesSended: MessageSenderJson[];
+  messagesReceived: MessageSenderJson[];
+}> = (route, state) => {
   const messageService = inject(MessageService);
   const router = inject(Router);
 
-   const userSignal = inject(AuthService).userSignal;
-   const contactSignal =  inject(ContactService).UserContactSignal
+  const userSignal = inject(AuthService).userSignal;
+  const contactSignal = inject(ContactService).UserContactSignal;
+  const user = userSignal();
+  const contact = contactSignal();
 
-   if(userSignal() && userSignal()?.user_id && contactSignal() && contactSignal()?.user_id){
+  if (user && user.user_id && contact && contact.user_id) {
     return forkJoin({
-      messagesSended: messageService.getMessagesForUser1Contact(userSignal()?.user_id,contactSignal()?.user_id),
-      messagesReceived: messageService.getMessagesForUser1Contact(contactSignal()?.user_id,userSignal()?.user_id)
-    })
-
-   }
-   else{
-    router.navigate(['contactinformations'])
-    return forkJoin({messagesSended:[],messagesReceived:[]})
-   }
-
-  
+      messagesSended: messageService
+        .getMessagesForUser1Contact(user.user_id, contact.user_id)
+        .pipe(map((result) => result ?? [])),
+      messagesReceived: messageService
+        .getMessagesForUser1Contact(contact.user_id, user.user_id)
+        .pipe(map((result) => result ?? [])),
+    });
+  } else {
+    router.navigate(['contactinformations']);
+    return forkJoin({ messagesSended: [], messagesReceived: [] });
+  }
 };

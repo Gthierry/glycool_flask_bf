@@ -52,7 +52,7 @@ export const routes: Routes = [
       {
         path: 'contactinformations',
         component: ContactInformations,
-        resolve: { messages: inOutMessageboxResolver },
+        resolve: { listes: inOutMessageboxResolver },
       },
 
       //TODO

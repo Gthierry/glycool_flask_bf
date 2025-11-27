@@ -31,9 +31,11 @@ export class MessageService {
     return this.httpClient.post<MessageSendJson>(url, message);
   }
 
-  getMessagesForUser1Contact(sender_id:number,receiver_id:number): Observable<MessageSenderJson[] | null>{
-    const url = `${this.apiUrl}/getMessagesForAUserToDistinctRecipient/${sender_id}/${receiver_id}`;
-    return this.httpClient.get<MessageSenderJson[]>(url)
+  getMessagesForUser1Contact(
+    sender_id: number,
+    receiver_id: number,
+  ): Observable<MessageSenderJson[] | null> {
+    const url = `${this.apiUrl}/senderandreceiver/${sender_id}/${receiver_id}`;
+    return this.httpClient.get<MessageSenderJson[]>(url);
   }
 }
-
