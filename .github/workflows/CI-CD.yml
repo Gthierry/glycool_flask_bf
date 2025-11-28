@@ -54,6 +54,7 @@ jobs:
       #endregion
       #region Étape 4 - Exécution des tests unitaires
       - name: Lancer les tests unitaires
+        working-directory: backend
         run: |
           export PYTHONPATH=.
           pytest -v
@@ -77,6 +78,7 @@ jobs:
       #endregion
 
   #endregion
+
   #region JOB 2 - CD : Tag + Release
   create_release:
     needs: ci_pipeline # Attendre la fin du job CI (test + automerge & delete de la branche subsidiaire)
@@ -99,7 +101,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           DEFAULT_BUMP: patch
-          RELEASE_BRANCHES: main
+          RELEASE_BRANCHES: master
           # L'objectif de notre action est de calculé la prochaine version
           # et créer un tag (1.0.2 => 1.0.3) => Bump par default PATCH
       #endregion
@@ -158,26 +160,24 @@ jobs:
           echo "Build + démarrage de la nouvelle version..."
           docker compose up -d --build
       #endregion
+      #region 4 : Vérification basique de l'API en local
+      - name: Vérification de l'API (health-check basique)
+        shell: powershell
+        run: |
+          echo "Vérification de l'API sur http://localhost:8000/api/books..."
+          try {
+            $response = Invoke-WebRequest -Uri "http://localhost:8000/api/books" -UseBasicParsing -TimeoutSec 10
+            if ($response.StatusCode -eq 200) {
+              Write-Host "API OK - Statut 200"
+            } else {
+              Write-Error "API joignable mais statut inattendu : $($response.StatusCode)"
+            }
+          }
+          catch {
+            Write-Error "L'API ne répond pas ou renvoie une erreur : $($_.Exception.Message)"
+          }
 
-      # #region 4 : Vérification basique de l'API en local
-      # - name: Vérification de l'API (health-check basique)
-      #   shell: powershell
-      #   run: |
-      #     echo "Vérification de l'API sur http://localhost:5000/users..."
-      #     try {
-      #       $response = Invoke-WebRequest -Uri "http://localhost:5000/users" -UseBasicParsing -TimeoutSec 10
-      #       if ($response.StatusCode -eq 200) {
-      #         Write-Host "API OK - Statut 200"
-      #       } else {
-      #         Write-Error "API joignable mais statut inattendu : $($response.StatusCode)"
-      #       }
-      #     }
-      #     catch {
-      #       Write-Error "L'API ne répond pas ou renvoie une erreur : $($_.Exception.Message)"
-      #     }
-
-      # #endregion
+      #endregion
   #endregion
 
 #endregion
-
