@@ -125,59 +125,58 @@ jobs:
       #endregion
   #endregion
 
-  #region JOB 3 - CD Local : Déploiement Docker en local
-  deploy_local_docker:
-    # On attend que :
-    # - les tests soient OK
-    # - la release/tag soit créé
-    needs: create_release
+  # #region JOB 3 - CD Local : Déploiement Docker en local
+  # deploy_local_docker:
+  #   # On attend que :
+  #   # - les tests soient OK
+  #   # - la release/tag soit créé
+  #   needs: create_release
 
-    # ce job tourne sur le runner self-hosted
-    runs-on: self-hosted
+  #   # ce job tourne sur le runner self-hosted
+  #   runs-on: self-hosted
 
-    # On ne déploie que lorsqu'on est sur la branche main
-    if: github.ref == 'refs/heads/main'
+  #   # On ne déploie que lorsqu'on est sur la branche main
+  #   if: github.ref == 'refs/heads/main'
 
-    steps:
-      #region 1 : Checkout du code sur la machine locale
-      - name: Checkout du code
-        uses: actions/checkout@v4
-        # Le runner récupère le code à jour de la branche main
-      #endregion
+  #   steps:
+  #     #region 1 : Checkout du code sur la machine locale
+  #     - name: Checkout du code
+  #       uses: actions/checkout@v4
+  #       # Le runner récupère le code à jour de la branche main
+  #     #endregion
 
-      #region 2 : Arrêter l'ancienne version (si elle tourne)
-      - name: Arrêter l'ancienne stack Docker (si existante)
-        run: |
-          echo "Arrêt de l'ancienne version (si existante)..."
-          docker compose down
-        continue-on-error: true
+  #     #region 2 : Arrêter l'ancienne version (si elle tourne)
+  #     - name: Arrêter l'ancienne stack Docker (si existante)
+  #       run: |
+  #         echo "Arrêt de l'ancienne version (si existante)..."
+  #         docker compose down
+  #       continue-on-error: true
 
-      #endregion
+  #     #endregion
 
-      #region 3 : Build & démarrage de la nouvelle version
-      - name: Build & démarrer la nouvelle version
-        run: |
-          echo "Build + démarrage de la nouvelle version..."
-          docker compose up -d --build
-      #endregion
-      #region 4 : Vérification basique de l'API en local
-      - name: Vérification de l'API (health-check basique)
-        shell: powershell
-        run: |
-          echo "Vérification de l'API sur http://localhost:8000/api/books..."
-          try {
-            $response = Invoke-WebRequest -Uri "http://localhost:8000/api/books" -UseBasicParsing -TimeoutSec 10
-            if ($response.StatusCode -eq 200) {
-              Write-Host "API OK - Statut 200"
-            } else {
-              Write-Error "API joignable mais statut inattendu : $($response.StatusCode)"
-            }
-          }
-          catch {
-            Write-Error "L'API ne répond pas ou renvoie une erreur : $($_.Exception.Message)"
-          }
+  #     #region 3 : Build & démarrage de la nouvelle version
+  #     - name: Build & démarrer la nouvelle version
+  #       run: |
+  #         echo "Build + démarrage de la nouvelle version..."
+  #         docker compose up -d --build
+  #     #endregion
+  #     #region 4 : Vérification basique de l'API en local
+  #     - name: Vérification de l'API (health-check basique)
+  #       shell: powershell
+  #       run: |
+  #         echo "Vérification de l'API sur http://localhost:8000/api/books..."
+  #         try {
+  #           $response = Invoke-WebRequest -Uri "http://localhost:8000/api/books" -UseBasicParsing -TimeoutSec 10
+  #           if ($response.StatusCode -eq 200) {
+  #             Write-Host "API OK - Statut 200"
+  #           } else {
+  #             Write-Error "API joignable mais statut inattendu : $($response.StatusCode)"
+  #           }
+  #         }
+  #         catch {
+  #           Write-Error "L'API ne répond pas ou renvoie une erreur : $($_.Exception.Message)"
+  #         }
 
-      #endregion
-  #endregion
-
+  #     #endregion
+  # #endregion
 #endregion
