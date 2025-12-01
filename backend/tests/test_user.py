@@ -3,16 +3,33 @@ import sys
 import os
 from unittest.mock import patch, MagicMock
 
+os.environ["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app import app
 from app.models.user import User
 
 
+# @pytest.fixture
+# def test_client():
+#     apptest = app
+#     apptest.testing = True
+#     return apptest.test_client()
+
+
 @pytest.fixture
 def test_client():
-    apptest = app
-    apptest.testing = True
-    return apptest.test_client()
+    app.config["TESTING"] = True
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+    with app.test_client() as client:
+        with app.app_context():
+            from app import db
+
+            db.create_all()
+            yield client
+            db.session.remove()
+            db.drop_all()
 
 
 def test_get_all_users(test_client):
