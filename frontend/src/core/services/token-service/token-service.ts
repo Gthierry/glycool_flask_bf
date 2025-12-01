@@ -35,8 +35,10 @@ export class TokenService {
 
   getToken() {
     try {
+      console.log("recupération du token");
       return localStorage.getItem('token');
     } catch {
+      console.log("token null !");
       return null;
     }
   }

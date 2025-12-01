@@ -71,10 +71,10 @@ class MessageService:
         messages_list = Message.query.filter_by(
             message_sender_user_id=user_id, message_receiver_user_id=sender_id
         ).all()
-        print("service request done !")
+
         if messages_list:
-            print("message_list ok")
+
             return [MessageDto(message) for message in messages_list]
         else:
-            print("service ->>>>>none")
-            return None
+
+            return []

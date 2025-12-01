@@ -19,6 +19,7 @@ export const inOutMessageboxResolver: ResolveFn<{
   const contact = contactSignal();
 
   if (user && user.user_id && contact && contact.user_id) {
+    
     return forkJoin({
       messagesSended: messageService
         .getMessagesForUser1Contact(user.user_id, contact.user_id)

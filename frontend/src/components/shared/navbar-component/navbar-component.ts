@@ -29,7 +29,7 @@ export class NavbarComponent {
   }
   // Navigate to register
   navigateToRegister() {
-    this.route.navigate(['registration']);
+    this.route.navigate(['register']);
   }
   logout() {
     this.authentification.logout();

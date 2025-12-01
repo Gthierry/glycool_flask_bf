@@ -67,19 +67,21 @@ def getMessagesForRecipient(user_id):
 # get all message from a user to recipient
 def getMessagesForAUserToDistinctRecipient(user_id, sender_id):
     message_service = MessageService()
+
     try:
         messages_list: list[MessageDto] = MessageService.getmessagesUserContact(
             user_id, sender_id
         )
-    except Exception as e:
-        return jsonify({"error: " + e})
-    if messages_list:
-        try:
+        if messages_list:
             return jsonify([dto.serialize() for dto in messages_list]), 200
-        except Exception as e:
-            return jsonify({"error": str(e)}), 400
-    else:
-        return {"error, check service"}
+        else:
+            return jsonify([]), 200
+    except ValueError as ve:
+        # ✅ 400 Bad Request - erreur de validation des paramètres
+        return jsonify({"error": "Invalid parameters", "details": str(ve)}), 400
+    except Exception as e:
+        # ✅ 500 Internal Server Error - erreur serveur inattendue
+        return jsonify({"error": "Internal server error", "details": str(e)}), 500
 
 
 @app.delete("/message/delete/<int:message_id>")

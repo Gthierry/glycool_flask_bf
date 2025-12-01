@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 import { User, UserRegister } from '../../../core/models/user-models/user.model';
 
 @Component({
-  selector: 'app-user-registration-component',
+  selector: 'register',
   imports: [ReactiveFormsModule, FormsModule, CommonModule],
   templateUrl: './user-registration-component.html',
   styleUrl: './user-registration-component.css',
@@ -75,7 +75,7 @@ export class UserRegistrationComponent {
           {
           localStorage.setItem('user', JSON.stringify(response.user) || '');
           localStorage.setItem('token', response.token || '');
-          this.route.navigate(['infos-profil']);
+          this.route.navigate(['profil']);
         }
         },
         error: (error) => {
