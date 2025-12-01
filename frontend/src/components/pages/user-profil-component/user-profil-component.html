@@ -67,9 +67,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
-                <button class="btn btn-success w-100 mb-3">
+                <!--hidden input to insert the image file #image=name of input passed add the button action click loadButton-->
+                <input type="file" #image (change)="onFilesSelected($event)" style="display: none" />
+                <button class="btn btn-success w-100 mb-3" (click)="loadImage(image)">
                     Charger depuis l'ordinateur
-                    <input type="button" (click)=LoadImage() class="d-none" accept="image/*">
                 </button>'
                 <button class="btn btn-success w-100 mb-3">
                     Charger depuis une url'
