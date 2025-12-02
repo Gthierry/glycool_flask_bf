@@ -7,7 +7,9 @@ export const loggedGuard: CanActivateFn = (route, state): boolean | UrlTree => {
   const router = inject(Router);
 
   if (tokenService.getToken()) {
+    console.log("guard appellé ===> token ok");
     return true;
   }
+  console.log("guard appellé ===> pas de token, retour à la login page");
   return router.createUrlTree(['/login']);
 };

@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/authentification/auth-service';
 import { User } from '../../../core/models/user-models/user.model';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TokenService } from '../../../core/services/token-service/token-service';
 
 @Component({
   selector: 'app-navbar-component',
@@ -16,13 +17,29 @@ export class NavbarComponent {
   // Inject Router
   route = inject(Router);
   authentification = inject(AuthService);
-  isLogged = signal<boolean>(false);
-  userSignal = signal<User | null>(null);
 
-  constructor() {
-    this.isLogged = this.authentification.isLogged;
-    this.userSignal = this.authentification.userSignal;
-  }
+  isLogged = this.authentification.isLogged;
+  userSignal = this.authentification.userSignal
+  
+
+  // constructor() {
+  //   console.log("passage par constructeur navbar");
+  //   if (this.isLogged()) {
+  //     console.log("if constructeur" + this.isLogged);
+  //     this.isLogged.set(this.authentification.isLogged())
+  //     this.userSignal.set(this.authentification.userSignal())
+   
+  //   }
+  // }
+
+  // ngOnInit(): void {
+  //   console.log("passage par oninit navbar");
+  //  if (this.isLogged()) {
+  //     console.log("if onInit");
+  //     this.isLogged.set(this.authentification.isLogged())
+  //     this.userSignal.set(this.authentification.userSignal())
+  //   }
+  // }
   //Navigate to home
   navigateToHome() {
     this.route.navigate(['']);

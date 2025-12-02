@@ -27,7 +27,7 @@ export class UserLoginComponent {
   fb = inject(FormBuilder);
 
   // Service et routeur
-  loginService = inject(AuthService);
+  authService = inject(AuthService);
   route = inject(Router);
 
   //déclaration user
@@ -55,11 +55,11 @@ export class UserLoginComponent {
         };
         console.log('UserLogin created');
 
-        const reponse = await this.loginService.userLogin(userCredentials);
+        const reponse = await this.authService.userLogin(userCredentials);
 
         console.log('authservice terminé');
 
-        this.isLogged = this.loginService.isLogged;
+        this.isLogged = this.authService.isLogged;
         console.log('user Logged');
 
         console.log('isLogged value = ' + this.isLogged());

@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { User, UserLogin } from '../../models/user-models/user.model';
 import { Observable } from 'rxjs';
 import { sign } from 'crypto';
 import { jwtDecode } from 'jwt-decode';
+import { exists } from 'fs';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -26,10 +28,11 @@ export class AuthService {
   clearUserSignal(): void {
     this.userSignal.set(null);
   }
-
+  private platformId = inject(PLATFORM_ID);
   //signal pour communiquer l'état de connexion
   isLogged = signal<boolean>(false);
 
+  
   //login user
   async userLogin(user: UserLogin) {
     console.log('AuthService launched...');
@@ -65,5 +68,8 @@ export class AuthService {
     localStorage.removeItem('token');
     this.isLogged.set(false);
     this.userSignal.set(null);
+  }
+
+  restoreAuthFromStorage() {
   }
 }

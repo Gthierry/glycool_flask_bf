@@ -9,6 +9,7 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
 
   // Si le token n'est pas expiré on ajoute le token dans le header de la requête
   if (!tokenService.isTokenExpired()) {
+    console.log('interceptor -> token pas expiré');
     return next(
       req.clone({
         setHeaders: {
@@ -18,6 +19,9 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
     );
   }
   // Si le token est expiré on n'ajoute pas le token dans le header de la requête
-  authService.logout();
-  return next(req);
+  else {
+    console.log('interceptor logout');
+    authService.logout();
+    return next(req);
+  }
 };
