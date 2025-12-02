@@ -91,6 +91,7 @@
             connecter</button>
 
         } @else {
+        <a class="m-3 text-success" routerLink="profil/informations">{{userSignal()?.username}}</a>
         <button (click)="logout()" class="btn btn-sm btn-outline-secondary m-1" type="button">Se
             déconnecter</button>
         }

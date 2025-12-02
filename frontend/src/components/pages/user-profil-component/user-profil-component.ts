@@ -39,7 +39,6 @@ export class UserProfilComponent {
   ngOnInit() {
     const token = localStorage.getItem('token');
     if (token && !this.tokenService.isTokenExpired()) {
-      const decoded = jwtDecode(token);
       // Restore user/session state here
       this.user = this.userSignal.userSignal();
       console.log('User session restored in UserProfilComponent:', this.user);
