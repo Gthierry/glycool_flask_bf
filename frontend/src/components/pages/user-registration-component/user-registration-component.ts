@@ -14,6 +14,7 @@ import { first } from 'rxjs';
 import { UserService } from '../../../core/services/user-services/user-service';
 import { Router } from '@angular/router';
 import { User, UserRegister } from '../../../core/models/user-models/user.model';
+import { AuthService } from '../../../core/services/authentification/auth-service';
 
 @Component({
   selector: 'register',
@@ -29,6 +30,9 @@ export class UserRegistrationComponent {
   //form builder injection
   fb = inject(FormBuilder);
 
+  //signal user pour l'info à la page profil
+  
+  authService = inject(AuthService)
   //form initialization in constructor
   constructor() {
     this.form = this.fb.group({
@@ -50,6 +54,7 @@ export class UserRegistrationComponent {
       bio: [''],
       acceptTerms: [false, Validators.requiredTrue],
     });
+   
   }
 
   //inject services
@@ -75,6 +80,7 @@ export class UserRegistrationComponent {
           {
           localStorage.setItem('user', JSON.stringify(response.user) || '');
           localStorage.setItem('token', response.token || '');
+          this.authService.userSignal.set(response.user);
           this.route.navigate(['profil']);
         }
         },
