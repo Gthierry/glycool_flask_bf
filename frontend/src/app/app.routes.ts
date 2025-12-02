@@ -21,6 +21,7 @@ import { messageResolverResolver } from '../core/resolver/message-resolver/messa
 import { ReadMessageComponent } from '../components/pages/user-profil-component/user-profil-children/read-message-component/read-message-component';
 import { ContactInformations } from '../components/pages/user-profil-component/user-profil-children/contact-informations/contact-informations';
 import { inOutMessageboxResolver } from '../core/resolver/in-out-messagebox-resolver/in-out-messagebox-resolver';
+import { FindRecipesComponent } from '../components/pages/find-recipes-component/find-recipes-component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,6 +35,7 @@ export const routes: Routes = [
   { path: 'login', component: UserLoginComponent },
   { path: 'avoid-food', component: AvoidFoodComponent },
   { path: 'whats-diabet-restaurant', component: WhatsDiabetRestaurantComponent },
+  { path: 'find-recipes', component: FindRecipesComponent },
 
   {
     path: 'profil',
