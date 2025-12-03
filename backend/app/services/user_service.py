@@ -27,9 +27,18 @@ from app.forms.users import user_username_form
 
 
 class UserService(Base_service):
+    # return all users
     @staticmethod
     def get_all():
         return [UserDto(u) for u in User.query.all()]
+
+    # return all user_id and username
+    @staticmethod
+    def get_all_user_id_username():
+        rows = User.query.with_entities(User.user_id, User.user_username).all()
+        return [
+            {"user_id": row.user_id, "user_username": row.user_username} for row in rows
+        ]
 
     @staticmethod
     def get_by_id(user_id: int):

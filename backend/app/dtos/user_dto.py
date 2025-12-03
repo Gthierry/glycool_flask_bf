@@ -40,10 +40,14 @@ class UserDto(AbstractDto):
 
         self.role = User.user_role
 
-        
+    # def serialize(self):
 
-    def serialize(self):
+    #     dto = deepcopy(self)
 
-        dto = deepcopy(self)
+    #     return dto.__dict__
 
-        return dto.__dict__
+    def serialize(self, fields=None):
+        data = deepcopy(self.__dict__)
+        if fields:
+            return {key: data[key] for key in fields if key in data}
+        return data

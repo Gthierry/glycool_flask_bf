@@ -1,11 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
-import { User, UserLogin } from '../../models/user-models/user.model';
-import { Observable } from 'rxjs';
-import { sign } from 'crypto';
-import { jwtDecode } from 'jwt-decode';
-import { exists } from 'fs';
 import { isPlatformBrowser } from '@angular/common';
+import { jwtDecode } from 'jwt-decode';
+import { User, UserLogin } from '../../models/user-models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +12,7 @@ export class AuthService {
   httpClient = inject(HttpClient);
   //signal pour communiquer l'état de l'utilisateur connecté
   userSignal = signal<User | null>(null);
+  private platformId = inject(PLATFORM_ID);
 
   //methode pour setter mon user dans mon siganl en lecture seule
   setUserSignal(user: User) {
@@ -28,9 +26,12 @@ export class AuthService {
   clearUserSignal(): void {
     this.userSignal.set(null);
   }
-  private platformId = inject(PLATFORM_ID);
   //signal pour communiquer l'état de connexion
   isLogged = signal<boolean>(false);
+
+  constructor() {
+    this.restoreAuthFromStorage();
+  }
 
   
   //login user
@@ -44,9 +45,10 @@ export class AuthService {
             //set le signal userSignal avec les infos provenant de mon backend
             this.setUserSignal(response.user);
             console.log('authservice user:', response.user);
-            //localStorage.setItem('user', JSON.stringify(response.user));
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('user', JSON.stringify(response.user));
+            if (isPlatformBrowser(this.platformId)) {
+              localStorage.setItem('token', response.token);
+              localStorage.setItem('user', JSON.stringify(response.user));
+            }
             this.isLogged.set(true);
             console.log('Is logged in authService value = ' + this.isLogged);
             resolve();
@@ -64,12 +66,42 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+    }
     this.isLogged.set(false);
     this.userSignal.set(null);
   }
 
   restoreAuthFromStorage() {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    const token = localStorage.getItem('token');
+    const rawUser = localStorage.getItem('user');
+
+    if (!token || !rawUser) {
+      this.logout();
+      return;
+    }
+
+    try {
+      const decoded: any = jwtDecode(token);
+      const isExpired = decoded?.exp && decoded.exp < Date.now() / 1000;
+
+      if (isExpired) {
+        this.logout();
+        return;
+      }
+
+      const user: User = JSON.parse(rawUser);
+      this.userSignal.set(user);
+      this.isLogged.set(true);
+    } catch (error) {
+      console.error('Error restoring auth state:', error);
+      this.logout();
+    }
   }
 }

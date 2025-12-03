@@ -20,16 +20,35 @@ from app.utilities.authentification.jwt_utils import generate_token
 # from flask import request
 
 
+# récupérer tous les users avec tous les champs
 @app.get("/users")
 def get_users():
     try:
-        print("getting users")
         users = UserService.get_all()
+        if not users:
+            return jsonify({"message": "No users found"}), 404
         for user in users:
-            print("user: " + str(user.username))
-        return jsonify([user.__dict__ for user in users])
+            return jsonify([user.__dict__ for user in users]), 200
     except IntegrityError as e:
-        return jsonify({"error": str(e)}), 404
+        return jsonify({"error": str(e)}), 400
+    except Exception as e:
+        # any other unexpected server error → 500
+        return jsonify({"error": "Internal server error", "details": str(e)}), 500
+
+
+# récupération des user_id et username uniquement
+@app.get("/users/id_username")
+def get_users_id_username():
+    try:
+        users = UserService.get_all_user_id_username()
+        if not users:
+            return jsonify({"message": "No users found"}), 404
+        return jsonify(users), 200
+    except IntegrityError as e:
+        return jsonify({"error": str(e)}), 400
+    except Exception as e:
+        # any other unexpected server error → 500
+        return jsonify({"error": "Internal server error", "details": str(e)}), 500
 
 
 # @app.post("/users/getuser")
