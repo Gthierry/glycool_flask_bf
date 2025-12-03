@@ -24,4 +24,9 @@ export class ContactService {
     const url = `${this.apiUrl}getByUserId/${user.user_id}`;
     return this.httpClient.get<Contact[]>(url);
   }
+
+  addContact(contact:Contact): Observable<Contact>{
+    const url = `${this.apiUrl}/add`
+    return this.httpClient.post<Contact>(url,contact)
+  }
 }

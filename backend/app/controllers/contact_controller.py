@@ -29,7 +29,7 @@ def getContactsOnUserId(user_id):
         if contact_dtos:
             return jsonify([contact.serialize() for contact in contact_dtos]), 200
         else:
-            return jsonify({"error": "Contacts not found"}), 404
+            return []
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 

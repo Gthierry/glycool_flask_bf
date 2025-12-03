@@ -1,11 +1,22 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import {
+  Component,
+  effect,
+  ElementRef,
+  inject,
+  PLATFORM_ID,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import { AuthService } from '../../../../../core/services/authentification/auth-service';
 import { ContactService } from '../../../../../core/services/contact-service/contact-service';
 import { Contact } from '../../../../../core/models/contact-models/contact.model';
-import { User } from '../../../../../core/models/user-models/user.model';
+import { User, UserIdUsername } from '../../../../../core/models/user-models/user.model';
 import { UserService } from '../../../../../core/services/user-services/user-service';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
-
+import { Modal } from 'bootstrap';
+import { isPlatformBrowser, UpperCasePipe } from '@angular/common';
+import { Form, FormBuilder, FormGroup } from '@angular/forms';
+import { error } from 'console';
 @Component({
   selector: 'app-contacts-component',
   imports: [],
@@ -32,11 +43,23 @@ export class ContactsComponent {
   contacts: Contact[] | undefined;
   contactSignal = this.contactService.UserContactSignal;
 
+  //liste des user_id et username
+  usernames = signal<UserIdUsername[] | undefined>([]);
+  //liste des users apres recherche
+  filteredUsers = signal<UserIdUsername[] | undefined>([]);
+  //Variable modale pour la fenêtre avec décorateur pour la ref html
+  private platformId = inject(PLATFORM_ID);
+  @ViewChild('myModal', { static: false }) modalElement!: ElementRef;
+  modal: any | null = null;
+
+  
   // constructeur pour charger les données
   constructor() {
     // Utiliser effect pour réagir aux changements du signal
     effect(() => {
       //récup du signal pour vérification
+      //récupère la liste des users
+      this.getUsersUsername();
       const userData = this.userSignal();
       if (userData) {
         this.user = userData;
@@ -70,6 +93,9 @@ export class ContactsComponent {
       }
     });
   }
+
+  //Navigation buttons
+
   navigateToReadMessage() {
     console.log('navigation to readmessage');
     // Navigation vers le composant de lecture de message
@@ -82,5 +108,99 @@ export class ContactsComponent {
     this.contactService.setUserContactSignal(contact);
     // Navigation vers le composant des informations du profil du contact avec l'état du contact
     this.route.navigate(['profil/contactinformations']);
+  }
+
+  //recupère la liste des user_id et username
+  getUsersUsername() {
+    this.userService.getAllUsersIdUsername().subscribe({
+      next: (response) => {
+        this.usernames.set(response);
+        this.filteredUsers.set(response ?? []); // init la vue
+      },
+      error: (err) => {
+        console.error('Failed to load usernames', err);
+        this.usernames.set([]);
+        this.filteredUsers.set([]);
+      },
+    });
+  }
+  
+  /* Fenetre Modal */
+  //pour la gestion de la fenêtre modal
+  openModal() {
+    if (this.modal && isPlatformBrowser(this.platformId)) {
+      this.modal.show();
+    }
+  }
+
+  closeModal() {
+    if (this.modal && isPlatformBrowser(this.platformId)) {
+      this.modal.hide();
+    }
+  }
+
+  //bootstrap pour la fenêtre modal
+  async ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      const bootstrap = await import('bootstrap');
+      this.modal = new bootstrap.Modal(this.modalElement.nativeElement);
+    }
+  }
+
+  search(str: string) {
+    const q = (str ?? '').toLowerCase().trim();
+    const src = this.usernames() ?? [];
+    if (!q) {
+      this.filteredUsers.set(src); // reset sur la source
+      return;
+    }
+    this.filteredUsers.set(src.filter((u) => u.username.toLowerCase().includes(q)));
+  }
+
+
+  addContact(contact_id: number) {
+    console.log("Tentative d'ajout de contact...");
+    //verifier si le user à ce déjà ce contact via service
+    const currentUser: User | null = this.userSignal();
+    if (currentUser) {
+      this.contactService.getAllContactsForUser(currentUser).subscribe({
+        next: (contactList) => {
+          if(contactList){
+            console.log("il y a une liste de contact");
+            if(contactList.length>0){}
+            for (const contact of contactList) {
+              //si oui, affiche une erreur
+              if (contact.contact_user_id == contact_id) {
+                console.log("contact déjà existant");
+                return alert("Déjà existant dans la liste de contacts");
+              }
+            }
+            console.log("ajout du contact");
+            if (currentUser.user_id !== null && currentUser.user_id !== undefined) {
+              const contact: Contact = {
+                user_id: currentUser.user_id,
+                contact_user_id: contact_id,
+                created_at: null
+              };
+
+              try {
+                this.contactService.addContact(contact).subscribe();
+              } catch (e) {
+                console.log("Exeption !!!!!!!!!!!!!!!!!!!!!");
+              }
+              console.log('contact ajouté');
+            } else {
+              alert("L'identifiant utilisateur est invalide.");
+            }
+            //vérifier rafraichissement des contacts 
+          }
+        },
+        error: (err) => {
+          console.error('Erreur lors de la récupération des contacts', err);
+        }
+      });
+    } else {
+      console.error('No user found, cannot add contact.');
+    }
   }
 }

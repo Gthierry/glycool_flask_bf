@@ -22,6 +22,7 @@ import { ReadMessageComponent } from '../components/pages/user-profil-component/
 import { ContactInformations } from '../components/pages/user-profil-component/user-profil-children/contact-informations/contact-informations';
 import { inOutMessageboxResolver } from '../core/resolver/in-out-messagebox-resolver/in-out-messagebox-resolver';
 import { FindRecipesComponent } from '../components/pages/find-recipes-component/find-recipes-component';
+import { UsersListComponent } from '../components/pages/user-profil-component/user-profil-children/users-list-component/users-list-component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -56,6 +57,7 @@ export const routes: Routes = [
         component: ContactInformations,
         resolve: { listes: inOutMessageboxResolver },
       },
+      { path: 'users-list', component: UsersListComponent },
 
       //TODO
       // {

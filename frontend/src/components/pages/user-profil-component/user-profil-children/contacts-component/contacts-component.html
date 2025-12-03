@@ -7,10 +7,70 @@
                 <h5 class="text-success-emphasis mb-0">
                     <i class="bi bi-people me-2"></i>Mes contacts
                 </h5>
-                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
-                    data-bs-target="#addContactModal">
-                    <i class="bi bi-person-plus me-2"></i>Ajouter un contact
+                <button type="button" class="btn btn-success btn-sm" (click)="openModal()">
+                    Ajouter un contact
                 </button>
+            </div>
+
+            <div class="modal fade" #myModal tabindex="-1" aria-labelledby="addContactTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content border-success-subtle">
+                        <div class="modal-header bg-success-subtle">
+                            <h5 id="addContactTitle" class="modal-title text-success-emphasis">
+                                Ajouter un contact
+                            </h5>
+                            <button type="button" class="btn-close" aria-label="Fermer" (click)="closeModal()"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <!-- Search -->
+                            <div class="input-group mb-3">
+                                <span class="input-group-text border-success-subtle bg-white">
+
+                                </span>
+                                <input type="text" class="form-control border-success-subtle"
+                                    (input)="search($event.target.value)" placeholder="Rechercher un utilisateur..." />
+                            </div>
+
+                            <!-- Users list -->
+                            <ul class="list-group list-group-flush rounded">
+                                @for (user of filteredUsers(); track user.user_id) {
+                                <li class="list-group-item d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center">
+
+                                        <div class="lh-sm">
+                                            <div class="fw-semibold text-success-emphasis">{{ user.username }}</div>
+
+                                        </div>
+                                    </div>
+
+                                    @if(user.user_id != null){
+                                    <button type="button" class="btn btn-outline-success btn-sm"
+                                        (click)="addContact(user.user_id)">
+                                        Ajouter
+                                    </button>
+                                    }
+                                    @else {
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" disabled>
+                                        Indisponible
+                                    </button>
+                                    }
+                                </li>
+                                }
+                            </ul>
+
+                            <!-- Empty state (optional)
+                <div class="text-center text-muted py-3" *ngIf="!usernames || usernames.length === 0">
+                  Aucun utilisateur trouvé.
+                </div>
+                -->
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-outline-secondary" (click)="closeModal()">Fermer</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 

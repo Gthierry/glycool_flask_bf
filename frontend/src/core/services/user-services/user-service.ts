@@ -1,7 +1,13 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User, UserLogin, UserRegister, UserUpdate } from '../../models/user-models/user.model';
+import {
+  User,
+  UserIdUsername,
+  UserLogin,
+  UserRegister,
+  UserUpdate,
+} from '../../models/user-models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +22,11 @@ export class UserService {
   getAllUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.apiUrl);
   }
+  //get all the user_id and username
+  getAllUsersIdUsername(): Observable<UserIdUsername[]> {
+    return this.httpClient.get<UserIdUsername[]>(`${this.apiUrl}/id_username`);
+  }
+
   //récupération d'un utilisateur par son id
   getUserById(id: number): Observable<User> {
     try {
