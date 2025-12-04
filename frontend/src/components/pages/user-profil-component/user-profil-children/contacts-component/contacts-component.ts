@@ -137,6 +137,7 @@ export class ContactsComponent {
     if (this.modal && isPlatformBrowser(this.platformId)) {
       this.modal.hide();
     }
+
   }
 
   //bootstrap pour la fenêtre modal
@@ -156,8 +157,10 @@ export class ContactsComponent {
     }
     this.filteredUsers.set(src.filter((u) => u.username.toLowerCase().includes(q)));
   }
-
-
+  isContact(user_id: number): boolean {
+    const contacts = this.contactListSignal();
+    return contacts.some(contact => contact.user_id === user_id);
+  }
   addContact(contact_id: number) {
     console.log("Tentative d'ajout de contact...");
     //verifier si le user à ce déjà ce contact via service
@@ -180,15 +183,22 @@ export class ContactsComponent {
               const contact: Contact = {
                 user_id: currentUser.user_id,
                 contact_user_id: contact_id,
-                created_at: null
+                
               };
-
               try {
-                this.contactService.addContact(contact).subscribe();
+                this.contactService.addContact(contact).subscribe({
+                  next: (response) => {
+                  const contact = this.userService.getUserById(response.contact_user_id).subscribe({
+                    next: (res) =>{
+                    this.contactListSignal.update(list => [...list, res])
+                    }
+                  })
+                  }
+                });
+                console.log('contact ajouté');
               } catch (e) {
-                console.log("Exeption !!!!!!!!!!!!!!!!!!!!!");
+                console.log("Exception !!!!!!!!!!!!!!!!!!!!!");
               }
-              console.log('contact ajouté');
             } else {
               alert("L'identifiant utilisateur est invalide.");
             }
@@ -203,4 +213,6 @@ export class ContactsComponent {
       console.error('No user found, cannot add contact.');
     }
   }
+
+  
 }

@@ -13,6 +13,7 @@ contact_insert_schema = ContactInsertSchema()
 def add_contact():
     try:
         data = request.get_json()
+        print(data)
         # Validation Marshmallow
         validated_data = contact_insert_schema.load(data)
         contact_dto = ContactService.add_contact(validated_data)

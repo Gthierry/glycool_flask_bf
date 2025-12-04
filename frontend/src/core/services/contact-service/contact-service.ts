@@ -26,7 +26,8 @@ export class ContactService {
   }
 
   addContact(contact:Contact): Observable<Contact>{
-    const url = `${this.apiUrl}/add`
+    const url = `${this.apiUrl}add`
+    console.log('dans le service contact',contact);
     return this.httpClient.post<Contact>(url,contact)
   }
 }

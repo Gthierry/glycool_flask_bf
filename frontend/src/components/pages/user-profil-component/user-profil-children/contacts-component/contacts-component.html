@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
 
-                                    @if(user.user_id != null){
+                                    @if(user.user_id != null && !isContact(user.user_id)) {
                                     <button type="button" class="btn btn-outline-success btn-sm"
                                         (click)="addContact(user.user_id)">
                                         Ajouter
