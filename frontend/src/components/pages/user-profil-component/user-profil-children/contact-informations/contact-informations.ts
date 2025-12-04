@@ -40,4 +40,12 @@ export class ContactInformations {
     this.receivedMessages.set(this.activatedRoute.snapshot.data['listes'].messagesReceived);
     this.sendedMessages.set(this.activatedRoute.snapshot.data['listes'].messagesSended);
   }
+
+  //créer une variable de type list string pour le titre et le message
+  message: string[] = [];
+  //passage à la fenetre modal des infos du message
+  sendToModal(titre: string, body: string) {
+    this.message[0] = titre;
+    this.message[1] = body
+}
 }
